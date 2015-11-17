@@ -88,3 +88,19 @@ i.glyphicon.glyphicon-plus-sign {
     line-height: 50px;
 }​
 
+.add-class {
+    width: 150px !important;
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 300px;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.table-crop {
+    width: 60% !important;
+    margin: auto
+}
