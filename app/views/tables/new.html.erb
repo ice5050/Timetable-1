@@ -1,0 +1,12 @@
+<h3>ADD TABLE</h3>
+
+
+<% if user_signed_in? %>
+    <%= form_for :table, url: user_tables_path(current_user) do |f| %>
+        <p>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </p>
+        <%= f.submit %>
+    <% end %>
+<% end %>

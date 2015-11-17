@@ -1,0 +1,2 @@
+module ClasstablesHelper
+end

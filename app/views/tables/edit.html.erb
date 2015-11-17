@@ -1,0 +1,9 @@
+<h3>EDIT TABLE</h3>
+
+<%= form_for :table, url: user_table_path(current_user, @table), method: :patch do |f| %>
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
+    <%= f.submit %>
+<% end %>

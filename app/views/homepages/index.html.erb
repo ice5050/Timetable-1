@@ -1,0 +1,12 @@
+<h1>Hompage</h1>
+<% @users.each do |user| %>
+    <% user.tables.order("created_at DESC").each do |table| %>
+        <p>
+            <%= link_to table.name, user_table_classtables_path(user.id, table) %>
+            <%= link_to user.username, user_tables_path(user.id) %>
+        </p>
+    <% end %>
+<% end %>
+<%= link_to "GO TO MY TABLE", user_tables_path(current_user) if user_signed_in?  %>
+
+

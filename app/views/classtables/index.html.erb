@@ -1,0 +1,107 @@
+<h2>Classtables</h2>
+<%= @table.name %>
+
+<%= link_to "back", user_tables_path if user_signed_in? %>
+<%= link_to "back", homepages_path if !user_signed_in? %>
+
+<% if $error.length != 0 %>
+    <%= $error %>
+    <% $error = "" %>
+<% end %>
+
+<% if user_signed_in? and @user.id == current_user.id %>
+    <%= form_for :class, url: user_table_classtables_path(current_user, @table) do |f| %>
+        
+        <%= f.label :subject_code %>
+        <%= f.text_field :subject_code %>
+
+
+        <%= f.label :subject %>
+        <%= f.text_field :subject %>
+
+
+        <%= f.label :daily %>
+        <%= f.select :daily, (options_for_select([['Sunday', 1], ['Monday', 2], ['Tuesday', 3], ['Wednesday', 4], ['Thursday', 5], ['Friday', 6], ['Saturday', 7]])) %>
+
+        <%= f.label :start %>
+        <%= f.select :start, (options_for_select([['0800', 1], ['0830', 2], ['0900', 3], ['0930', 4], ['1000', 5], ['1030', 6], ['1100', 7], ['1130', 8], ['1200', 9], ['1230', 10], ['1300', 11], ['1330', 12], ['1400', 13], ['1430', 14], ['1500', 15], ['1530', 16], ['1600', 17], ['1630', 18], ['1700', 19], ['1730', 20], ['1800', 21], ['1830', 22], ['1900', 23], ['1930', 24], ['2000', 25], ])) %>
+
+
+        <%= f.label :finish %>
+        <%= f.select :finish, (options_for_select([['0830', 2], ['0900', 3], ['0930', 4], ['1000', 5], ['1030', 6], ['1100', 7], ['1130', 8], ['1200', 9], ['1230', 10], ['1300', 11], ['1330', 12], ['1400', 13], ['1430', 14], ['1500', 15], ['1530', 16], ['1600', 17], ['1630', 18], ['1700', 19], ['1730', 20], ['1800', 21], ['1830', 22], ['1900', 23], ['1930', 24], ['2000', 25]])) %>
+        
+        <%= f.submit %>
+
+    <% end %>
+<% end %>
+
+<div class="pure-g text-center">    
+    <div class="pure-u-2-24">CMU</div>
+    <% (8..18).each do |i| %>
+        <div class="pure-u-2-24">
+            <%= sprintf '%02d', i %>
+        </div>
+    <% end %>
+</div>
+<div class="pure-g text-center">    
+    <div class="pure-u-2-24">Timtable</div>
+    <% (1..22).each do |i| %>
+        <div class="pure-u-1-24">
+            <%= 00 if i % 2 == 1 %>
+            <%= 30 if i % 2 == 0 %>
+        </div>
+    <% end %>
+</div>
+
+
+<% @days.each do |day| %>
+    <div class="pure-g text-center">    
+    <div class="pure-u-2-24">
+        <p class="text-center"><%= day.day %></p>
+    </div>
+        <% @classes.each do |class_| %> 
+            <% while @i <= 22 and class_.daily == day.id do %>
+                <% if class_.start == @i %>
+                    <div class="pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
+                        <p class="text-center"><%= class_.subject %></p>
+                        <%= link_to "delete", user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in?  %>
+                    </div>                    
+                    <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
+                    <% break %>
+                <% else %>
+                    <div class="pure-u-1-24">
+                        <p><%= @i %></p>
+                        <% @i += 1 %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+
+        <% while @i <= 22 do %>
+            <div class="pure-u-1-24">
+                <p><%= @i %></p>
+                <% @i += 1 %>
+            </div>
+        <% end %>
+    </div>
+    <% @i = 1 %>
+<% end %>
+
+<table class="table">
+    <tr>
+        <td>Subject code</td>
+        <td>Subject</td>
+        <td>Day</td>
+        <td>Start</td>
+        <td>Finish</td>
+    </tr>
+    <% @classes.each do |class_| %>
+    <tr>
+        <td><%= class_.subject_code %></td>
+        <td><%= class_.subject %></td>
+        <td><%= class_.daily %> > <%= Day.find(class_.daily).day %></td>
+        <td><%= class_.start %> > <%= Timer.find(class_.start).time %></td>
+        <td><%= class_.finish %> > <%= Timer.find(class_.finish).time %></td>
+    </tr>
+    <% end %>
+</table>

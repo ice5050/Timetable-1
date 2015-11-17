@@ -1,0 +1,14 @@
+<h1>Table</h1>
+
+<h4>
+    TABLE
+    <%= link_to "new table", new_user_table_path(current_user) if user_signed_in? and @user.id == current_user.id %>
+    <%= link_to "back", homepages_path %>
+</h4>
+<% @tables.each do |table| %>
+    <p>
+        <%= link_to table.name, user_table_classtables_path(@user, table) %>
+        <%= link_to "edit", edit_user_table_path(current_user, table) if user_signed_in? and @user.id == current_user.id %>
+        <%= link_to "delele", user_table_path(current_user, table), method: :delete, data: { confirm: "OK" } if user_signed_in? and @user.id == current_user.id %>
+    </p>
+<% end %>
