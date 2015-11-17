@@ -1,12 +1,22 @@
-<h1>Hompage</h1>
-<% @users.each do |user| %>
-    <% user.tables.order("created_at DESC").each do |table| %>
-        <p>
-            <%= link_to table.name, user_table_classtables_path(user.id, table) %>
-            <%= link_to user.username, user_tables_path(user.id) %>
-        </p>
+<h1>Homepage</h1>
+<table class="table table-hover table-striped">
+    <tr>
+        <td><strong>Timetable name</strong></td>
+        <td><strong>Username</strong></td>
+    </tr>
+    <% @users.each do |user| %>
+        <% user.tables.order("created_at DESC").each do |table| %>
+            <tr>
+                <td>    
+                    <%= link_to table.name, user_table_classtables_path(user.id, table) %>
+                </td>
+                <td>
+                    <%= link_to user.username, user_tables_path(user.id) %>
+                </td>
+            <tr>
+        <% end %>
     <% end %>
-<% end %>
-<%= link_to "GO TO MY TABLE", user_tables_path(current_user) if user_signed_in?  %>
+</table>
+<%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in?  %>
 
 

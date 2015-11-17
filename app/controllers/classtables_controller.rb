@@ -71,6 +71,6 @@ class ClasstablesController < ApplicationController
 
     private
         def params_class
-            params.require(:class).permit(:subject_code, :subject, :daily, :start, :finish)
+            params.require(:class).permit(:subject_code, :subject, :daily, :start, :finish, :room, :section)
         end
 end
