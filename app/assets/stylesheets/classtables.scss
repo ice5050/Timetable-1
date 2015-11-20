@@ -1,8 +1,63 @@
+
 // Place all the styles related to the classtables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.add-class {
+    position   : relative;
+    display    : inline-block;
+    box-sizing : border-box;
 
+    width      : 150px !important;
+    width      : 300px;
+    max-width  : 100%;
+    margin     : 0;
+    padding    : 20px 0;
 
+    font-size  : 16px;
+}
 
+i.subject {
+    float     : right;
+    font-size : 14px !important;
+}
 
+.color-yellow {
+    background-color: #f1c40f;
+    color: #fff;
+}
+
+.color-red {
+    background-color: #DA4453;
+    color: #fff;
+}
+
+.color-pink {
+    background-color: #D770AD,;
+    color: #fff;
+}
+
+.color-mint {
+    background-color: #37BC9B;
+    color: #fff;
+}
+
+.color-orange {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+.color-violet {
+    background-color: #967ADC;
+    color: #fff;
+}
+
+.color-green {
+    background-color: #8CC152;
+    color: #fff;
+}
+
+.color-blue {
+    background-color: #4A89DC;
+    color: #fff;
+}
 

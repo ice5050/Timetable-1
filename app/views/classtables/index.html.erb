@@ -12,25 +12,25 @@
 <% end %>
 
 <% if user_signed_in? and @user.id == current_user.id %>
-    <%= form_for :class, url: user_table_classtables_path(current_user, @table) do |f| %>
-        <div class="add-class  mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <%= f.label :subject_code, class: "mdl-textfield__label" %>
-            <%= f.text_field :subject_code, class: "mdl-textfield__input" %>
+    <%= form_for :class, url: { action: "create" } do |f| %>
+        <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <%= f.label :subject_code, class: "mdl-textfield__label" %>            <%= f.text_field :subject_code, class: "mdl-textfield__input" %>
         </div>
-        <div class="add-class  mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <%= f.label :subject, class: "mdl-textfield__label" %>
             <%= f.text_field :subject, class: "mdl-textfield__input" %>
         </div>
-        <div class="add-class  mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <%= f.label :room, class: "mdl-textfield__label" %>
             <%= f.text_field :room, class: "mdl-textfield__input" %>
         </div>
-        <div class="add-class  mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <%= f.label :section, class: "mdl-textfield__label" %>
             <%= f.text_field :section, class: "mdl-textfield__input" %>
         </div>
-
+        
         <%= f.label :day %>
+
         <%= f.select :daily, (options_for_select([['Sunday', 1], ['Monday', 2], ['Tuesday', 3], ['Wednesday', 4], ['Thursday', 5], ['Friday', 6], ['Saturday', 7]])) %>
 
         <%= f.label :start %>
@@ -66,27 +66,29 @@
 
 <% @days.each do |day| %>
     <div class="pure-g text-center">    
-    <div class="pure-u-2-24 bg-midnight">
-        <p class="text-center"><%= day.day %></p>
-    </div>
+        <div class="pure-u-2-24 bg-midnight">
+            <p class="text-center"><%= day.day %></p>
+        </div>
         <% @classes.each do |class_| %> 
             <% while @i <= 22 and class_.daily == day.id do %>
                 <% if class_.start == @i %>
-                    <div class="text-crop bg-green pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
+                    <div class="text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
                         <p class="text-center">
-                            <%= class_.subject_code %> |
-                            <%= class_.subject %> |
-                            <%= class_.room %> |
-                            <%= class_.section %>
-                        
-                            <%= link_to raw("<i class='glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-cog'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
+
+                            <%= class_.subject %><br>
+
+                            <i class="glyphicon glyphicon-list"></i> <%= class_.subject_code %>
+                            <i class="glyphicon glyphicon-map-marker"></i> <%= class_.room %>
+                            <i class="glyphicon glyphicon-blackboard"></i> <%= class_.section %>
                         </p>
                     </div>                    
                     <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
                     <% break %>
                 <% else %>
-                    <%= raw('<div class="bg-white pure-u-1-24">') if day.id % 2 == 1 %>
-                    <%= raw('<div class="bg-silver pure-u-1-24">') if day.id % 2 == 0 %>
+                    <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 1 %>
+                                            <%= 'bg-silver' if day.id % 2 == 0 %>">                    
                         <% @i += 1 %>
                     </div>
                 <% end %>
@@ -94,8 +96,8 @@
         <% end %>
 
         <% while @i <= 22 do %>
-            <%= raw('<div class="bg-white pure-u-1-24">') if day.id % 2 == 1 %>
-            <%= raw('<div class="bg-silver pure-u-1-24">') if day.id % 2 == 0 %>
+            <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 1 %>
+                                    <%= 'bg-silver' if day.id % 2 == 0 %>">                    
                 <% @i += 1 %>
             </div>
         <% end %>

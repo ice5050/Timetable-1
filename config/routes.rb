@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users do 
     resources :tables do 
       resources :classtables 
+      post "classtable/copy"
     end
   end
 

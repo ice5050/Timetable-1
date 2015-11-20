@@ -15,3 +15,9 @@
 // require turbolinks
 //= require_tree .
 
+$(document).ready(function() {
+    $('#new').click(function() {
+        $('this').hide();
+        $('edit').show();
+    })
+});

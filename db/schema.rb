@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117065159) do
+ActiveRecord::Schema.define(version: 20151119172249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20151117065159) do
     t.integer  "table_id"
     t.string   "room"
     t.string   "section"
+    t.string   "color"
   end
 
   add_index "classtables", ["table_id"], name: "index_classtables_on_table_id", using: :btree
