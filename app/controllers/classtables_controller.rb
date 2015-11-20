@@ -29,6 +29,11 @@ class ClasstablesController < ApplicationController
         @classes = @table.classtables.order("daily ASC, start ASC")
 
         if @class.start < @class.finish 
+
+            if @classes.count == 0
+                @addComplete = true
+            end
+
             @classes.each do |class_|
                 if class_.daily == @class.daily
                     if (@class.start < class_.start and @class.finish <= class_.start)
@@ -107,9 +112,12 @@ class ClasstablesController < ApplicationController
     end
 
 
-   def copy
-    render 'create'
+    def copy
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
     end
+
     private
         def params_class
             params.require(:class).permit(:subject_code, :subject, :daily, :start, :finish, :room, :section)

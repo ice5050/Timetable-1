@@ -76,7 +76,8 @@
                         <p class="text-center">
                             <%= link_to raw("<i class='subject glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
                             <%= link_to raw("<i class='subject glyphicon glyphicon-cog'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
-
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-file'></i>"), :action => :copy, :id => class_.id %>
+                            
                             <%= class_.subject %><br>
 
                             <i class="glyphicon glyphicon-list"></i> <%= class_.subject_code %>
@@ -106,20 +107,20 @@
 <% end %><br>
 
 <table class="table">
-    <tr>
-        <td>Subject code</td>
-        <td>Subject</td>
-        <td>Day</td>
-        <td>Start</td>
-        <td>Finish</td>
+    <tr class="bg-midnight">
+        <td><strong>Subject code</strong></td>
+        <td><strong>Subject</strong></td>
+        <td><strong>Day</strong></td>
+        <td><strong>Start</strong></td>
+        <td><strong>Finish</strong></td>
     </tr>
     <% @classes.each do |class_| %>
-    <tr>
+    <tr class="color-<%= class_.color %>">
         <td><%= class_.subject_code %></td>
         <td><%= class_.subject %></td>
-        <td><%= class_.daily %> > <%= Day.find(class_.daily).day %></td>
-        <td><%= class_.start %> > <%= Timer.find(class_.start).time %></td>
-        <td><%= class_.finish %> > <%= Timer.find(class_.finish).time %></td>
+        <td><%= Day.find(class_.daily).day %></td>
+        <td><%= Timer.find(class_.start).time %></td>
+        <td><%= Timer.find(class_.finish).time %></td>
     </tr>
     <% end %>
 </table>

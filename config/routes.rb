@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :tables do 
-      resources :classtables 
-      post "classtable/copy"
+      resources :classtables do
+        member do
+          get 'copy'
+        end   
+      end
     end
   end
 
