@@ -21,3 +21,15 @@ $(document).ready(function() {
         $('edit').show();
     })
 });
+
+$(document).ready(function() {
+    $('.target').click(function() {
+        $(this).find(".subject").toggle(200);
+    });
+});
+
+$(document).ready(function() {
+    $('#switch-1').click(function() {
+        $('.table-detail').toggle(200);
+    })
+});

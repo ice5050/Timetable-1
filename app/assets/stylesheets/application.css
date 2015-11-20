@@ -46,6 +46,11 @@ i.glyphicon.glyphicon-cog {
     color     : #2c3e50;
 }
 
+i.glyphicon.glyphicon-duplicate {
+    font-size : 20px;
+    color     : #fff;   
+}
+
 .bg-red {
     background-color : #c0392b !important;
     color            : #fff !important;
@@ -90,10 +95,6 @@ i.glyphicon.glyphicon-cog {
     line-height   : 50px;    
 }
 
-/*.text-crop:hover {
-    height        : auto;
-    width: auto;
-}*/
 
 .table-crop {
     width  : 60% !important;

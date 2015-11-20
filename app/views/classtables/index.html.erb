@@ -63,7 +63,6 @@
     <% end %>
 </div>
 
-
 <% @days.each do |day| %>
     <div class="pure-g text-center">    
         <div class="pure-u-2-24 bg-midnight">
@@ -72,24 +71,20 @@
         <% @classes.each do |class_| %> 
             <% while @i <= 22 and class_.daily == day.id do %>
                 <% if class_.start == @i %>
-                    <div class="text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
+                    <div class="target text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
                         <p class="text-center">
                             <%= link_to raw("<i class='subject glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
                             <%= link_to raw("<i class='subject glyphicon glyphicon-cog'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
-                            <%= link_to raw("<i class='subject glyphicon glyphicon-file'></i>"), :action => :copy, :id => class_.id %>
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id %>
                             
                             <%= class_.subject %><br>
-
-                            <i class="glyphicon glyphicon-list"></i> <%= class_.subject_code %>
-                            <i class="glyphicon glyphicon-map-marker"></i> <%= class_.room %>
-                            <i class="glyphicon glyphicon-blackboard"></i> <%= class_.section %>
                         </p>
                     </div>                    
                     <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
                     <% break %>
                 <% else %>
-                    <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 1 %>
-                                            <%= 'bg-silver' if day.id % 2 == 0 %>">                    
+                    <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
+                                            <%= 'bg-silver' if day.id % 2 == 1 %>">                    
                         <% @i += 1 %>
                     </div>
                 <% end %>
@@ -97,8 +92,8 @@
         <% end %>
 
         <% while @i <= 22 do %>
-            <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 1 %>
-                                    <%= 'bg-silver' if day.id % 2 == 0 %>">                    
+            <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
+                                    <%= 'bg-silver' if day.id % 2 == 1 %>">                    
                 <% @i += 1 %>
             </div>
         <% end %>
@@ -106,7 +101,15 @@
     <% @i = 1 %>
 <% end %><br>
 
-<table class="table">
+<div class="table-control">
+    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+      <input type="checkbox" id="switch-1" class="mdl-switch__input">
+      <span class="mdl-switch__label">Show Table</span>
+    </label>
+</div><br>
+
+<table class="table table-hover detail table-detail">
+    <h2></h2>
     <tr class="bg-midnight">
         <td><strong>Subject code</strong></td>
         <td><strong>Subject</strong></td>
@@ -115,7 +118,7 @@
         <td><strong>Finish</strong></td>
     </tr>
     <% @classes.each do |class_| %>
-    <tr class="color-<%= class_.color %>">
+    <tr class="detail color-<%= class_.color %>">
         <td><%= class_.subject_code %></td>
         <td><%= class_.subject %></td>
         <td><%= Day.find(class_.daily).day %></td>

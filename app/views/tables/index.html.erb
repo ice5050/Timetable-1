@@ -3,7 +3,7 @@
     <%= link_to raw("<i class='glyphicon glyphicon-plus-sign'></i>"), new_user_table_path(current_user) if user_signed_in? and @user.id == current_user.id %>
 </h1>
 
-<table class="table table-striped table-crop">
+<table class="table table-striped table-crop table-hover">
     <tr>
         <td>Table name</td>
         <%= raw("<td>Setting</td>") if user_signed_in? and @user.id == current_user.id %>
