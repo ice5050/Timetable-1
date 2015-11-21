@@ -77,3 +77,23 @@ tr.detail:hover {
     float: right;
     margin-right: 30px;
 }
+
+.pure-g [class *="pure-u"] {
+    font-family: 'Maven Pro', sans-serif !important; 
+}
+
+.text-crop {
+    overflow      : hidden;
+    height        : 60px;
+    padding       : 5px;
+    line-height   : 50px;    
+}
+
+.text-crop > p {
+    margin-top: 12px;
+}
+
+.table-crop {
+    width  : 60% !important;
+    margin : auto;
+}

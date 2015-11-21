@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h2>LOG IN</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -11,12 +11,16 @@
     <%= f.password_field :password, autocomplete: "off", class: "mdl-textfield__input" %>
   </div><br>
 
+  
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="remember-switch  field">
+      <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+        <%= f.check_box :remember_me, class: "mdl-switch__input", id: "switch-2" %>
+        <span class="mdl-switch__label"><%= f.label :remember_me %></span>
+      </label>
     </div>
   <% end %><br>
+  
 
   <div class="actions">
     <%= f.submit "Log in", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>

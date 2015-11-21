@@ -1,4 +1,8 @@
-<h1>Classtables#edit</h1>
+<h2>
+    <i class="glyphicon glyphicon-cog"></i> Edit Classtables 
+    <%= link_to "BACK", user_table_classtables_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+</h2>
+
 
 <%= form_for :class, url: { action: "update" }, method: :patch do |f| %>
     <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

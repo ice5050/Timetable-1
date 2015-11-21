@@ -1,10 +1,10 @@
-<h2>Timetable</h2>
+<h2><i class="glyphicon glyphicon-calendar"></i> TIMETABLE</h2>
 
-<p class="text-left">
-    Timtable name: <%= @table.name %>
-    <%= link_to "back", user_tables_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? %>
-    <%= link_to "back", homepages_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if !user_signed_in? %>
-</p>
+<div class="text-left">
+    <h6 class="table-name"><i class="glyphicon glyphicon-triangle-right"></i>Timtable name: <%= @table.name %></h6>
+    <%= link_to "BACK", user_tables_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? %>
+    <%= link_to "BACK", homepages_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if !user_signed_in? %>
+</div>
 
 <% if $error.length != 0 %>
     <%= $error %>
@@ -65,7 +65,7 @@
 
 <% @days.each do |day| %>
     <div class="pure-g text-center">    
-        <div class="pure-u-2-24 bg-midnight">
+        <div class="text-crop pure-u-2-24 bg-midnight">
             <p class="text-center"><%= day.day %></p>
         </div>
         <% @classes.each do |class_| %> 
@@ -113,6 +113,8 @@
     <tr class="bg-midnight">
         <td><strong>Subject code</strong></td>
         <td><strong>Subject</strong></td>
+        <td><strong>Room</strong></td>
+        <td><strong>Section</strong></td>
         <td><strong>Day</strong></td>
         <td><strong>Start</strong></td>
         <td><strong>Finish</strong></td>
@@ -121,6 +123,8 @@
     <tr class="detail color-<%= class_.color %>">
         <td><%= class_.subject_code %></td>
         <td><%= class_.subject %></td>
+        <td><%= class_.room %></td>
+        <td><%= class_.section %></td>
         <td><%= Day.find(class_.daily).day %></td>
         <td><%= Timer.find(class_.start).time %></td>
         <td><%= Timer.find(class_.finish).time %></td>
