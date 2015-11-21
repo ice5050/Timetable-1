@@ -1,0 +1,27 @@
+<h2>MIDTERM</h2>
+<%= link_to "BACK", user_table_classtables_path %>
+<table class="table"> 
+    <tr>
+        <td>DAY</td>
+        <td>08:00 - 11:00</td>
+        <td>12:30 - 15:30</td>
+        <td>15:30 - 18:30</td>
+    </tr>
+    <% @pond.each_with_index do |a, index| %>
+        <% if @count == 0 %> 
+            <tr> 
+            <td> <%= a[0] %> </td>
+        <% end %>
+        <td>
+        <% @classes.each do |class_| %>
+            <% if a[1].include? class_.subject_code %>
+                 <%= class_.subject %>
+                 <br>
+            <% end %>
+        <% end %>
+        </td>
+        <% @count += 1 %>
+        <% @count = 0 if @count == 3 %>
+        <% if @count == 0 %> </tr> <% end %>
+    <% end %>
+</table>

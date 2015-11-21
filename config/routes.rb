@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   
-
   resources :homepages
 
   devise_for :users 
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
           get 'copy'
         end   
       end
+      resources :midtermtables
     end
   end
 
