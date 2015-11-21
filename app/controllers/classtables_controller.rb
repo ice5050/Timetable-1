@@ -26,34 +26,105 @@ class ClasstablesController < ApplicationController
         
         @classes = @table.classtables.order("daily ASC, start ASC")
 
-        if @class.start < @class.finish 
-
-            if @classes.count == 0
-                @addComplete = true
-            end
-
-            @classes.each do |class_|
-                if class_.daily == @class.daily
-                    if (@class.start < class_.start and @class.finish <= class_.start)
-                        @addComplete = true
-                    elsif (@class.start >= class_.finish and @class.finish > class_.finish)
-                        @addComplete = true
-                    else
-                        $error = "class have already"
-                        @addComplete = false
-                        break
-                    end            
-                else
-                    @addComplete = true
-                end
-            end
-            @class.save if @addComplete
-        else
-            $error = "Time invalid"
+        if time_is_valid()
+            @class.save
+            add_color()
         end
 
+        redirect_to user_table_classtables_path
+    end
 
-        if @addComplete
+    def edit
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
+        
+    end
+
+    def update
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.new(params_class)
+        @class_old = @table.classtables.find(params[:id])
+
+        @classes = @table.classtables.order("daily ASC, start ASC")
+
+        @subject_code_old = @class_old.subject_code
+        @subject_old = @class_old.subject
+        @room_old = @class_old.room
+        @section_old = @class_old.section
+        @daily_old = @class_old.daily
+        @start_old = @class_old.start
+        @finish_old = @class_old.finish
+        @color_old = @class_old.color
+        
+        @class_old.destroy
+        if time_is_valid()
+            @class.save
+            add_color()
+        else
+            @class = @table.classtables.new("subject_code" => @subject_code_old, 
+                                            "subject" => @subject_old, 
+                                            "room" => @room_old, 
+                                            "section" => @section_old, 
+                                            "daily" => @daily_old, 
+                                            "start" => @start_old, 
+                                            "finish" => @finish_old,
+                                            "color" => @color_old)
+            @class.save
+        end        
+
+        redirect_to user_table_classtables_path
+    end
+
+    def destroy
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
+        @class.destroy
+
+        redirect_to user_table_classtables_path
+    end
+
+
+    def copy
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
+    end
+
+    private
+        def params_class
+            params.require(:class).permit(:subject_code, :subject, :daily, :start, :finish, :room, :section)
+        end
+
+        def time_is_valid
+            if @class.start < @class.finish 
+
+                if @classes.count == 0
+                    @addComplete = true
+                end
+
+                @classes.each do |class_|
+                    if class_.daily == @class.daily 
+                        if (@class.start < class_.start and @class.finish <= class_.start)
+                            next
+                        elsif (@class.start >= class_.finish and @class.finish > class_.finish)
+                            next
+                        else
+                            $error = "this time have a class already."
+                            return false
+                        end            
+                    end
+                end
+                return true
+            else
+                $error = "Time invalid"
+                return false
+            end
+        end
+
+        def add_color
             # add color
             @listColor = ["blue", "red", "green", "pink", "yellow","mint", "orange", "violet"]
             @colorUsed = []
@@ -80,47 +151,5 @@ class ClasstablesController < ApplicationController
                    @choosed = true
                 end
             end
-        end
-
-        redirect_to user_table_classtables_path
-    end
-
-    def edit
-        @user = User.find(current_user)
-        @table = @user.tables.find(params[:table_id])
-        @class = @table.classtables.find(params[:id])
-        @copy = 1
-    end
-
-    def update
-        @user = User.find(current_user)
-        @table = @user.tables.find(params[:table_id])
-        @class = @table.classtables.find(params[:id])
-        @class.update(params_class)
-        redirect_to user_table_classtables_path
-    end
-
-    def destroy
-        @user = User.find(current_user)
-        @table = @user.tables.find(params[:table_id])
-        @class = @table.classtables.find(params[:id])
-        @class.destroy
-
-        redirect_to user_table_classtables_path
-    end
-
-
-    def copy
-        @user = User.find(current_user)
-        @table = @user.tables.find(params[:table_id])
-        @class = @table.classtables.find(params[:id])
-    end
-
-    private
-        def params_class
-            params.require(:class).permit(:subject_code, :subject, :daily, :start, :finish, :room, :section)
-        end
-
-        def is_valid_time
         end
 end

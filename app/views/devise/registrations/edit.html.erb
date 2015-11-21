@@ -18,7 +18,14 @@
   <% end %>
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= f.label :password, class: "mdl-textfield__label" %> 
+    <%= f.label :current_password, class: "mdl-textfield__label" %> 
+    <%= f.password_field :current_password, autocomplete: "off", class: "mdl-textfield__input" %>
+  </div><br>
+  <i>(we need your current password to confirm your changes)</i>  
+  <br>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :new_password, class: "mdl-textfield__label" %> 
     <%= f.password_field :password, autocomplete: "off", class: "mdl-textfield__input" %>
   </div><br>
   <i>(leave blank if you don't want to change it)</i>
@@ -29,20 +36,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "mdl-textfield__input" %>
   </div><br>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= f.label :current_password, class: "mdl-textfield__label" %> 
-    <%= f.password_field :current_password, autocomplete: "off", class: "mdl-textfield__input" %>
-  </div><br>
-  <i>(we need your current password to confirm your changes)</i>  
-  <br>
-
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></p>
 
-<%= link_to "Back", :back %>
+<hr>
+<%= link_to "Back", :back, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>

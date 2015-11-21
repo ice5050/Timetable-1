@@ -18,7 +18,7 @@
 
 i.subject {
     display: none;
-    float     : right;
+    float     : left;
     font-size : 14px !important;
 }
 
@@ -76,6 +76,7 @@ tr.detail:hover {
 .table-control {
     float: right;
     margin-right: 30px;
+    display: -webkit-inline-box;
 }
 
 .pure-g [class *="pure-u"] {
@@ -96,4 +97,9 @@ tr.detail:hover {
 .table-crop {
     width  : 60% !important;
     margin : auto;
+}
+
+.tool-class {
+    letter-spacing: 5px;
+    position: absolute;
 }

@@ -1,4 +1,4 @@
-<h2><i class="glyphicon glyphicon-calendar"></i> TIMETABLE</h2>
+<h3><i class="glyphicon glyphicon-calendar"></i> TIMETABLE</h3>
 
 <div class="text-left">
     <h6 class="table-name"><i class="glyphicon glyphicon-triangle-right"></i>Timtable name: <%= @table.name %></h6>
@@ -7,43 +7,46 @@
 </div>
 
 <% if $error.length != 0 %>
-    <%= $error %>
+    <p class="alert alert-danger"><%= $error %></p>
     <% $error = "" %>
 <% end %>
 
 <% if user_signed_in? and @user.id == current_user.id %>
     <%= form_for :class, url: { action: "create" } do |f| %>
+
         <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <%= f.label :subject_code, class: "mdl-textfield__label" %>            <%= f.text_field :subject_code, class: "mdl-textfield__input" %>
+            <%= f.label :subject_code, class: "mdl-textfield__label" %>            
+            <%= f.text_field :subject_code, class: "mdl-textfield__input", required: true, maxlength: 6 %>
         </div>
         <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <%= f.label :subject, class: "mdl-textfield__label" %>
-            <%= f.text_field :subject, class: "mdl-textfield__input" %>
+            <%= f.text_field :subject, class: "mdl-textfield__input", required: true %>
         </div>
         <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <%= f.label :room, class: "mdl-textfield__label" %>
-            <%= f.text_field :room, class: "mdl-textfield__input" %>
+            <%= f.text_field :room, class: "mdl-textfield__input", required: true %>
         </div>
         <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <%= f.label :section, class: "mdl-textfield__label" %>
-            <%= f.text_field :section, class: "mdl-textfield__input" %>
+            <%= f.text_field :section, class: "mdl-textfield__input", required: true %>
         </div>
         
         <%= f.label :day %>
 
-        <%= f.select :daily, (options_for_select([['Sunday', 1], ['Monday', 2], ['Tuesday', 3], ['Wednesday', 4], ['Thursday', 5], ['Friday', 6], ['Saturday', 7]])) %>
+        <%= f.select :daily, (options_for_select([['Sunday', 1], ['Monday', 2], ['Tuesday', 3], ['Wednesday', 4], ['Thursday', 5], ['Friday', 6], ['Saturday', 7]])), required: true %>
 
         <%= f.label :start %>
-        <%= f.select :start, (options_for_select([['0800', 1], ['0830', 2], ['0900', 3], ['0930', 4], ['1000', 5], ['1030', 6], ['1100', 7], ['1130', 8], ['1200', 9], ['1230', 10], ['1300', 11], ['1330', 12], ['1400', 13], ['1430', 14], ['1500', 15], ['1530', 16], ['1600', 17], ['1630', 18], ['1700', 19], ['1730', 20], ['1800', 21], ['1830', 22]])) %>
+        <%= f.select :start, (options_for_select([['0800', 1], ['0830', 2], ['0900', 3], ['0930', 4], ['1000', 5], ['1030', 6], ['1100', 7], ['1130', 8], ['1200', 9], ['1230', 10], ['1300', 11], ['1330', 12], ['1400', 13], ['1430', 14], ['1500', 15], ['1530', 16], ['1600', 17], ['1630', 18], ['1700', 19], ['1730', 20], ['1800', 21], ['1830', 22]])), required: true %>
 
 
         <%= f.label :finish %>
-        <%= f.select :finish, (options_for_select([['0830', 2], ['0900', 3], ['0930', 4], ['1000', 5], ['1030', 6], ['1100', 7], ['1130', 8], ['1200', 9], ['1230', 10], ['1300', 11], ['1330', 12], ['1400', 13], ['1430', 14], ['1500', 15], ['1530', 16], ['1600', 17], ['1630', 18], ['1700', 19], ['1730', 20], ['1800', 21], ['1830', 22], ['1900', 23]])) %>
+        <%= f.select :finish, (options_for_select([['0830', 2], ['0900', 3], ['0930', 4], ['1000', 5], ['1030', 6], ['1100', 7], ['1130', 8], ['1200', 9], ['1230', 10], ['1300', 11], ['1330', 12], ['1400', 13], ['1430', 14], ['1500', 15], ['1530', 16], ['1600', 17], ['1630', 18], ['1700', 19], ['1730', 20], ['1800', 21], ['1830', 22], ['1900', 23]])), required: true %>
         
         <%= f.submit "SAVE", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
-
+        
     <% end %>
 <% end %>
+<p class="text-right"><i class="glyphicon glyphicon-info-sign"></i> click class for edit</p>
 
 <div class="pure-g text-center">    
     <div class="pure-u-2-24 bg-midnight">CMU</div>
@@ -64,7 +67,7 @@
 </div>
 
 <% @days.each do |day| %>
-    <div class="pure-g text-center">    
+    <div class="pure-g text-center mdl-shadow--3dp">    
         <div class="text-crop pure-u-2-24 bg-midnight">
             <p class="text-center"><%= day.day %></p>
         </div>
@@ -72,13 +75,16 @@
             <% while @i <= 22 and class_.daily == day.id do %>
                 <% if class_.start == @i %>
                     <div class="target text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
-                        <p class="text-center">
+                        <div class="tool-class">
                             <%= link_to raw("<i class='subject glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
-                            <%= link_to raw("<i class='subject glyphicon glyphicon-cog'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-edit'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
                             <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id %>
-                            
+                        </div>
+                        <p>
                             <%= class_.subject %><br>
                         </p>
+
+                        
                     </div>                    
                     <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
                     <% break %>
@@ -101,10 +107,11 @@
     <% @i = 1 %>
 <% end %><br>
 
+
 <div class="table-control">
     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
       <input type="checkbox" id="switch-1" class="mdl-switch__input">
-      <span class="mdl-switch__label">Show Table</span>
+      <span class="mdl-switch__label">Show more detail</span>
     </label>
 </div><br>
 

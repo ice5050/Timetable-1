@@ -1,12 +1,16 @@
-<h3>ADD TABLE</h3>
+<h3>
+    <i class="glyphicon glyphicon-plus-sign"></i> ADD NEW TABLE
+    <%= link_to "BACK", user_tables_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+</h3>
 
 
 <% if user_signed_in? %>
     <%= form_for :table, url: user_tables_path(current_user) do |f| %>
-        <p>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-        </p>
-        <%= f.submit %>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <%= f.label :name, class: "mdl-textfield__label" %>            
+            <%= f.text_field :name, class: "mdl-textfield__input" %>
+        </div><br>
+
+        <%= f.submit "ADD", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
     <% end %>
 <% end %>

@@ -31,5 +31,8 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#switch-1').click(function() {
         $('.table-detail').toggle(200);
+        $('.subject-detail').toggle(200);
     })
 });
+
+
