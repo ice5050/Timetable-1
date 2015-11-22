@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
 
   
+  
+
   resources :homepages
 
   devise_for :users 
 
   resources :users do 
     resources :tables do 
+      member do
+        get 'reset'
+      end
       resources :classtables do
         member do
           get 'copy'
         end   
       end
       resources :midtermtables
+      resources :finaltables
     end
   end
 

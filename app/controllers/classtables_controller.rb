@@ -124,6 +124,12 @@ class ClasstablesController < ApplicationController
             end
         end
 
+        def reset
+          @user = User.find(current_user)
+          @table = @user.tables.find(params[:table_id])
+          @classes = @table.classtables.delete_all
+      end
+
         def add_color
             # add color
             @listColor = ["blue", "red", "green", "pink", "yellow","mint", "orange", "violet"]

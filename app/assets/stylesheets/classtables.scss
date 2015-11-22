@@ -16,6 +16,10 @@
     font-size  : 16px;
 }
 
+#newClass {
+    display: none;
+}
+
 i.subject {
     display: none;
     float     : left;
@@ -65,12 +69,6 @@ i.subject {
 tr.detail:hover {
     background-color: #fff;
     color: #000;
-}
-
-.table-detail {
-    display: none;
-    width: 60% !important;
-    margin: auto;
 }
 
 .table-control {

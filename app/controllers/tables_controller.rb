@@ -34,8 +34,15 @@ class TablesController < ApplicationController
     redirect_to user_tables_path
   end
 
+  def reset
+      @user = User.find(params[:user_id])
+      @table = @user.tables.find(params[:id])
+      @classes = @table.classtables.delete_all
+      redirect_to user_tables_path
+  end
+
   private
     def params_table
-        params.require(:table).permit(:name)
+        params.require(:table).permit(:name, :year, :semester)
     end
 end

@@ -1,4 +1,4 @@
-class MidtermtablesController < ApplicationController
+class FinaltablesController < ApplicationController
     def index
         @count = 0
         @count_exam = 0
@@ -15,7 +15,7 @@ class MidtermtablesController < ApplicationController
         semester = @table.semester.to_s
         link = semester + year
 
-        @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/exam/index.php?type=MIDTERM&term=#{link}"))   
+        @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/exam/index.php?type=FINAL&term=#{link}"))   
 
         @day_selected = @page.css("td[width='19%']")
         @time_selected = @page.css("div[align='center']")
