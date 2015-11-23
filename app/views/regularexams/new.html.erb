@@ -1,0 +1,36 @@
+<%= form_for :regular, url: { action: "create" } do |f| %>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :ordered, class: "mdl-textfield__label" %>            
+        <%= f.number_field :ordered, class: "mdl-textfield__input" %>
+    </div><br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :dayexam, class: "mdl-textfield__label" %>            
+        <%= f.number_field :dayexam, class: "mdl-textfield__input" %>
+    </div><br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :timeexam, class: "mdl-textfield__label" %>            
+        <%= f.number_field :timeexam, class: "mdl-textfield__input" %>
+    </div><br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :yearexam, class: "mdl-textfield__label" %>            
+        <%= f.number_field :yearexam, class: "mdl-textfield__input" %>
+    </div><br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :semesterexam, class: "mdl-textfield__label" %>            
+        <%= f.number_field :semesterexam, class: "mdl-textfield__input" %>
+    </div><br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :dateexam, class: "mdl-textfield__label" %>            
+        <%= f.text_field :dateexam, class: "mdl-textfield__input" %>
+    </div><br>
+      
+
+    <%= f.submit "SAVE", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+    <%= link_to "BACK", regularexams_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+
+<% end %>

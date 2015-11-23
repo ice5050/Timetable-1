@@ -10,6 +10,7 @@ class FinaltablesController < ApplicationController
         @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @classes = @table.classtables.all
+        @regular = Regularexam.all
 
         year = @table.year.to_s
         semester = @table.semester.to_s
@@ -46,6 +47,10 @@ class FinaltablesController < ApplicationController
             end
         end
         @is_shown = Set.new
+    end
+
+    def new
+        @regularexam = Regularexam.new
     end
 end
 

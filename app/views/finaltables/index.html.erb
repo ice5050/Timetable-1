@@ -3,7 +3,7 @@
     <tr>
         <td>DAY</td>
         <td>08:00 - 11:00</td>
-        <td>12:30 - 15:30</td>
+        <td>12:00 - 15:0s0</td>
         <td>15:30 - 18:30</td>
     </tr>
     <% @myexam.each_with_index do |a, index| %>
@@ -13,7 +13,7 @@
         <% end %>
         <td>
         <% @classes.each do |class_| %>
-            <% if a[1].include? class_.subject_code and not @is_shown.include? class_.subject_code %>
+            <% if not @is_shown.include? class_.subject_code and a[1].include? class_.subject_code %>
                  <%= class_.subject %>
                  <% @is_shown.add(class_.subject_code) %>
                  <br>
@@ -25,6 +25,29 @@
         <% if @count == 0 %> </tr> <% end %>
     <% end %>
 </table>
+
+<table class="table table-striped table-crop table-hover mdl-shadow--3dp"> 
+    <caption>Regular Exam</caption>
+    <thead>
+        <tr>
+            <th class="text-center">Subject</th>
+            <th class="text-center">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @regular.each do |regular| %>
+            <% @classes.each do |class_| %>
+                <% if not @is_shown.include? class_.subject_code and class_.daily == regular.dayexam and class_.start == regular.timeexam %>
+                    <tr>
+                        <td><%= class_.subject %></td>
+                        <td><%= regular.dateexam  %></td>
+                    </tr>
+                    <% @is_shown.add(class_.subject_code) %>
+                <% end %>    
+            <% end %>    
+        <% end %>
+    </tbody>
+</table> 
 
 <%= link_to "BACK", :back, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 

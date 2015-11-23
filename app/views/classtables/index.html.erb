@@ -7,7 +7,9 @@
     </h6>
     <h6 class="table-name"> <%= @table.semester %>/25<%= @table.year %></h6>
     <% if user_signed_in? %>
-        <button id="button-add" class="bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">ADD NEW CLASS</button>
+        <% if user_signed_in? and @user.id == current_user.id %>
+            <button id="button-add" class="bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">ADD NEW CLASS</button>
+        <% end %>
         <%= link_to "BACK", user_tables_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
     <% end %>
     <%= link_to "BACK", homepages_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if !user_signed_in? %>

@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
   
-  
-
   resources :homepages
-
+  resources :regularexams
   devise_for :users 
 
   resources :users do 
@@ -18,7 +16,7 @@ Rails.application.routes.draw do
         end   
       end
       resources :midtermtables
-      resources :finaltables
+      resources :finaltables 
     end
   end
 

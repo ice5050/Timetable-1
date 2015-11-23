@@ -1,0 +1,2 @@
+module RegularexamsHelper
+end

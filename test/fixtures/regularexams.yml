@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dayexam: 1
+  timeexam: 1
+  dateexam: MyString
+
+two:
+  dayexam: 1
+  timeexam: 1
+  dateexam: MyString

@@ -28,6 +28,7 @@ gem 'devise'
 gem 'material_design_lite-rails'
 gem 'nokogiri'
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
