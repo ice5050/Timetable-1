@@ -6,12 +6,17 @@
 <% if user_signed_in? %>
     <%= form_for :table, url: user_tables_path(current_user) do |f| %>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <%= f.label :name, class: "mdl-textfield__label" %>            
+            <%= f.label :table_name, class: "mdl-textfield__label" %>            
             <%= f.text_field :name, class: "mdl-textfield__input" %>
         </div><br>
 
-        <%= f.select :year, (options_for_select([['2558', 58]])), required: true %>
-        <%= f.select :semester, (options_for_select([['1', 1], ['2', 2], ['Summer', 3]])), required: true %>
+        <p>
+            <%= f.label :year %>
+            <%= f.select :year, (options_for_select([['2558', 58]], @table.year)), required: true %>
+
+            <%= f.label :semester %>
+            <%= f.select :semester, (options_for_select([['1', 1], ['2', 2]], @table.semester)), required: true %>
+        </p>                                                                                                                       
 
         <%= f.submit "ADD", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
         <%= link_to "BACK", user_tables_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
