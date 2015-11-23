@@ -2,24 +2,40 @@
     <i class="glyphicon glyphicon-home"></i> HOMEPAGE
 </h3>
 
-<table class="table table-hover table-striped mdl-shadow--3dp">
-    <tr>
-        <td><strong>Timetable</strong></td>
-        <td><strong>Username</strong></td>
-    </tr>
-    <% @users.each do |user| %>
-        <% user.tables.order("created_at DESC").each do |table| %>
-            <tr>
-                <td>    
-                    <%= link_to table.name, user_table_classtables_path(user.id, table) %>
-                </td>
-                <td>
-                    <%= link_to user.username, user_tables_path(user.id) %>
-                </td>
-            <tr>
-        <% end %>
-    <% end %>
-</table>
+<div class="new-update">
+
+    <h4 class="header-newupdate"> = = = = = <i class="glyphicon glyphicon-star"></i> Update! = = = = = </h4>
+    <div class="day-header">23 - 11 - 2558</div>
+    <ul> 
+        <li>เพิ่ม ตาราง Final Regular exam 2/2558</li>
+        <li>ลิ้ง ตารางสอบปกติ Midterm/Final จาก reg.cmu</li>
+    </ul>
+
+    <div class="day-header">21 - 11 - 2558</div>
+    <ul> 
+        <li>เปลี่ยนรูป ปุ่มแก้ไข จาก <i class="glyphicon glyphicon-cog"></i> เป็น <i class="glyphicon glyphicon-edit"></i></li>
+        <li>สามารถ Copy class ไปวันอื่นได้ โดยไม่ต้อง กรอกใหม่ `<br>
+        โดย คลิกที่ class นั้นแล้ว กด <i class="glyphicon glyphicon-duplicate"></i></li>
+    </ul>
+</div>
+<br>
 <%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
+<%= link_to "LOGIN FOR USE TABLE", new_user_session_path, class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
+
+<% if user_signed_in? and current_user.username.downcase == "pondpaun7z" %>
+    <table class="table table-hover table-striped mdl-shadow--3dp">
+        <tr>
+            <td><strong>Username</strong></td>
+            <td><strong>Number Table</strong></td>
+        </tr>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= link_to user.username, user_tables_path(user) %></td>
+                <td><%= user.tables.count %></td>
+            </tr>
+        <% end %>
+    </table>
+<% end %>
+
 
 
