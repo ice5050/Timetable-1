@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   
   resources :homepages
-  resources :regularexams
+  resources :regularexams do
+    member do
+      get 'edit_day'
+      patch 'update_day'
+    end
+  end
   devise_for :users 
 
   resources :users do 

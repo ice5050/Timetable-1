@@ -12,3 +12,14 @@
         </tr>
     <% end %>
 </table>
+<hr>
+
+<table class="table">
+    <% @days.each do |day| %>
+        <tr>
+            <td><%= day.day %></td>
+            <td><%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), edit_day_regularexam_path(day) %></td>
+        </tr>
+    <% end %>
+</table>
+

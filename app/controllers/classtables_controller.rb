@@ -6,7 +6,7 @@ class ClasstablesController < ApplicationController
         @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
 
-        @days = Day.all
+        @days = Day.order("id ASC")
         @classes = @table.classtables.order("daily ASC, start ASC")
 
         @i = 1

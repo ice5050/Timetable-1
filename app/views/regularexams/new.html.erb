@@ -1,31 +1,32 @@
 <%= form_for :regular, url: { action: "create" } do |f| %>
+
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <%= f.label :ordered, class: "mdl-textfield__label" %>            
+        <%= f.label :order, class: "mdl-textfield__label" %>            
         <%= f.number_field :ordered, class: "mdl-textfield__input" %>
     </div><br>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <%= f.label :dayexam, class: "mdl-textfield__label" %>            
-        <%= f.number_field :dayexam, class: "mdl-textfield__input" %>
-    </div><br>
+    <p>
+        <%= f.label :day_exam %>
+        <%= f.select :dayexam, (options_for_select([['Sunday', 1], ['Monday', 2], ['Tuesday', 3], ['Wednesday', 4], ['Thursday', 5], ['Friday', 6], ['Saturday', 7]])), required: true %>
+    </p>
+    
+    <p>
+        <%= f.label :time_exam %>
+        <%= f.select :timeexam, (options_for_select([['08:00', 1], ['08:30', 2], ['09:00', 3], ['09:30', 4], ['10:00', 5], ['10:30', 6], ['11:00', 7], ['11:30', 8], ['12:00', 9], ['12:30', 10], ['13:00', 11], ['13:30', 12], ['14:00', 13], ['14:30', 14], ['15:00', 15], ['15:30', 16], ['16:00', 17], ['16:30', 18], ['17:00', 19], ['17:30', 20], ['18:00', 21], ['18:30', 22]])), required: true %>
+    </p>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <%= f.label :timeexam, class: "mdl-textfield__label" %>            
-        <%= f.number_field :timeexam, class: "mdl-textfield__input" %>
-    </div><br>
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <%= f.label :yearexam, class: "mdl-textfield__label" %>            
+        <%= f.label :year_exam, class: "mdl-textfield__label" %>            
         <%= f.number_field :yearexam, class: "mdl-textfield__input" %>
     </div><br>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <%= f.label :semesterexam, class: "mdl-textfield__label" %>            
+        <%= f.label :semester_exam, class: "mdl-textfield__label" %>            
         <%= f.number_field :semesterexam, class: "mdl-textfield__input" %>
     </div><br>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <%= f.label :dateexam, class: "mdl-textfield__label" %>            
+        <%= f.label :date_exam, class: "mdl-textfield__label" %>            
         <%= f.text_field :dateexam, class: "mdl-textfield__input" %>
     </div><br>
       
