@@ -20,6 +20,20 @@
     display: none;
 }
 
+#invalidTime {
+    color: #c0392b;
+    display: none;
+}
+
+#load {
+    display: none;
+    margin: auto;
+}
+
+.loadWrapper {
+    margin: 10px;
+}
+
 i.subject {
     display: none;
     float     : left;

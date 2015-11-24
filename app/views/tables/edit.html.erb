@@ -14,7 +14,7 @@
         <%= f.select :year, (options_for_select([['2558', 58]], @table.year)), required: true %>
 
         <%= f.label :semester %>
-        <%= f.select :semester, (options_for_select([['1', 1], ['2', 2]], @table.semester)), required: true %>
+        <%= f.select :semester, (options_for_select([['1', 1], ['2', 2], ['Summer', 3]], @table.semester)), required: true %>
     </p>                                                                                                                                                                                
 
     <%= f.submit "SAVE", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>

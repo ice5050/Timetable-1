@@ -38,6 +38,11 @@ class ClasstablesController < ApplicationController
         @user = User.find(current_user)
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
+
+        @days = Day.order("id ASC")
+        @classes = @table.classtables.order("daily ASC, start ASC")
+
+        @i = 1
         
     end
 
@@ -91,6 +96,11 @@ class ClasstablesController < ApplicationController
         @user = User.find(current_user)
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
+
+        @days = Day.order("id ASC")
+        @classes = @table.classtables.order("daily ASC, start ASC")
+
+        @i = 1
     end
 
     private

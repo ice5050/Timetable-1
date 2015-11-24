@@ -3,6 +3,9 @@
     <%= link_to "BACK", user_table_classtables_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 </h3>
 
+<div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
+<p id="invalidTime"><i class="glyphicon glyphicon-exclamation-sign"></i> Time invalid</p>
+
 <%= form_for :class, url: { action: "update" }, method: :patch do |f| %>
 
     <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -33,6 +36,46 @@
     <%= f.label :finish %>
     <%= f.select :finish, (options_for_select([['0830', 2], ['0900', 3], ['0930', 4], ['1000', 5], ['1030', 6], ['1100', 7], ['1130', 8], ['1200', 9], ['1230', 10], ['1300', 11], ['1330', 12], ['1400', 13], ['1430', 14], ['1500', 15], ['1530', 16], ['1600', 17], ['1630', 18], ['1700', 19], ['1730', 20], ['1800', 21], ['1830', 22], ['1900', 23]], @class.finish)) %>
     
-    <%= f.submit "EDIT", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
-
+    <%= f.submit "EDIT", class: "saveClass bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 <% end %>
+
+<% @days.each do |day| %>
+    <div class="pure-g text-center mdl-shadow--3dp">    
+        <div class="text-crop pure-u-2-24 bg-midnight">
+            <p class="text-center"><%= day.day %></p>
+        </div>
+        <% @classes.each do |class_| %> 
+            <% while @i <= 22 and class_.daily == day.id do %>
+                <% if class_.start == @i %>
+                    <div class="target text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
+                        <div class="tool-class">
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-edit'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id if user_signed_in? and @user.id == current_user.id %>
+                        </div>
+                        <p>
+                            <%= class_.subject %><br>
+                        </p>
+
+                        
+                    </div>                    
+                    <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
+                    <% break %>
+                <% else %>
+                    <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
+                                            <%= 'bg-silver' if day.id % 2 == 1 %>">                    
+                        <% @i += 1 %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+
+        <% while @i <= 22 do %>
+            <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
+                                    <%= 'bg-silver' if day.id % 2 == 1 %>">                    
+                <% @i += 1 %>
+            </div>
+        <% end %>
+    </div>
+    <% @i = 1 %>
+<% end %><br>

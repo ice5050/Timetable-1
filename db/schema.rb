@@ -51,12 +51,14 @@ ActiveRecord::Schema.define(version: 20151123065058) do
 
   create_table "tables", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.integer  "year"
     t.integer  "semester"
   end
+
+  add_index "tables", ["user_id"], name: "index_tables_on_user_id", using: :btree
 
   create_table "timers", force: :cascade do |t|
     t.string   "time"

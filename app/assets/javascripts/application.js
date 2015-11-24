@@ -35,8 +35,47 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('.alert').fadeOut(1000);
+    $('.alert').fadeOut(4000);
 });
+
+$(document).ready(function() {
+    $('.saveClass').click(function() {
+        $("#newClass").hide(100);
+        $("#load").show(100);
+    })
+})
+
+
+$(document).ready(function() {
+
+    $('form').change(function() {
+        if ($('#class_subject_code').val().length <= 0 ||
+            $('#class_subject').val().length <= 0 ||
+            $('#class_room').val().length <= 0 || 
+            $('#class_section').val().length <= 0) {
+
+            $('.saveClass').prop('disabled', true);
+            $('.saveClass').addClass('bg-silver');
+        } else if (parseInt($('#class_start').val()) >= parseInt($('#class_finish').val())) {
+            $('#invalidTime').show(200);
+            $('.saveClass').prop('disabled', true);
+            $('.saveClass').addClass('bg-silver'); 
+        } else {
+            $('#invalidTime').hide(200);
+            $('.saveClass').prop('disabled', false);
+            $('.saveClass').removeClass('bg-silver');
+        }
+    });
+});
+
+
+$(document).ready(function() {
+    $('form').change(function() {
+        
+    });
+});
+
+
 
 // $(document).ready(function() {
 //     $('#switch-1').click(function() {

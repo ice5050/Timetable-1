@@ -27,6 +27,7 @@ gem 'rails_12factor'
 gem 'devise'
 gem 'material_design_lite-rails'
 gem 'nokogiri'
+gem 'cancan'
 
 
 # Use ActiveModel has_secure_password
