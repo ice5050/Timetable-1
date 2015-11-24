@@ -68,12 +68,38 @@ $(document).ready(function() {
     });
 });
 
-
 $(document).ready(function() {
-    $('form').change(function() {
+    $('#241115_show').show();
+    $('#241115_click').prop('disabled', false);
+
+    $('#241115_click').click(function() {
+        updateOpenCloseStatus();
+
+        $('#241115_click i').addClass('glyphicon-triangle-bottom');
+        $('#241115_show').show(200);
+    });
+
+    $('#231115_click').click(function() {
+        updateOpenCloseStatus();
         
+        $('#231115_click i').addClass('glyphicon-triangle-bottom');
+        $('#231115_show').show(200);
+    });
+
+    $('#211115_click').click(function() {
+        updateOpenCloseStatus();
+
+        $('#211115_click i').addClass('glyphicon glyphicon-triangle-bottom');
+        $('#211115_show').show(200);
     });
 });
+
+function updateOpenCloseStatus() {
+    $('.update-header i').removeClass();
+    $('.update-header i').addClass('glyphicon glyphicon-triangle-right');
+    $('.update-content').hide(200);
+}
+
 
 
 

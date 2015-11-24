@@ -1,30 +1,36 @@
-<h3>
-    <i class="glyphicon glyphicon-home"></i> HOMEPAGE
-</h3>
+<br>
+<div class="new-update mdl-shadow--3dp">
+    <div class="txtUpdate mdl-shadow--3dp">
+        <h4 class="header-newupdate"> <i class="glyphicon glyphicon-star"></i> Update! </h4>
+    </div><br>
 
-<div class="new-update">
+    <h5 id="241115_click" class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-bottom"></i> 24 Novmber 2015</h5>
+    <div id="241115_show" class="update-content">
+        <ul class="text-left"> 
+            <li><span class="label label-warning">CHANGE</span> เปลี่ยนรูปแบบหน้า homepage</li>
+            <li><span class="label label-success">ADD</span> เพิ่ม คำอธิบายของแต่ละ Icon ต่างๆ</li>
+            <li><span class="label label-success">ADD</span> เพิ่ม THKrub ฟอนต์ </li>
+            <li><span class="label label-success">ADD</span> เพิ่ม ตารางเรียนในหน้า Copy และ Edit</li>
+            <li><span class="label label-info">INFO</span> ต้องกรอกข้อมูลการลงวิชาเรียนให้ครบและ ถูกต้องเท่านั้นถึงจะสามารถกด Save ได้</li>
+            <li><span class="label label-info">INFO</span> เมื่อกด Save จะมี รูป Load ขึ้นมา</li>
+        </ul>
+    </div>
 
-    <h4 class="header-newupdate"> = = = = = <i class="glyphicon glyphicon-star"></i> Update! = = = = = </h4>
-    <div class="day-header">24 - 11 - 2558</div>
-    <ul> 
-        <li>เพิ่ม ตารางเรียนในหน้า Copy และ Edit</li>
-        <li>ต้องกรอกข้อมูลการลงวิชาเรียนให้ครบและ 
-            <br>ถูกต้องเท่านั้นถึงจะสามารถกด Save ได้</li>
-        <li>เมื่อกด Save จะมี รูป Load ขึ้นมา</li>
-    </ul>
+    <h5 id="231115_click" class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-right"></i> 23 Novmber 2015</h5>
+    <div id="231115_show" class="update-content">
+        <ul class="text-left"> 
+            <li><span class="label label-success">ADD</span> เพิ่ม ตาราง Final Regular exam 2/2558</li>
+            <li><span class="label label-info">INFO</span> ลิ้ง ตารางสอบปกติ Midterm/Final จาก reg.cmu</li>
+        </ul>
+    </div>
 
-    <div class="day-header">23 - 11 - 2558</div>
-    <ul> 
-        <li>เพิ่ม ตาราง Final Regular exam 2/2558</li>
-        <li>ลิ้ง ตารางสอบปกติ Midterm/Final จาก reg.cmu</li>
-    </ul>
-
-    <div class="day-header">21 - 11 - 2558</div>
-    <ul> 
-        <li>เปลี่ยนรูป ปุ่มแก้ไข จาก <i class="glyphicon glyphicon-cog"></i> เป็น <i class="glyphicon glyphicon-edit"></i></li>
-        <li>สามารถ Copy class ไปวันอื่นได้ โดยไม่ต้อง กรอกใหม่ `<br>
-        โดย คลิกที่ class นั้นแล้ว กด <i class="glyphicon glyphicon-duplicate"></i></li>
-    </ul>
+    <h5 id="211115_click" class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-right"></i> 21 Novmber 2015</h5>
+    <div id="211115_show" class="update-content">
+        <ul class="text-left"> 
+            <li><span class="label label-warning">CHANGE</span> เปลี่ยนรูป ปุ่มแก้ไข จาก <i class="glyphicon glyphicon-cog"></i> เป็น <i class="glyphicon glyphicon-edit"></i></li>
+            <li><span class="label label-info">INFO</span> สามารถ Copy class ไปวันอื่นได้ โดยไม่ต้อง กรอกใหม่ โดย คลิกที่ class นั้นแล้ว กด <i class="glyphicon glyphicon-duplicate"></i></li>
+        </ul>
+    </div>
 </div>
 <br>
 <%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>

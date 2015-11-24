@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Timetable</title>
+  <title>CMU Timetable</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+  <!-- ENGLISH FONT -->
   <link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
-
   <%= stylesheet_link_tag "//fonts.googleapis.com/icon?family=Material+Icons" %>
+
+  <!-- PURE front-end framework -->
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
-  <!-- Latest compiled and minified CSS -->
+  <!-- BOOTSTRAP front-end framework -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-  <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-  <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
+  <!-- MATERAIL front-end framework -->
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,7 +30,7 @@
       <ul class="pure-menu-list">
         <% if user_signed_in? %>
           <li class="pure-menu-item">Logged in as <strong><%= current_user.username %></strong>.</li>
-          <li class="pure-menu-item"><i class="glyphicon glyphicon-cog"></i><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |</li>
+          <li class="pure-menu-item"><i class="glyphicon glyphicon-cog"></i> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |</li>
           <li class="pure-menu-item"> <i class="glyphicon glyphicon-log-out"></i> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
         <% else %>
           <li class="pure-menu-item"><i class="glyphicon glyphicon-log-out"></i> <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>

@@ -4,7 +4,6 @@
 
 .new-update {
     margin: auto;
-    color: #f1c40f;
     background-color: #ecf0f1;
     width: 60%;
     border-radius: 10px;
@@ -24,4 +23,55 @@
     color: #fff;
     width: 50%;
     margin: auto;
+}
+
+.ui-widget {
+    font-family: 'Maven Pro', 'THKrub', sans-serif !important; 
+}
+
+#accordion p ul li {
+    font-family: 'Maven Pro', 'THKrub', sans-serif !important;    
+}
+
+div.target p {
+    font-family: 'Maven Pro', 'THKrub', sans-serif !important; 
+}
+
+
+.update-header {
+    font-family: 'Maven Pro', 'THKrub', sans-serif !important; 
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin: auto;
+    width: 50%;
+    cursor: pointer;
+}
+
+.update-content {
+    background-color: #ECF0F1;
+    padding: 10px;
+    border-radius: 10px;
+    color: #000;
+    margin-left: 10px;
+    display: none;
+}
+
+.update-header i {
+    color: #c0392b;
+}
+
+.txtUpdate {
+    background-color: #f1c40f;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    letter-spacing: 8px;
+    width: 60%;
+    margin: auto;
+}
+
+.txtUpdate h4 {
+    font-size: 30px !important;
 }
