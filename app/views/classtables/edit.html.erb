@@ -48,16 +48,10 @@
             <% while @i <= 22 and class_.daily == day.id do %>
                 <% if class_.start == @i %>
                     <div class="target text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
-                        <div class="tool-class">
-                            <%= link_to raw("<i class='subject glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
-                            <%= link_to raw("<i class='subject glyphicon glyphicon-edit'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
-                            <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id if user_signed_in? and @user.id == current_user.id %>
-                        </div>
                         <p>
                             <%= class_.subject %><br>
                         </p>
 
-                        
                     </div>                    
                     <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
                     <% break %>

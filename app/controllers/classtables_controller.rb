@@ -103,6 +103,15 @@ class ClasstablesController < ApplicationController
         @i = 1
     end
 
+    def reset
+      @user = User.find(params[:user_id])
+      @table = @user.tables.find(params[:table_id])
+      
+
+      @classes = @table.classtables.delete_all
+      redirect_to user_table_classtables_path
+  end
+
     private
         def params_class
             params.require(:class).permit(:subject_code, :subject, :daily, :start, :finish, :room, :section)

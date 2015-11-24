@@ -38,6 +38,7 @@ class TablesController < ApplicationController
       @user = User.find(params[:user_id])
       @table = @user.tables.find(params[:id])
       @classes = @table.classtables.delete_all
+
       redirect_to user_tables_path
   end
 

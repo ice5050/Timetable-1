@@ -50,7 +50,7 @@ i.glyphicon.glyphicon-plus-sign {
     color     : #27ae60;
 }
 
-i.glyphicon.glyphicon-remove-sign {
+i.glyphicon.glyphicon-trash {
     font-size : 20px;
     color     : #c0392b;
 }
@@ -62,7 +62,12 @@ i.glyphicon.glyphicon-edit {
 
 i.glyphicon.glyphicon-duplicate {
     font-size : 20px;
-    color     : #fff;   
+    color     : #ecf0f1;   
+}
+
+i.glyphicon.glyphicon-pencil {
+    font-size : 20px;
+    color     : #2980b9;      
 }
 
 .bg-red {
@@ -151,3 +156,12 @@ div.remember-switch {
     color: #333 !important;
     text-decoration: underline;
 }
+
+.list-inline {
+    font-size: 12px !important;
+}
+
+.list-inline i {
+    font-size: 12px !important;
+}
+

@@ -24,6 +24,7 @@
 <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
 
 <p id="invalidTime"><i class="glyphicon glyphicon-exclamation-sign"></i> Time invalid</p>
+
 <% if user_signed_in? and @user.id == current_user.id %>
     <div id="newClass">
         <%= form_for :class, url: { action: "create" } do |f| %>
@@ -61,6 +62,12 @@
     </div>
 <% end %>
 
+<ul class="list-inline text-right">
+    <li><i class="glyphicon glyphicon-exclamation-sign"></i> Click class for edit</li>
+    <li><i class='glyphicon glyphicon-duplicate'></i> Copy class to other</li>
+    <li><i class='glyphicon glyphicon-edit'></i> Edit class</li>
+    <li><i class='glyphicon glyphicon-trash'></i> Delete class</li>
+</ul>
 
 <div class="pure-g text-center">    
     <div class="pure-u-2-24 bg-midnight"></div>
@@ -90,7 +97,7 @@
                 <% if class_.start == @i %>
                     <div class="target text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
                         <div class="tool-class">
-                            <%= link_to raw("<i class='subject glyphicon glyphicon-remove-sign'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
+                            <%= link_to raw("<i class='subject glyphicon glyphicon-trash'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
                             <%= link_to raw("<i class='subject glyphicon glyphicon-edit'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
                             <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id if user_signed_in? and @user.id == current_user.id %>
                         </div>
@@ -121,37 +128,34 @@
     <% @i = 1 %>
 <% end %><br>
 
-<div class="text-left">
-    <%= link_to "midterm", user_table_midtermtables_path, class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
-    <%= link_to "final", user_table_finaltables_path, class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
-    <%= link_to "reset", reset_user_table_path(@user, @table), class: "bg-silver mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", data: { confirm: "reset?" } if user_signed_in? and @user.id == current_user.id %>
-</div>
+<ul class="list-inline text-left">
+    <li><%= link_to "midterm", user_table_midtermtables_path, class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></li>
+    <li><%= link_to "final", user_table_finaltables_path, class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></li>
+    <li><%= link_to "reset", reset_user_table_path(@user, @table), class: "bg-silver mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", data: { confirm: "reset?" } if user_signed_in? and @user.id == current_user.id %></li>
+</ul>
 
-<table class="table table-crop mdl-shadow--3dp"> 
-    <h2></h2>
-    <tr class="bg-midnight">
-        <td><strong>Subject code</strong></td>
-        <td><strong>Subject</strong></td>
-        <td><strong>Room</strong></td>
-        <td><strong>Section</strong></td>
-        <td><strong>Day</strong></td>
-        <td><strong>Start</strong></td>
-        <td><strong>Finish</strong></td>
-    </tr>
-    <% @classes.each do |class_| %>
-        <tr class="detail color-<%= class_.color %>">
-            <td><%= class_.subject_code %></td>
-            <td><%= class_.subject %></td>
-            <td><%= class_.room %></td>
-            <td><%= class_.section %></td>
-            <td><%= Day.find(class_.daily).day %></td>
-            <td><%= Timer.find(class_.start).time %></td>
-            <td><%= Timer.find(class_.finish).time %></td>
+<% if !@classes.empty? %>
+    <table class="table table-crop mdl-shadow--3dp"> 
+        <h2></h2>
+        <tr class="bg-midnight">
+            <td><strong>Subject code</strong></td>
+            <td><strong>Subject</strong></td>
+            <td><strong>Room</strong></td>
+            <td><strong>Section</strong></td>
+            <td><strong>Day</strong></td>
+            <td><strong>Start</strong></td>
+            <td><strong>Finish</strong></td>
         </tr>
-    <% end %>
-    <% if @classes.empty? %>
-        <tr class="detail">
-            <td colspan="7">NO CLASS</td>
-        </tr>
-    <% end %>
-</table>
+        <% @classes.each do |class_| %>
+            <tr class="detail color-<%= class_.color %>">
+                <td><%= class_.subject_code %></td>
+                <td><%= class_.subject %></td>
+                <td><%= class_.room %></td>
+                <td><%= class_.section %></td>
+                <td><%= Day.find(class_.daily).day %></td>
+                <td><%= Timer.find(class_.start).time %></td>
+                <td><%= Timer.find(class_.finish).time %></td>
+            </tr>
+        <% end %>        
+    </table>
+<% end %>
