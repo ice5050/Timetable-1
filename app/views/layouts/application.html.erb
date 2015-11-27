@@ -25,15 +25,45 @@
 
 </head>
 <body>
-    <div class="container-fluid">
+
+  <div class="container-fluid">
     <div class="pure-menu pure-menu-horizontal text-right">
       <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+              <% if params[:table_id] %>
+                <%= form_for :search, url: user_table_search_index_path do |f| %>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                      <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                      <%= f.text_field :code, maxlength: 6, class: "mdl-textfield__input", id: "sample6" %>
+                      <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                    </div>  
+                  </div>
+                  <p id="search-hint"> <i class="glyphicon glyphicon-exclamation-sign"></i> สามารถค้นหาได้ทั้ง รหัส 3 ตัวหน้า และ รหัสเต็ม </p>
+                <% end %>
+              <% else %>
+                <%= form_for :search, url: search_index_path do |f| %>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                      <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                      <%= f.text_field :code, maxlength: 6, class: "mdl-textfield__input", id: "sample6" %>
+                      <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                    </div>  
+                  </div>
+                  <p id="search-hint"> <i class="glyphicon glyphicon-exclamation-sign"></i> สามารถค้นหาได้ทั้ง รหัส 3 ตัวหน้า และ รหัสเต็ม </p>
+                <% end %>
+              <% end %>
+            </li>
         <% if user_signed_in? %>
           <li class="pure-menu-item">Logged in as <strong><%= current_user.username %></strong>.</li>
           <li class="pure-menu-item"><i class="glyphicon glyphicon-cog"></i> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |</li>
           <li class="pure-menu-item"> <i class="glyphicon glyphicon-log-out"></i> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
         <% else %>
-          <li class="pure-menu-item"><i class="glyphicon glyphicon-log-out"></i> <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>
+          <li class="pure-menu-item"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>
           <li class="pure-menu-item"><i class="glyphicon glyphicon-log-in"></i> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
         <% end %>
       </ul>
@@ -54,5 +84,6 @@
   <div class="wrapper">
     <p class="footer"><i class="glyphicon glyphicon-copyright-mark"></i> <a class="copyright" href="http://facebook.com/pondpaunkiku">I'PONDPAUN SEVENZ</a> DESIGN </p>
   </div>
+
 </body>
 </html>

@@ -69,36 +69,65 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('#241115_show').show();
-    $('#241115_click').prop('disabled', false);
+    $('#261115_show').show();
 
-    $('#241115_click').click(function() {
+    $('.update-header').click(function() {
         updateOpenCloseStatus();
-
-        $('#241115_click i').addClass('glyphicon-triangle-bottom');
-        $('#241115_show').show(200);
-    });
-
-    $('#231115_click').click(function() {
-        updateOpenCloseStatus();
-        
-        $('#231115_click i').addClass('glyphicon-triangle-bottom');
-        $('#231115_show').show(200);
-    });
-
-    $('#211115_click').click(function() {
-        updateOpenCloseStatus();
-
-        $('#211115_click i').addClass('glyphicon glyphicon-triangle-bottom');
-        $('#211115_show').show(200);
-    });
-});
+        $(this).next('.update-content').show(200)
+        $(this).find('i').addClass('glyphicon glyphicon-triangle-bottom');
+    })
+})
 
 function updateOpenCloseStatus() {
     $('.update-header i').removeClass();
     $('.update-header i').addClass('glyphicon glyphicon-triangle-right');
     $('.update-content').hide(200);
 }
+
+$(document).ready(function() {
+    $('.subject-header').click(function() {
+        $(this).next('.subject-detail').toggle();
+    });
+})
+
+$(document).ready(function() {
+    $('#sample6').focus(function() {
+        $('#search-hint').css("display", "inline");
+    });
+
+    $('#sample6').focusout(function() {
+        $('#search-hint').css("display", "none");
+    });
+})
+
+$(document).ready(function() {
+    var fixmeTop = $('.fixme').offset().top; 
+
+    $(window).scroll(function() {                  // assign scroll event listener
+        
+        var currentScroll = $(window).scrollTop(); // get current position
+
+        if (currentScroll >= fixmeTop) {           // apply position: fixed if you
+            $('.fixme').css({                      // scroll to that element or below it
+                position: 'fixed',
+                top: '0',
+                background: '#fff',
+                borderRadius: '0px 0px 10px 10px',
+                paddingRight: '10px',
+                paddingLeft: '10px',
+            });
+        } else {                                   // apply position: static
+            $('.fixme').css({                      // if you scroll above it
+                position: 'static',
+                background: '#fff',
+                padding: '0px',
+            });
+        }
+
+    });
+
+})
+
 
 
 

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   
+
+
   resources :homepages
+  resources :search
   resources :regularexams do
     member do
       get 'edit_day'
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
           get 'copy'
         end   
       end
+      resources :search
       resources :midtermtables
       resources :finaltables 
     end

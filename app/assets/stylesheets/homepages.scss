@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body > div.container-fluid > div.new-update.mdl-shadow--3dp > div:nth-child(4) {
+    display: block;
+}
+
 .new-update {
     margin: auto;
     background-color: #ecf0f1;

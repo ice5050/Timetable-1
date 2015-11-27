@@ -28,6 +28,7 @@ gem 'devise'
 gem 'material_design_lite-rails'
 gem 'nokogiri'
 gem 'cancan'
+gem 'rest-client', '~> 1.8'
 
 
 # Use ActiveModel has_secure_password

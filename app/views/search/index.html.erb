@@ -1,0 +1,106 @@
+<% if @user and user_signed_in? and @user.id == current_user.id %>
+    <h6 class="table-name">
+        <i class="glyphicon glyphicon-triangle-right"></i>Timtable name: <%= @table.name %>
+    </h6>
+    <div class="fixme">
+        <%= form_for :class, url: user_table_classtables_path do |f| %>
+
+            <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <%= f.label :subject_code, class: "mdl-textfield__label" %>            
+                <%= f.text_field :subject_code, class: "mdl-textfield__input", maxlength: 6 %>
+            </div>
+            <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <%= f.label :subject, class: "mdl-textfield__label" %>
+                <%= f.text_field :subject, class: "mdl-textfield__input" %>
+            </div>
+            <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <%= f.label :room, class: "mdl-textfield__label" %>
+                <%= f.text_field :room, class: "mdl-textfield__input" %>
+            </div>
+            <div class="add-class mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <%= f.label :section, class: "mdl-textfield__label" %>
+                <%= f.text_field :section, class: "mdl-textfield__input" %>
+            </div>
+            
+            <%= f.label :day %>
+
+            <%= f.select :daily, (options_for_select([['Sunday', 1], ['Monday', 2], ['Tuesday', 3], ['Wednesday', 4], ['Thursday', 5], ['Friday', 6], ['Saturday', 7]])) %>
+
+            <%= f.label :start %>
+            <%= f.select :start, (options_for_select([['08:00', 1], ['08:30', 2], ['09:00', 3], ['09:30', 4], ['10:00', 5], ['10:30', 6], ['11:00', 7], ['11:30', 8], ['12:00', 9], ['12:30', 10], ['13:00', 11], ['13:30', 12], ['14:00', 13], ['14:30', 14], ['15:00', 15], ['15:30', 16], ['16:00', 17], ['16:30', 18], ['17:00', 19], ['17:30', 20], ['18:00', 21], ['18:30', 22]])) %>
+
+
+            <%= f.label :finish %>
+            <%= f.select :finish, (options_for_select([['08:30', 2], ['09:00', 3], ['09:30', 4], ['10:00', 5], ['10:30', 6], ['11:00', 7], ['11:30', 8], ['12:00', 9], ['12:30', 10], ['13:00', 11], ['13:30', 12], ['14:00', 13], ['14:30', 14], ['15:00', 15], ['15:30', 16], ['16:00', 17], ['16:30', 18], ['17:00', 19], ['17:30', 20], ['18:00', 21], ['18:30', 22], ['19:00', 23]])) %>
+            
+            <%= f.submit "SAVE", class: "saveClass bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bg-silver", disabled: true %>            
+        <% end %>    
+    </div>
+<% end %>
+
+
+<h4>
+    <i class="glyphicon glyphicon-search"></i>
+    SEARCH RESULT
+</h4>
+<%= link_to "BACK", :back, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+<% if session[:code].present? %>    
+    <table class="table table-hover text-left mdl-shadow--3dp">
+        <caption>searching... <%= session[:code]["code"] %></caption>
+        <% @subjects.zip(@details).each do |subject, detail| %>
+        <thead class="subject-header">
+            <tr >
+                <th colspan="20">
+                    <%= subject.to_s.html_safe %>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="subject-detail">
+                <tr>
+                    <td rowspan="2">TITLE</td>
+
+                    <td colspan="2">SECTION</td>
+                    <td colspan="2">CREDIT</td>
+                    <td colspan="2">SCHEDULE</td>
+
+                    <td rowspan="2">ROOM</td>
+                    <td rowspan="2">LECTURER</td>
+                    <td colspan="3">TOTAL</td>
+                </tr>
+                <tr>
+                    <td>LEC</td>
+                    <td>LAB</td>
+                    <td>LEC</td>
+                    <td>LAB</td>
+                    <td>DAY</td>
+                    <td>TIME</td>
+                    <td>Seat</td>
+                    <td>Enroll</td>
+                    <td>Add</td>
+                </tr>
+            <% detail.css('tr[coursedata]').each do |tr| %>
+                
+                <tr>
+                    <% tr.css('td').each do |td| %>
+                        <% if @td > 2 and @td != 12 and @td != 13 and @td < 17 %>
+                                <% if  td.to_s.include? "stdtotal.php" %>
+                                    <% link_to_cmu = "https://www3.reg.cmu.ac.th/regist258/public/stdtotal.php" %>
+                                    <%= td.to_s.gsub('stdtotal.php', link_to_cmu).html_safe %>
+                                <% else %>
+                                    <%= td.to_s.html_safe %> 
+                                <% end %>        
+                        <% end %>
+                        <% @td += 1 %>
+                    <% end %>
+                </tr>
+                <% @td = 1 %>
+            <% end %>   
+        </tbody>
+        <% end %>
+    </table>
+    <% if @subjects.empty? %>
+        <h5> NO COURSE FOUND! </h5>
+    <% end %>    
+
+<% end %>
+

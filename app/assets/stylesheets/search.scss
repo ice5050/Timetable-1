@@ -1,0 +1,48 @@
+// Place all the styles related to the Search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.subject-detail {
+    display: none;
+}
+
+.subject-detail td {
+    border: 1px solid #bdc3c7;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.subject-detail p {
+    font-size: 12px;
+    text-align: center;
+}
+
+.subject-header {
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.subject-header:hover {
+    background-color: #fff;
+}
+
+red {
+    color: red;
+}
+
+gray {
+    color: gray;
+}
+
+csection {
+    color: #666;
+}
+
+span[coursecredit] {
+    float: right;
+    padding-right: 10px;
+    color: #666 !important;
+    font-size: 1em;
+}
