@@ -1,3 +1,26 @@
 // Place all the styles related to the finaltables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#regular {
+    display: none;
+}
+
+.text-final {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.text-regular {
+    color: #d35400;
+    font-weight: bold;
+}
+
+.text-manual {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+.table-finalexam td {
+    vertical-align: middle !important;
+}

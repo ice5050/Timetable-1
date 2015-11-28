@@ -46,6 +46,20 @@ class MidtermtablesController < ApplicationController
             end
         end
         @is_shown = Set.new
+        @is_shown_manual = Set.new
+
+        @classes.each do |class_|
+            if class_.dayMidterm and class_.timeMidterm
+                @is_shown_manual.add(class_.subject_code)
+            end
+        end
+    end
+
+    def edit 
+        @is_shown = Set.new
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @classes = @table.classtables.order("daily ASC, start ASC")
     end
 end
 

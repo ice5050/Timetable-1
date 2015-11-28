@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123065058) do
+ActiveRecord::Schema.define(version: 20151128120842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20151123065058) do
     t.string   "room"
     t.string   "section"
     t.string   "color"
+    t.string   "dayFinal"
+    t.string   "timeFinal"
+    t.string   "dayMidterm"
+    t.string   "timeMidterm"
   end
 
   add_index "classtables", ["table_id"], name: "index_classtables_on_table_id", using: :btree

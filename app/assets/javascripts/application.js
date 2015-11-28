@@ -101,7 +101,10 @@ $(document).ready(function() {
 })
 
 $(document).ready(function() {
-    var fixmeTop = $('.fixme').offset().top; 
+    if ($('.fixme').hasClass()) {
+        var fixmeTop = $('.fixme').offset().top;     
+    }
+    
 
     $(window).scroll(function() {                  // assign scroll event listener
         

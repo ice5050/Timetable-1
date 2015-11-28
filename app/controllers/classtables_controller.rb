@@ -103,14 +103,62 @@ class ClasstablesController < ApplicationController
         @i = 1
     end
 
-    def reset
-      @user = User.find(params[:user_id])
-      @table = @user.tables.find(params[:table_id])
-      
+    def update_exam_final
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
+        @class.update(params_manual_final)
 
-      @classes = @table.classtables.delete_all
-      redirect_to user_table_classtables_path
-  end
+        if @class.dayFinal.to_s.length == 0
+            @class.update('dayFinal' => nil)
+        end
+
+        if @class.timeFinal.to_s.length == 0
+            @class.update('timeFinal' => nil)
+        end
+
+        redirect_to user_table_finaltables_path
+    end
+
+    def clear_manual_final
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
+               
+        @class.update('dayFinal' => nil)    
+        @class.update('timeFinal' => nil)
+        
+        redirect_to user_table_finaltables_path
+    end
+
+    def update_exam_midterm
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
+        @class.update(params_manual_midterm)
+
+        if @class.dayMidterm.to_s.length == 0
+            @class.update('dayMidterm' => nil)
+        end
+
+        if @class.timeMidterm.to_s.length == 0
+            @class.update('timeMidterm' => nil)
+        end
+
+        redirect_to user_table_midtermtables_path
+    end
+
+    def clear_manual_midterm
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @class = @table.classtables.find(params[:id])
+               
+        @class.update('dayMidterm' => nil)    
+        @class.update('timeMidterm' => nil)
+        
+        redirect_to user_table_midtermtables_path
+    end
+       
 
     private
         def params_class
@@ -143,11 +191,6 @@ class ClasstablesController < ApplicationController
             end
         end
 
-        def reset
-          @user = User.find(current_user)
-          @table = @user.tables.find(params[:table_id])
-          @classes = @table.classtables.delete_all
-      end
 
         def add_color
             # add color
@@ -176,5 +219,13 @@ class ClasstablesController < ApplicationController
                    @choosed = true
                 end
             end
+        end
+
+        def params_manual_final
+            params.require(:exam).permit(:dayFinal, :timeFinal)
+        end
+
+        def params_manual_midterm
+            params.require(:exam).permit(:dayMidterm, :timeMidterm)
         end
 end

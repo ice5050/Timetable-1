@@ -48,7 +48,24 @@ class FinaltablesController < ApplicationController
                 i += 1 if j % 3 == 0
             end
         end
+
         @is_shown = Set.new
+        @is_shown_regular = Set.new
+        @is_shown_manual = Set.new
+
+        @classes.each do |class_|
+            if class_.dayFinal and class_.timeFinal
+                @is_shown_manual.add(class_.subject_code)
+            end
+        end
     end
+
+    def edit 
+        @is_shown = Set.new
+        @user = User.find(current_user)
+        @table = @user.tables.find(params[:table_id])
+        @classes = @table.classtables.order("daily ASC, start ASC")
+    end
+
 end
 

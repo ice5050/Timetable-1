@@ -21,6 +21,10 @@ Rails.application.routes.draw do
       resources :classtables do
         member do
           get 'copy'
+          post 'update_exam_midterm'
+          get 'clear_manual_midterm'
+          post 'update_exam_final'
+          get 'clear_manual_final'
         end   
       end
       resources :search
