@@ -101,9 +101,9 @@ $(document).ready(function() {
 })
 
 $(document).ready(function() {
-    if ($('.fixme').hasClass()) {
+    // if ($('.fixme').hasClass()) {
         var fixmeTop = $('.fixme').offset().top;     
-    }
+    // }
     
 
     $(window).scroll(function() {                  // assign scroll event listener

@@ -1,4 +1,4 @@
-<h2>FINAL EXAM</h2>
+<h4>FINAL EXAM</h4>
 
 <%= link_to "Add Manually", edit_user_table_finaltable_path(@user, @table, @table), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %><br>
 <small><i class="glyphicon glyphicon-exclamation-sign"></i> MANUALLY IS THE MOST IMPORTANT </small>
@@ -69,38 +69,7 @@
 </table>
 
 <table class="table table-striped table-crop table-hover mdl-shadow--3dp"> 
-    <caption>Regular Exam</caption>
-    <thead>
-        <tr>
-            <th class="text-center">Subject</th>
-            <th class="text-center">Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% is_regular = false %>
-        <% @regular.each do |regular| %>
-            <% @classes.each do |class_| %>
-                <% if @is_shown_regular.include? class_.subject_code and class_.daily == regular.dayexam and class_.start == regular.timeexam %>
-                    <tr>
-                        <td><%= class_.subject %></td>
-                        <td><%= regular.dateexam  %></td>
-                    </tr>
-                    <% is_regular = true %>
-                    <% @is_shown_regular.delete(class_.subject_code) %>
-                <% end %>    
-            <% end %>   
-        <% end %>
-
-        <% if not is_regular %>
-            <tr>
-                <td colspan="2">NO DATA</td>
-            </tr>
-        <% end %>
-    </tbody>
-</table> 
-
-<table class="table table-striped table-crop table-hover mdl-shadow--3dp"> 
-    <caption>Manual</caption>
+    <caption>FINAL EXAM (besides a top table)</caption>
     <thead>
         <tr>
             <th class="text-center">Subject code</th>
@@ -110,6 +79,7 @@
         </tr>
     </thead>
     <tbody>
+        <% is_besides = true %>
         <% @classes.each do |class_| %>
             <% if not @is_shown.include? class_.subject_code and @is_shown_manual.include? class_.subject_code %>
                 <tr>    
@@ -117,10 +87,14 @@
                     <td><%= class_.subject%></td>
                     <td><%= class_.dayFinal%></td>
                     <td><%= class_.timeFinal%></td>
+                    <% is_besides = false %>
                 </tr>
                 <% @is_shown.add(class_.subject_code) %>
             <% end %>
         <% end %>
+        
+        <%= raw("<tr><td colspan='4'>NO DATA</td></tr>") if is_besides %>
+        
     </tbody>
 </table> 
 

@@ -1,4 +1,4 @@
-<h2>ADD MANUAL MIDTERM EXAM</h2>
+<h4>ADD MIDTERM EXAM MANUALLY</h4>
 
 <table class="table">
 <% @classes.each do |class_| %>
@@ -17,8 +17,8 @@
                     <%= f.text_field :timeMidterm, placeholder: "Ex. 08:00-11:00", class: "form-control", :required => true unless class_.timeMidterm %>
                     <%= f.text_field :timeMidterm, value: class_.timeMidterm, class: "form-control", :required => true if class_.timeMidterm %>
                 </td>
-                <td><%= f.submit %></td>
-                <td><%= link_to "Clear manual", clear_manual_midterm_user_table_classtable_path(@user, @table, class_) %></td>
+                <td><%= f.submit "SAVE", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
+                <td><%= link_to "DELETE MANUAL", clear_manual_midterm_user_table_classtable_path(@user, @table, class_), class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
             </tr>
         <% end %>
         <% @is_shown.add(class_.subject_code) %>

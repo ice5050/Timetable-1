@@ -43,7 +43,7 @@
     <i class="glyphicon glyphicon-search"></i>
     SEARCH RESULT
 </h4>
-<%= link_to "BACK", :back, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+<%= link_to "BACK", user_table_classtables_path, id: @table, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 <% if session[:code].present? %>    
     <table class="table table-hover text-left mdl-shadow--3dp">
         <caption>searching... <%= session[:code]["code"] %></caption>
