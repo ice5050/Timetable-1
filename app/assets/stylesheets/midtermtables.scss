@@ -1,3 +1,18 @@
 // Place all the styles related to the midtermtables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.text-regular {
+    color: #d35400;
+    font-weight: bold;
+}
+
+.text-manual {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+.table-finalexam td {
+    vertical-align: middle !important;
+}

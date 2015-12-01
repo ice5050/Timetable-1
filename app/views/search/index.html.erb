@@ -2,6 +2,7 @@
     <h6 class="table-name">
         <i class="glyphicon glyphicon-triangle-right"></i>Timtable name: <%= @table.name %>
     </h6>
+
     <div class="fixme">
         <%= form_for :class, url: user_table_classtables_path do |f| %>
 
@@ -44,6 +45,9 @@
     SEARCH RESULT
 </h4>
 <%= link_to "BACK", user_table_classtables_path, id: @table, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+<br><br>
+<div id="searching" class="mdl-spinner mdl-js-spinner is-active"></div>
+
 <% if session[:code].present? %>    
     <table class="table table-hover text-left mdl-shadow--3dp">
         <caption>searching... <%= session[:code]["code"] %></caption>

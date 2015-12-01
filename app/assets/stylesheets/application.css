@@ -170,3 +170,7 @@ div.remember-switch {
     font-size: 12px;
     color: #c0392b;
 }
+
+table td {
+    vertical-align: middle !important;
+}

@@ -126,35 +126,5 @@ $(document).ready(function() {
                 padding: '0px',
             });
         }
-
     });
-
 })
-
-
-
-
-
-// $(document).ready(function() {
-//     $('#switch-1').click(function() {
-//         $('.table-detail').toggle(200);
-//         $('.subject-detail').toggle(200);
-//     })
-// });
-
-
-// $(document).ready(function() {
-//     $('#subject_code').keypress(function(){
-//         if ($('#subject_code').val().length >= 5) {
-//             $('#save').prop("disabled",false);
-//             $('#save').addClass('bg-green');
-//             $('#save').removeClass('bg-silver');
-//         } else if ($('#subject_code').val().length < 5){
-//             $('#save').prop("disabled",true);
-//             $('#save').addClass('bg-silver');
-//             $('#save').removeClass('bg-green');
-//         }
-//     });
-// })
-
-
