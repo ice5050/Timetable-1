@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('.saveClass').click(function() {
-        $("#newClass").hide(100);
+        // $("#newClass").hide(100);
         $("#load").show(100);
     })
 })
@@ -128,3 +128,8 @@ $(document).ready(function() {
         }
     });
 })
+
+
+jQuery(window).load(function () {
+    $('#searching').hide(500);
+});

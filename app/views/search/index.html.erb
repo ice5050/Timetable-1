@@ -34,23 +34,25 @@
             <%= f.label :finish %>
             <%= f.select :finish, (options_for_select([['08:30', 2], ['09:00', 3], ['09:30', 4], ['10:00', 5], ['10:30', 6], ['11:00', 7], ['11:30', 8], ['12:00', 9], ['12:30', 10], ['13:00', 11], ['13:30', 12], ['14:00', 13], ['14:30', 14], ['15:00', 15], ['15:30', 16], ['16:00', 17], ['16:30', 18], ['17:00', 19], ['17:30', 20], ['18:00', 21], ['18:30', 22], ['19:00', 23]])) %>
             
-            <%= f.submit "SAVE", class: "saveClass bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bg-silver", disabled: true %>            
+            <%= f.submit "SAVE", class: "saveClass bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bg-silver", disabled: true %>    
+            <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>        
         <% end %>    
     </div>
 <% end %>
-
-
 <h4>
     <i class="glyphicon glyphicon-search"></i>
     SEARCH RESULT
 </h4>
 <%= link_to "BACK", user_table_classtables_path, id: @table, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 <br><br>
-<div id="searching" class="mdl-spinner mdl-js-spinner is-active"></div>
+
 
 <% if session[:code].present? %>    
     <table class="table table-hover text-left mdl-shadow--3dp">
-        <caption>searching... <%= session[:code]["code"] %></caption>
+        <caption>
+            <div id="searching" class="mdl-spinner mdl-js-spinner is-active"></div>
+            searching... <%= session[:code]["code"] %>
+        </caption>
         <% @subjects.zip(@details).each do |subject, detail| %>
         <thead class="subject-header">
             <tr >
@@ -103,7 +105,7 @@
         <% end %>
     </table>
     <% if @subjects.empty? %>
-        <h5> NO COURSE FOUND! </h5>
+        <h5 class=""><i class="glyphicon glyphicon-alert"></i> NO COURSE FOUND! </h5>
     <% end %>    
 
 <% end %>
