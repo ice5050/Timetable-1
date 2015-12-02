@@ -43,7 +43,10 @@
     <i class="glyphicon glyphicon-search"></i>
     SEARCH RESULT
 </h4>
-<%= link_to "BACK", user_table_classtables_path, id: @table, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+
+<%= link_to "BACK", user_table_classtables_path, id: @table, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if @user and user_signed_in? and @user.id == current_user.id %>
+<%= link_to "BACK", homepages_path, id: @table, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" unless @user and user_signed_in? and @user.id == current_user.id %>
+
 <br><br>
 
 
