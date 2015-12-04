@@ -54,11 +54,10 @@ div.target p {
 }
 
 .update-content {
-    background-color: #ECF0F1;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
-    color: #000;
-    margin-left: 10px;
+    margin: auto;
+    width: 90%;
     display: none;
 }
 
@@ -66,16 +65,58 @@ div.target p {
     color: #c0392b;
 }
 
-.txtUpdate {
+.feature-header {
+    font-family: 'Maven Pro', sans-serif !important; 
+    padding: 10px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.feature-content {
+    padding: 20px;
+    margin: auto;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.txtFeature {
     background-color: #f1c40f;
     color: #fff;
     padding: 10px;
     border-radius: 10px;
     letter-spacing: 8px;
-    width: 60%;
+    width: 70%;
+    margin: auto;
+}
+
+.txtFeature h4 {
+    font-size: 30px !important;
+}
+
+.txtUpdate {
+    background-color: #8e44ad;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    letter-spacing: 8px;
+    width: 70%;
     margin: auto;
 }
 
 .txtUpdate h4 {
-    font-size: 30px !important;
+    font-size: 26px !important;
+}
+
+.txtAboutWebsite {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    letter-spacing: 8px;
+    width: 70%;
+    margin: auto;
+}
+
+.new-update h6 {
+    display: inline;
 }

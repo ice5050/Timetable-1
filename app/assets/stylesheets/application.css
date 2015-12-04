@@ -174,3 +174,16 @@ div.remember-switch {
 table td {
     vertical-align: middle !important;
 }
+
+
+@media screen and (max-device-width: 1000px) {
+    .container-fluid {
+        width            : 100%;
+        background-color : #fff;
+        text-align       : center;
+    }
+
+    h6 {
+        font-size: 12px !important;
+    }
+}
