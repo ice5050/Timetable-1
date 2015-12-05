@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  
-
-  get 'assets/images/'
   resources :homepages
   resources :search
   resources :regularexams do
