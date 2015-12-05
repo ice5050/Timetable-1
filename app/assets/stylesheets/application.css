@@ -177,8 +177,25 @@ table td {
     vertical-align: middle !important;
 }
 
+.on-mobile {
+    display: none;
+    color: #e74c3c;
+    font-weight: bolder;
+}
+
+.beta {
+    color: #7f8c8d;
+}
+
+.text-left2  {
+    text-align: left !important;
+}
 
 @media screen and (max-device-width: 996px) {
+    .on-mobile {
+        display: block;
+    }
+
     body {
         font-size: 26px !important;
         text-align: center !important;
@@ -248,5 +265,12 @@ table td {
     .pure-menu ul {
         font-size: 25px !important;
     }
+    
+    .footer {
+        font-size: 20px !important;
+    }
 
+    .table-name {
+        font-size: 27px !important;   
+    }
 }
