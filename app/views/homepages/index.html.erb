@@ -1,8 +1,6 @@
 <%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
 <%= link_to "LOGIN FOR USE TABLE", new_user_session_path, class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
 <br><br>
-<%= social_share_button_tag("CMU Timetable", :url => "http://cmutimetable.herokuapp.com", popup: "true", :image => "assets/share.png") %>
-<br><br>
 
 <div class="new-update mdl-shadow--3dp">   
     <div class="txtAboutWebsite mdl-shadow--3dp">
