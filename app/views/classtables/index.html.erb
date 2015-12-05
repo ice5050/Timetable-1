@@ -129,7 +129,7 @@
     <% @i = 1 %>
 <% end %><br>
 
-<ul class="list-inline text-left">
+<ul class="text-left list-inline ">
     <li><%= link_to "midterm", user_table_midtermtables_path, class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></li>
     <li><%= link_to "final", user_table_finaltables_path, class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></li>
     <li><%= link_to "reset", reset_user_table_path(@user, @table), class: "bg-silver mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", data: { confirm: "reset?" } if user_signed_in? and @user.id == current_user.id %></li>

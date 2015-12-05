@@ -176,14 +176,75 @@ table td {
 }
 
 
-@media screen and (max-device-width: 1000px) {
+@media screen and (max-device-width: 996px) {
+    body {
+        font-size: 26px !important;
+        text-align: center !important;
+    }
     .container-fluid {
         width            : 100%;
         background-color : #fff;
         text-align       : center;
     }
 
-    h6 {
-        font-size: 12px !important;
+    .mdl-button {
+        width: 80%;
+        font-size: 28px !important;
+        border-radius: 10px !important;
+        margin: 5px auto !important;
+        height: auto !important;
+        padding: 10px !important;
     }
+
+    .table-crop {
+        width: 100% !important;
+    }
+
+    .new-update {
+        background-color: #ecf0f1;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .txtFeature {
+        width: 100%;
+    }
+
+    .txtUpdate {
+        width: 100%;
+    }
+
+    .txtAboutWebsite {
+        width: 100%;
+    }
+
+    .update-header {
+        width: 100%;
+    }
+
+    .list-inline {
+        margin: 10px !important; 
+    }
+
+    .list-inline > li {
+        display: inline !important;
+        font-size: 20px !important;
+    }
+
+    .list-inline > li i {
+        display: inline !important;
+        font-size: 20px !important;
+    }
+
+    .text-right {
+        text-align: center !important;
+    }
+    .text-left {
+        text-align: center !important;
+    }
+ 
+    .pure-menu ul {
+        font-size: 25px !important;
+    }
+
 }

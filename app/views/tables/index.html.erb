@@ -6,8 +6,8 @@
     <table class="table table-striped table-crop table-hover mdl-shadow--3dp">
         <tr>
             <td><strong>Table name</strong></td>
-            <td>Year</td>
-            <td>Semester</td>
+            <td><strong>Year</strong></td>
+            <td><strong>Semester</strong></td>
             <%= raw("<td><strong>Setting</strong></td>") if user_signed_in? and @user.id == current_user.id %>
         </tr>
         <% @tables.each do |table| %>
