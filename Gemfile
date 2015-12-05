@@ -29,6 +29,9 @@ gem 'material_design_lite-rails'
 gem 'nokogiri'
 gem 'cancan'
 gem 'rest-client', '~> 1.8'
+gem 'social-share-button', '~> 0.1.6'
+gem 'material_design_lite-rails'
+
 
 
 # Use ActiveModel has_secure_password
