@@ -196,7 +196,9 @@ table td {
 }
 
 .social-share-button-facebook {
-    background: url();
+    width: auto;
+    height: auto;
+    background: url('http://blog.web-op.com/share_facebook.png');
 }
 
 @media screen and (max-device-width: 996px) {
