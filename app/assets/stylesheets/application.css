@@ -150,6 +150,7 @@ div.remember-switch {
    height: auto !important; /* real browsers */
    height: 100%; /* IE6 bug */
    margin-bottom: -20px; /* กำหนด margin-bottom ให้ติดลบเท่ากับความสูงของ footer */
+   text-align: center
 }
 
 .footer {
@@ -196,9 +197,15 @@ table td {
 }
 
 .social-share-button-facebook {
-    width: auto;
-    height: auto;
-    background: url('http://blog.web-op.com/share_facebook.png');
+    display: inline-block;    
+    width: 100px !important;
+    height: 60px !important;
+    background-size:contain;
+    background: url('http://bitcoin-catcher.com/wp-content/uploads/2015/09/facebook-share-button.png') no-repeat !important;
+}
+
+.share-button {
+    display: -webkit-inline-box;    
 }
 
 @media screen and (max-device-width: 996px) {

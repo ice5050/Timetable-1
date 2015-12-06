@@ -1,9 +1,14 @@
 <h3 class="on-mobile"><i class="glyphicon glyphicon-phone"></i> MOBILE DEVICE <span class="beta">BETA</span></h3>
 
-<%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
-<%= link_to "LOGIN TO USE TABLE", new_user_session_path, class: "gototable bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
+<%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
+<%= link_to "LOGIN TO USE TABLE", new_user_session_path, class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
+<br><br>
 
-<%= social_share_button_tag("cmutimetable", :url => "http://cmutimetable.herokuapp.com", :image => "assets/timetable.png", desc: "วางแผนตารางสอบล่วงหน้าก่อนลงทะเบียนจริง และ ลิ้งตารางสอบกลางภาค ปลายภาค", via: "Pondpaun7z", :popup => true) %>
+<div class="share-button">
+    <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://cmutimetable.herokuapp.com" data-text="วางแผนตารางเรียนก่อนลงทะเบียนจริง พร้อมลิ้งตารางสอบ" data-via="Pondpaun7z" data-size="small" data-related="pondpaun7z" data-hashtags="CMUTIMETABLE">Tweet</a>&nbsp;
+    <div class="fb-like" data-href="http://cmutimetable.herokuapp.com" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+</div>
+
 <br><br>
 <div class="block mdl-shadow--3dp">   
     <div class="divHeader mdl-shadow--3dp">
