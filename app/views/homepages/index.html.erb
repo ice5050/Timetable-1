@@ -1,23 +1,22 @@
-
 <h3 class="on-mobile"><i class="glyphicon glyphicon-phone"></i> MOBILE DEVICE <span class="beta">BETA</span></h3>
 
-<%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
-<%= link_to "LOGIN TO USE TABLE", new_user_session_path, class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
+<%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
+<%= link_to "LOGIN TO USE TABLE", new_user_session_path, class: "gototable bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
 <br><br>
-<div class="new-update mdl-shadow--3dp">   
-    <div class="txtAboutWebsite mdl-shadow--3dp">
-        <h4 class="feature-header"> <i class="glyphicon glyphicon-education"></i> About Website</h4>
+<div class="block mdl-shadow--3dp">   
+    <div class="divHeader mdl-shadow--3dp">
+        <h4 class="txtHeader"> <i class="glyphicon glyphicon-education"></i> About Website</h4>
     </div>
     <div class="feature-content">
         <ul class="text-left2 list-unstyled">
             <li><h6> &emsp; เว็บไซต์นี้ ใช้ในการวางแผนการลงทะเบียนเรียนล่วงหน้าก่อนที่สำนักทะเบียนจะเปิดให้ลงทะเบียน และ สามารถดูตารางสอบกลางภาคและปลายภาคได้ โดยทางเว็บไซต์จะทำการดึงข้อมูลของทางเว็บสำนักทะเบียนมาประมวลผล</h6></li>
         </ul>
-    </div>
+    </div> 
 </div>
 <br>
-<div class="new-update mdl-shadow--3dp">   
-    <div class="txtFeature mdl-shadow--3dp">
-        <h4 class="feature-header"> <i class="glyphicon glyphicon-star"></i> Feature</h4>
+<div class="block mdl-shadow--3dp">   
+    <div class="divHeader mdl-shadow--3dp">
+        <h4 class="txtHeader"> <i class="glyphicon glyphicon-star"></i> Feature</h4>
     </div>
     <div class="feature-content">
         <ul class="text-left2 "> 
@@ -31,10 +30,10 @@
     </div>
 </div>
 <br>
-<div class="new-update mdl-shadow--3dp">   
+<div class="block mdl-shadow--3dp">   
 
-    <div class="txtUpdate mdl-shadow--3dp">
-        <h4 class="header-newupdate"> <i class="glyphicon glyphicon-time"></i> Update! </h4>
+    <div class="divHeader mdl-shadow--3dp">
+        <h4 class="txtHeader"> <i class="glyphicon glyphicon-time"></i> Update! </h4>
     </div><br>
     <h5 class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-bottom"></i> 28 Novmber 2015</h5>
     <div class="update-content">

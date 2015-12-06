@@ -13,7 +13,7 @@
         <% @tables.each do |table| %>
             <tr class="clicktable" onclick="document.location = '<%= user_table_classtables_path(@user, table) %>';">
                 <td>
-                    <%= link_to raw("<i class='glyphicon glyphicon-pencil'></i> " + table.name), user_table_classtables_path(@user, table) %>
+                    <%= link_to table.name, user_table_classtables_path(@user, table) %>
                 </td>
                 <td> 25<%= table.year %> </td>
                 <td> <%= table.semester %></td>
@@ -25,13 +25,12 @@
         <% end %>
     </table>
     <ul class="list-inline">
-        <li><i class="glyphicon glyphicon-pencil"></i> Go to timetable</li>
         <li><i class='glyphicon glyphicon-edit'></i> Edit table</li>
         <li><i class='glyphicon glyphicon-trash'></i> Delete table</li>
     </ul>
     
 <% end %>
 
-<%= link_to "ADD NEW TABLE", new_user_table_path(current_user), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %>
+<%= link_to "NEW TABLE", new_user_table_path(current_user), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %>
 <%= link_to "BACK", homepages_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 

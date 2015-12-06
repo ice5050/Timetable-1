@@ -1,0 +1,33 @@
+<table class="table">
+    <caption>All User</caption>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.username %></td>
+            <td><%= user.tables.count %></td>
+
+        </tr>
+    <% end %>
+</table>
+
+<table class="table">
+    <caption>Day</caption>
+    <% @days.each do |day| %>
+        <tr>
+            <td><%= day.id %></td>
+            <td><%= day.day %></td>
+            <td><%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), edit_day_setting_path(day) %></td>
+        </tr>
+    <% end %>
+</table>
+
+<table class="table">
+    <caption>Time</caption>
+    <% @times.each do |time| %>
+        <tr>
+            <td><%= time.id %></td>
+            <td><%= time.time %></td>
+            <td><%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), edit_time_setting_path(time) %></td>
+        </tr>
+    <% end %>
+</table>
+

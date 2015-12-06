@@ -1,7 +1,7 @@
 class RegularexamsController < ApplicationController
   http_basic_authenticate_with name: "pondpaun7z", password: "0PP-7z-;"
   def index
-    @regulars = Regularexam.order("ordered ASC")
+    @regulars = Regularexam.order(" yearexam DESC, semesterexam DESC, ordered ASC")
     @days = Day.order("id ASC")
     @times = Timer.all
   end
@@ -20,19 +20,13 @@ class RegularexamsController < ApplicationController
     @regular = Regularexam.find(params[:id])
   end
 
+  def copy
+    @regular = Regularexam.find(params[:id])
+  end
+
   def update
     @regular = Regularexam.find(params[:id])
     @regular.update(params_regular)
-    redirect_to regularexams_path
-  end
-
-  def edit_day
-    @day = Day.find(params[:id])
-  end
-
-  def update_day
-    @day = Day.find(params[:id])
-    @day.update(params_day)
     redirect_to regularexams_path
   end
 
@@ -41,8 +35,5 @@ class RegularexamsController < ApplicationController
         params.require(:regular).permit(:dayexam, :timeexam, :dateexam, :yearexam, :semesterexam, :ordered)
     end
 
-    def params_day
-        params.require(:day).permit(:day)
-    end
 end
 

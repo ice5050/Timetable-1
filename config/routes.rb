@@ -4,10 +4,19 @@ Rails.application.routes.draw do
   resources :search
   resources :regularexams do
     member do
-      get 'edit_day'
-      patch 'update_day'
+      get 'copy'
     end
   end
+
+  resources :settings do
+    member do
+      get 'edit_day'
+      patch 'update_day'
+      get 'edit_time'
+      patch 'update_time'
+    end
+  end
+  
   devise_for :users 
 
   resources :users do 

@@ -17,6 +17,13 @@
  * require material
  */
 
+
+/*search icon*/
+body > div.container-fluid > div.pure-menu.pure-menu-horizontal.text-right > ul > li:nth-child(1) > form > div > label {
+    height: 22px !important;
+    margin-left: -11px;
+}
+
 a {
     color           : #000 !important;
     text-decoration : none
@@ -28,7 +35,10 @@ body {
 }
 
 .mdl-button {
-    font-family: 'Maven Pro', sans-serif !important; 
+    font-family: 'Maven Pro', sans-serif !important;
+    height: auto !important;
+    padding: 5px 30px 5px 30px !important;
+    font-size: 16px !important;
 }
 
 h1, h2, h3, h4 {
@@ -105,7 +115,6 @@ i.glyphicon.glyphicon-pencil {
 .alert {
     width      : 30%;
     margin     : auto;
-
     text-align : center;
 }
 
@@ -148,6 +157,7 @@ div.remember-switch {
    height: 100%; /* IE6 bug */
    margin-bottom: -20px; /* กำหนด margin-bottom ให้ติดลบเท่ากับความสูงของ footer */
 }
+
 .footer {
    height: 20px; /* ความสูงของ footer */
    display: block;

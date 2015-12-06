@@ -7,18 +7,11 @@
             <td><%= regular.timeexam %> > <%= Timer.find(regular.timeexam).time %></td>
             <td><%= regular.yearexam %></td>
             <td><%= regular.semesterexam %></td>
+            <td><%= regular.dateexam %></td>
+            <td><%= link_to raw("<i class='glyphicon glyphicon-duplicate'></i>"), copy_regularexam_path(regular) %></td>
             <td><%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), edit_regularexam_path(regular) %></td>
         </tr>
     <% end %>
 </table>
 <hr>
-
-<table class="table">
-    <% @days.each do |day| %>
-        <tr>
-            <td><%= day.day %></td>
-            <td><%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), edit_day_regularexam_path(day) %></td>
-        </tr>
-    <% end %>
-</table>
 
