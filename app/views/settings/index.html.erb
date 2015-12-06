@@ -1,13 +1,17 @@
 <table class="table">
-    <caption>All User</caption>
+    <caption>All user</caption>
+    <tr>
+        <td><strong>Username</strong></td>
+        <td><strong>Number Table</strong></td>
+    </tr>
     <% @users.each do |user| %>
         <tr>
-            <td><%= user.username %></td>
+            <td><%= link_to user.username, user_tables_path(user) %></td>
             <td><%= user.tables.count %></td>
-
         </tr>
     <% end %>
 </table>
+
 
 <table class="table">
     <caption>Day</caption>

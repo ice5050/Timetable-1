@@ -91,23 +91,9 @@
         </ul>
     </div>
 </div>
-<br>
-<br>
 
-<% if user_signed_in? and current_user.username.downcase == "pondpaun7z" %>
-    <table class="table table-hover table-striped mdl-shadow--3dp">
-        <tr>
-            <td><strong>Username</strong></td>
-            <td><strong>Number Table</strong></td>
-        </tr>
-        <% @users.each do |user| %>
-            <tr>
-                <td><%= link_to user.username, user_tables_path(user) %></td>
-                <td><%= user.tables.count %></td>
-            </tr>
-        <% end %>
-    </table>
-<% end %>
+
+
 
 
 
