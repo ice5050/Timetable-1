@@ -22,19 +22,7 @@ class FinaltablesController < ApplicationController
 
         @day_selected = @page.css("td[width='19%']")
         @time_selected = @page.css("div[align='center']")
-        @exam_selected = @page.css("td[width='27%']")
-        @regular_selected = @page.css("tr[bgcolor='#FFFFFF'] > td > div[align='center']")
-
-        @f = []
-        @g = []
-
-        @regular_selected.zip(1..@regular_selected.count).each do |regular, i|
-            @f.push(regular.text)
-            if i % 6 == 0 
-                @g.push(@f) 
-                @f = []
-            end
-        end 
+        @exam_selected = @page.css("td[width='27%']")     
         
 
         @days = []
