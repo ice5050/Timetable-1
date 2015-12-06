@@ -195,6 +195,10 @@ table td {
     text-align: left !important;
 }
 
+.social-share-button-facebook {
+    background: url();
+}
+
 @media screen and (max-device-width: 996px) {
     .on-mobile {
         display: block;

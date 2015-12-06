@@ -3,7 +3,7 @@
 <%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
 <%= link_to "LOGIN TO USE TABLE", new_user_session_path, class: "gototable bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
 
-
+<%= social_share_button_tag("cmutimetable", :url => "http://cmutimetable.herokuapp.com", :image => "assets/timetable.png", desc: "วางแผนตารางสอบล่วงหน้าก่อนลงทะเบียนจริง และ ลิ้งตารางสอบกลางภาค ปลายภาค", via: "Pondpaun7z", :popup => true) %>
 <br><br>
 <div class="block mdl-shadow--3dp">   
     <div class="divHeader mdl-shadow--3dp">
