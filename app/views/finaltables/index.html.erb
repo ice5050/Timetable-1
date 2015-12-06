@@ -1,5 +1,5 @@
 <h4>FINAL EXAM</h4>
-
+<%= @exam_selected.text.include? '208263' %>
 <%= link_to "Add Manually", edit_user_table_finaltable_path(@user, @table, @table), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %><br>
 <%= raw('<small><i class="glyphicon glyphicon-exclamation-sign"></i> MANUALLY IS THE MOST IMPORTANT </small>') if user_signed_in? and @user.id == current_user.id %>
 
@@ -49,7 +49,7 @@
     
                 <!-- regular exam -->
                 <% @regular.each do |regular| %>
-                    <% if regular.dateexam.split(' ')[1..2].join('') == a[0].gsub(' ', '') %> <!-- check day -->
+                    <% if @exam_selected.text.include? class_.subject_code and regular.dateexam.split(' ')[1..2].join('') == a[0].gsub(' ', '') %> <!-- check day -->
                         <% if (regular.dateexam.split(' ')[3][0..1] == '08' and @count == 0) or
                               (regular.dateexam.split(' ')[3][0..1] == '12' and @count == 1) or
                               (regular.dateexam.split(' ')[3][0..1] == '15' and @count == 2) %>
