@@ -46,16 +46,6 @@
                      <br>
                 <% end %>
 
-                <% @g.each do |b| %> 
-                    <% if not @is_shown.include? class_.subject_code %>
-                        <% if (class_.daily == 2 or class_.daily == 5) and b[0].to_s.strip == 'TuF'%>
-                            <% if class_.start == 0 and b[1].to_s.strip == '0800'%>
-                                <span class="text-regular"><%= class_.subject %><br></span>
-                                <% @is_shown.add(class_.subject_code) %>
-                            <% end %>
-                        <% end %>
-                    <% end %>    
-                <% end %>
     
                 <!-- regular exam -->
                 <% @regular.each do |regular| %>
