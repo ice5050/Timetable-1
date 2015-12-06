@@ -12,7 +12,10 @@ class TablesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @table = @user.tables.create(params_table)
-    redirect_to user_tables_path
+    @table2 = @user.tables.find(@table.id)
+    
+    redirect_to controller: 'classtables', action: 'index', table_id: @table.id
+
   end
 
   def edit

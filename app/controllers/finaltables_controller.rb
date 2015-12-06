@@ -23,6 +23,19 @@ class FinaltablesController < ApplicationController
         @day_selected = @page.css("td[width='19%']")
         @time_selected = @page.css("div[align='center']")
         @exam_selected = @page.css("td[width='27%']")
+        @regular_selected = @page.css("tr[bgcolor='#FFFFFF'] > td > div[align='center']")
+
+        @f = []
+        @g = []
+
+        @regular_selected.zip(1..@regular_selected.count).each do |regular, i|
+            @f.push(regular.text)
+            if i % 6 == 0 
+                @g.push(@f) 
+                @f = []
+            end
+        end 
+        
 
         @days = []
 
@@ -66,6 +79,8 @@ class FinaltablesController < ApplicationController
         @table = @user.tables.find(params[:table_id])
         @classes = @table.classtables.order("daily ASC, start ASC")
     end
+
+
 
 end
 
