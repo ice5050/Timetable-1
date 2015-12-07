@@ -10,10 +10,12 @@
 
     <%= f.label :semester %>
     <%= f.select :semester, (options_for_select([['1', 1], ['2', 2], ['Summer', 3]])), required: true %>
-    <%= f.submit "Sync From Reg.cmu", class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+    <%= f.submit "Sync From Reg.cmu", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
 <% end %>
-<small>Sync Timetable and Exam from Reg.cmu</small>
-<br><br>
+<small><i class="glyphicon glyphicon-exclamation-sign"></i> Sync Timetable and Exam from Reg.cmu</small>
+<br>
+<div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
+<br>
 
 <h3><i class="glyphicon glyphicon-calendar"></i> Planning Timetable</h3>
 <%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>

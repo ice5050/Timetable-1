@@ -48,6 +48,15 @@ $(document).ready(function() {
     })
 })
 
+$(document).ready(function() {
+    $('.sycn').click(function() {
+        $(".sycn").prop('disabled', false);
+        $('.sycn').removeClass('bg-blue');
+        $('.sycn').addClass('bg-silver'); 
+        $("#load").show(100);
+    })
+})
+
 
 $(document).ready(function() {
 
