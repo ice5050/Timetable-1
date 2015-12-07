@@ -8,7 +8,19 @@
 <br><br>
 
 <% if @error.size == 0 and @notfound.text.to_s.strip[0..-5].size == 0 %>
-    <%= @stu_data.text %>
+    <table class="table ">
+        <tr>
+            <td colspan="2">ข้อมูลนักศึกษา <br> Student Info</td>
+        </tr>
+        <tr>
+            <td><%= "รหัสนักศึกษา(Student ID)" %></td>
+            <td><%= @stu_data.text.strip[9..-1] %></td>
+        </tr>
+        <tr>
+            <td><%= "ชื่อนักศึกษา(Full Name)" %></td>
+            <td><%= @stu_data.text.strip[0..9] %></td>
+        </tr>
+    </table>
 
     <div class="pure-g text-center">    
         <div class="pure-u-2-24 bg-midnight"></div>
