@@ -19,9 +19,8 @@ class GeneratesController < ApplicationController
         begin
           file = open(url)
           doc = Nokogiri::HTML(file) do
-            # handle doc
+            
         
-
             @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/public/result.php?id=#{stu_id}"))   
             
             @subject_code_selected = @page.css("td[width='57'][bgcolor='#E3F1FF']")
@@ -145,11 +144,11 @@ class GeneratesController < ApplicationController
 
           end
         rescue OpenURI::HTTPError => e
-          if e.message == '404 Not Found'
-            @error = "no data in #{semester}/25#{year}"
-          else
-            raise e
-          end
+            if e.message == '404 Not Found'
+                @error = "no data in #{semester}/25#{year}"
+            else
+                raise e
+            end
         end
     end
 

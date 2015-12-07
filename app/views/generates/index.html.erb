@@ -1,4 +1,4 @@
-<%= @notfound.text.to_s.strip[0..-5] if @notfound.text.to_s.strip[0..-5].size > 0 %>
+<%= @notfound.text.to_s.strip[0..-5] if @notfound %>
 
 <% if @error.size > 0 %>
     <%= @error %>
