@@ -3,7 +3,7 @@
 <h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable <small class="beta">BETA</small></h3>
 <%= form_for :generate, url: generates_path do |f| %>
     <%= f.label :student_id %>
-    <%= f.text_field :stu_id, required: true, class: "student_id" %>
+    <%= f.text_field :stu_id, required: true, class: "student_id", maxlength: 9 %>
 
     <%= f.label :year %>
     <%= f.select :year, (options_for_select([['2558', 58]])), required: true %>
