@@ -5,15 +5,17 @@ class SearchController < ApplicationController
         require 'rubygems'
         require 'nokogiri'
 
+        @REQUEST_URL = ""
         if params[:user_id] and params[:table_id]
             @user = User.find(params[:user_id])
             @table = @user.tables.find(params[:table_id])
+            link = @table.semester.to_s + @table.year.to_s
+            @REQUEST_URL = "https://www3.reg.cmu.ac.th/regist#{link}/public/search.php"
+        else
+            @REQUEST_URL = "https://www3.reg.cmu.ac.th/regist258/public/search.php"
         end
 
         @td = 1
-
-        @REQUEST_URL = "https://www3.reg.cmu.ac.th/regist258/public/search.php"
-
         if session[:code].present?
             if session[:code].present? and session[:code]["code"].length == 3
                 op = "precourse"

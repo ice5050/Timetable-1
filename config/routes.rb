@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :generates
+
   resources :homepages
   resources :search
   resources :regularexams do

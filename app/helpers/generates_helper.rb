@@ -1,0 +1,2 @@
+module GeneratesHelper
+end

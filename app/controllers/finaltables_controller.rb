@@ -55,10 +55,11 @@ class FinaltablesController < ApplicationController
         @is_shown_manual = Set.new
 
         @classes.each do |class_|
-            if class_.dayFinal and class_.timeFinal
+            if class_.dayMidterm and class_.timeMidterm
                 @is_shown_manual.add(class_.subject_code)
             end
         end
+
     end
 
     def edit 
