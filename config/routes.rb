@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
 
   resources :generates
-
   resources :homepages
   resources :search
-  resources :regularexams do
-    member do
-      get 'copy'
-    end
-  end
+  resources :regularexams
 
   resources :settings do
     member do
