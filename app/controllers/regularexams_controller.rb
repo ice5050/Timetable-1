@@ -27,6 +27,12 @@ class RegularexamsController < ApplicationController
     redirect_to regularexams_path
   end
 
+  def destroy
+    @regular = Regularexam.find(params[:id])
+    @regular.destroy
+    redirect_to regularexams_path
+  end
+
   private
     def params_regular
         params.require(:regular).permit(:dayexam, :timeexam, :dateexam, :yearexam, :semesterexam, :ordered)

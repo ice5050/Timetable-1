@@ -8,8 +8,8 @@
             <td><%= regular.yearexam %></td>
             <td><%= regular.semesterexam %></td>
             <td><%= regular.dateexam %></td>
-            <td><%= link_to raw("<i class='glyphicon glyphicon-duplicate'></i>"), copy_regularexam_path(regular) %></td>
             <td><%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), edit_regularexam_path(regular) %></td>
+            <td><%= link_to "delete", regularexam_path(regular), method: :delete, data: { confirm: "DELETE?" } %></td>
         </tr>
     <% end %>
 </table>
