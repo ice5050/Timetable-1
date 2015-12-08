@@ -3,8 +3,6 @@ class RegularexamsController < ApplicationController
 
   def index
     @regulars = Regularexam.order("yearexam DESC, semesterexam DESC, ordered ASC")
-    @days = Day.order("id ASC")
-    @times = Timer.all
   end
 
   def new
