@@ -3,8 +3,8 @@
     <% @regulars.each do |regular| %>
         <tr>
             <td><%= regular.ordered %></td>
-            <td><%= regular.dayexam %> > <%= Day.find(regular.dayexam).day %></td>
-            <td><%= regular.timeexam %> > <%= Timer.find(regular.timeexam).time %></td>
+            <td><%= regular.dayexam %> </td>
+            <td><%= regular.timeexam %></td>
             <td><%= regular.yearexam %></td>
             <td><%= regular.semesterexam %></td>
             <td><%= regular.dateexam %></td>
