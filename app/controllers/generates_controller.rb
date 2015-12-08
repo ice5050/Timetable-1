@@ -5,10 +5,12 @@ class GeneratesController < ApplicationController
         require 'open-uri'       
         require 'net/http'
 
-        year = session[:data]["year"]
-        semester = session[:data]["semester"]
-        link = (semester + year).to_i
-        stu_id = session[:data]["stu_id"].to_i
+        unless session[:data] == nil
+            year = session[:data]["year"]
+            semester = session[:data]["semester"]
+            link = (semester + year).to_i
+            stu_id = session[:data]["stu_id"].to_i
+        end
 
         @i = 0
         @days = Day.order("id ASC")

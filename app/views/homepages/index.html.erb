@@ -1,9 +1,10 @@
 <h3 class="on-mobile"><i class="glyphicon glyphicon-phone"></i> MOBILE DEVICE <span class="beta">BETA</span></h3>
 
+<div class="sync-block"> 
 <h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable <small class="beta">BETA</small></h3>
 <%= form_for :generate, url: generates_path do |f| %>
-    <%= f.label :student_id %>
-    <%= f.text_field :stu_id, required: true, class: "student_id", maxlength: 9 %>
+    <label>Student ID</label>
+    <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true %>
 
     <%= f.label :year %>
     <%= f.select :year, (options_for_select([['2558', 58]])), required: true %>
@@ -13,13 +14,15 @@
     <%= f.submit "Sync From Reg.cmu", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
 <% end %>
 <small><i class="glyphicon glyphicon-exclamation-sign"></i> Sync Timetable and Exam from Reg.cmu</small>
-<br>
 <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
+</div>
+<br>
+
 <br>
 
 <h3><i class="glyphicon glyphicon-calendar"></i> Planning Timetable</h3>
-<%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
-<%= link_to "LOGIN TO USE TABLE", new_user_session_path, class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
+<%= link_to "GO TO PLANNIG TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
+<%= link_to "LOGIN TO USE PANNING TABLE", new_user_session_path, class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
 <br><br>
 
 <div class="share-button">
@@ -67,7 +70,7 @@
         <h4 class="txtHeader"> <i class="glyphicon glyphicon-time"></i> Update! </h4>
     </div><br>
     <h5 class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-bottom"></i> 7 December 2015</h5>
-    <div class="update-content">
+    <div class="update-content down">
         <ul class="text-left2"> 
             <li><h6>
                 <span class="label label-success">ADD</span> สามารถดูตารางเรียนและตารางสอบ ได้โดยใส่ รหัสนักศึกษา ปี และ ภาคเรียนได้แล้ว

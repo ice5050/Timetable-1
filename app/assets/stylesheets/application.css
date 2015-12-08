@@ -223,6 +223,10 @@ table td {
         text-align       : center;
     }
 
+    .sync-block {
+        width: 100%;
+    }
+
     .mdl-button {
         width: 80%;
         font-size: 28px !important;
@@ -242,16 +246,12 @@ table td {
         font-size: 18px;
     }
 
-    .txtFeature {
+    .block {
         width: 100%;
     }
 
-    .txtUpdate {
-        width: 100%;
-    }
-
-    .txtAboutWebsite {
-        width: 100%;
+    .txtHeader {
+        width: 100%
     }
 
     .update-header {

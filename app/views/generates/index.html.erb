@@ -1,3 +1,21 @@
+<div class="sync-block"> 
+    <h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable <small class="beta">BETA</small></h3>
+    <%= form_for :generate, url: generates_path do |f| %>
+        <label>Student ID</label>
+        <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true %>
+
+        <%= f.label :year %>
+        <%= f.select :year, (options_for_select([['2558', 58]])), required: true %>
+
+        <%= f.label :semester %>
+        <%= f.select :semester, (options_for_select([['1', 1], ['2', 2], ['Summer', 3]])), required: true %>
+        <%= f.submit "Sync From Reg.cmu", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+    <% end %>
+    <small><i class="glyphicon glyphicon-exclamation-sign"></i> Sync Timetable and Exam from Reg.cmu</small>
+    <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
+</div>
+<br>
+
 <%= @notfound.text.to_s.strip[0..-5] if @notfound %>
 
 <% if @error.size > 0 %>
@@ -5,9 +23,10 @@
 <% end %>
 <br><br>
 <%= link_to "BACK", homepages_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+<br><br>
 
 <% if @error.size == 0 and @notfound.text.to_s.strip[0..-5].size == 0 %>
-    <table class="table ">
+    <table class="table table-bordered">
         <tr>
             <td colspan="2">ข้อมูลนักศึกษา <br> Student Info</td>
         </tr>
@@ -19,7 +38,7 @@
             <td><%= "ชื่อนักศึกษา(Full Name)" %></td>
             <td><%= @stu_data.text.strip[0..9] %></td>
         </tr>
-    </table>
+    </table><br>
 
     <div class="pure-g text-center">    
         <div class="pure-u-2-24 bg-midnight"></div>
@@ -200,3 +219,4 @@
         <% end %>
     </table>
 <% end %>
+<% session.delete(:data) %>
