@@ -194,7 +194,7 @@ class ClasstablesController < ApplicationController
 
         def add_color
             # add color
-            @listColor = ["blue", "red", "green", "pink", "yellow","mint", "orange", "violet"]
+            @listColor = ["blue", "red", "green", "pink", "yellow", "mint", "pumpkin", "violet", "darkblue", "orange"]
             @colorUsed = []
             @choosed = false
 

@@ -1,3 +1,4 @@
+
 <div class="sync-block"> 
     <h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable <small class="beta">BETA</small></h3>
     <%= form_for :generate, url: generates_path do |f| %>
@@ -201,7 +202,7 @@
                                          (class_[3] == 'Th' and regular.dayexam == 5) or
                                          (class_[3] == 'Tu' and regular.dayexam == 3) or
                                          (class_[3] == 'Fr' and regular.dayexam == 6) or
-                                         (class_[3] == 'We' and regular.dayexam == 4)
+                                         (class_[3] == 'We' and regular.dayexam == 4) or
                                          (['MoTh', 'MTh', 'ThMo'].include?(class_[3]) and (regular.dayexam == 2 or regular.dayexam == 5)) or  
                                          (['TuFr', 'TuF', 'FrTu'].include?(class_[3]) and (regular.dayexam == 3 or regular.dayexam == 6))) and
                                         class_[4] == regular.timeexam %>
