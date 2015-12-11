@@ -28,9 +28,19 @@
         <li><i class='glyphicon glyphicon-edit'></i> Edit table</li>
         <li><i class='glyphicon glyphicon-trash'></i> Delete table</li>
     </ul>
-    
+<% else %>
+    <table class="table table-crop table-hover mdl-shadow--3dp">
+        <tr class="bg-midnight">
+            <td><strong>Table name</strong></td>
+            <td><strong>Year</strong></td>
+            <td><strong>Semester</strong></td>
+            <%= raw("<td><strong>Setting</strong></td>") if user_signed_in? and @user.id == current_user.id %>
+        </tr>
+        <tr>
+            <td colspan="4">NO TABLE</td>
+        </tr>
+    </table>
 <% end %>
 
 <%= link_to "NEW TABLE", new_user_table_path(current_user), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %>
-<%= link_to "BACK", homepages_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 

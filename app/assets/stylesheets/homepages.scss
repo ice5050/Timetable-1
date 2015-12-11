@@ -2,13 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.down {
-    display: block !important;
+
+body > div.container-fluid > div:nth-child(13) > div:nth-child(4) {
+    display: block;
 }
 
 .sync-block {
     background-color: #ecf0f1;
     padding: 10px;
+    padding-bottom: 31px;
     border-radius: 10px;
     width: 70%;
     margin: auto;

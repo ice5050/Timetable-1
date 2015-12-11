@@ -1,7 +1,7 @@
 <h3 class="on-mobile"><i class="glyphicon glyphicon-phone"></i> MOBILE DEVICE <span class="beta">BETA</span></h3>
 
 <div class="sync-block"> 
-<h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable <small class="beta">BETA</small></h3>
+<h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable with Reg.CMU <small class="beta">BETA</small></h3>
 <%= form_for :generate, url: generates_path do |f| %>
     <label>Student ID</label>
     <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true %>
@@ -11,14 +11,10 @@
 
     <%= f.label :semester %>
     <%= f.select :semester, (options_for_select([['1', 1], ['2', 2], ['Summer', 3]])), required: true %>
-    <%= f.submit "Sync From Reg.cmu", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+    <%= f.submit "Sync", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
 <% end %>
-<small><i class="glyphicon glyphicon-exclamation-sign"></i> Sync Timetable and Exam from Reg.cmu</small>
 <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
 </div>
-<br>
-
-<br>
 
 <h3><i class="glyphicon glyphicon-calendar"></i> Planning Timetable</h3>
 <%= link_to "GO TO PLANNIG TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
@@ -26,34 +22,24 @@
 <br><br>
 
 <div class="share-button">
-    <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://cmutimetable.herokuapp.com" data-text="วางแผนตารางเรียนก่อนลงทะเบียนจริง พร้อมลิ้งตารางสอบ" data-via="Pondpaun7z" data-size="small" data-related="pondpaun7z" data-hashtags="CMUTIMETABLE">Tweet</a>&nbsp;
+    <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://cmutimetable.herokuapp.com" data-text="วางแผนตารางเรียนก่อนลงทะเบียนจริง พร้อมลิงค์ตารางสอบ" data-via="Pondpaun7z" data-size="small" data-related="pondpaun7z" data-hashtags="CMUTIMETABLE">Tweet</a>&nbsp;
     <div class="fb-like" data-href="http://cmutimetable.herokuapp.com" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 </div>
 
 <br><br>
-<div class="block mdl-shadow--3dp">   
-    <div class="divHeader mdl-shadow--3dp">
-        <h4 class="txtHeader"> <i class="glyphicon glyphicon-education"></i> About Website</h4>
-    </div>
-    <div class="feature-content">
-        <ul class="text-left2 list-unstyled">
-            <li><h6> &emsp; เว็บไซต์นี้ ใช้ในการวางแผนการลงทะเบียนเรียนล่วงหน้าก่อนที่สำนักทะเบียนจะเปิดให้ลงทะเบียน และ สามารถดูตารางสอบกลางภาคและปลายภาคได้ โดยทางเว็บไซต์จะทำการดึงข้อมูลของทางเว็บสำนักทะเบียนมาประมวลผล</h6></li>
-        </ul>
-    </div> 
-</div>
-<br>
+
 <div class="block mdl-shadow--3dp">   
     <div class="divHeader mdl-shadow--3dp">
         <h4 class="txtHeader"> <i class="glyphicon glyphicon-star"></i> Feature</h4>
     </div>
     <div class="feature-content">
         <ul class="text-left2 "> 
-            <li><h6><span class="label label-info">COOL!</span> สามารถดูตารางเรียนและตารางสอบ ได้โดยใส่ รหัสนักศึกษา ปี และ ภาคเรียนได้แล้ว</h6></li>
-            <li><h6><span class="label label-info">COOL!</span> มีการ ลิ้ง ตารางสอบ Midterm/Final จาก reg.cmu</h6></li>
-            <li><h6><span class="label label-info">COOL!</span> สามารถค้นหารายวิชาที่เปิดสอนได้(2/2558)แล้วโดยกดรูป <i class="glyphicon glyphicon-search"></i> ที่มุมบนขวา</h6>
+            <li><h6><span class="label label-info">COOL!</span> สามารถดูตารางเรียนและตารางสอบ ได้โดยใส่ รหัสนักศึกษา ปี และ ภาคเรียนได้</h6></li>
+            <li><h6><span class="label label-info">COOL!</span> มีการลิงค์ ตารางสอบกลางภาคและ ปลายภาค จาก สำนักทะเบียน</h6></li>
+            <li><h6><span class="label label-info">COOL!</span> สามารถค้นหารายวิชาที่เปิดสอนได้โดยกดรูป <i class="glyphicon glyphicon-search"></i> ที่มุมบนขวา</h6>
                 <ul>
                     <li>โดยถ้า search จาก หน้า Homepage จะเป็นวิชาที่เปิดสอนในเทอมปัจจุบัน</li>
-                    <li>แต่ถ้า search จากหน้า Table จะเป็นวิชาที่เปิดสอนในปีนั้นตามปีและเทอมของตารางนั้น</li>
+                    <li>แต่ถ้า search จากหน้า Table จะเป็นวิชาที่เปิดสอนนตามปีและเทอมของตารางนั้น</li>
                 </ul>
             </li>
             <li><h6>
@@ -70,10 +56,10 @@
         <h4 class="txtHeader"> <i class="glyphicon glyphicon-time"></i> Update! </h4>
     </div><br>
     <h5 class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-bottom"></i> 7 December 2015</h5>
-    <div class="update-content down">
+    <div class="update-content">
         <ul class="text-left2"> 
             <li><h6>
-                <span class="label label-success">ADD</span> สามารถดูตารางเรียนและตารางสอบ ได้โดยใส่ รหัสนักศึกษา ปี และ ภาคเรียนได้แล้ว
+                <span class="label label-success">ADDED</span> สามารถดูตารางเรียนและตารางสอบ ได้โดยใส่ รหัสนักศึกษา ปี และ ภาคเรียนได้
             </h6></li>
         </ul>
     </div>
@@ -82,7 +68,7 @@
     <div class="update-content">
         <ul class="text-left2"> 
             <li><h6>
-                <span class="label label-success">ADD</span> สามารถเพิ่มตารางสอบที่นอกเหนือจากตารางได้แล้ว
+                <span class="label label-success">ADDED</span> สามารถเพิ่มตารางสอบที่นอกเหนือจากตารางได้แล้ว
             </h6></li>
         </ul>
     </div>
@@ -91,7 +77,7 @@
     <div class="update-content">
         <ul class="text-left2"> 
             <li><h6>
-                <span class="label label-success">ADD</span> สามารถค้นหารายวิชาที่เปิดสอนได้แล้วโดยกดรูป <i class="glyphicon glyphicon-search"></i> ที่มุมบนขวา
+                <span class="label label-success">ADDED</span> สามารถค้นหารายวิชาที่เปิดสอนได้แล้วโดยกดรูป <i class="glyphicon glyphicon-search"></i> ที่มุมบนขวา
                 <ul>
                     <li><h6>เมื่อ Search จากหน้า timetable มาช่องให้กรอกวิชาของตารางนั้นให้กรอกด้วย</h6></li>
                 </ul>
@@ -102,9 +88,9 @@
     <h5 class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-right"></i> 24 Novmber 2015</h5>
     <div class="update-content">
         <ul class="text-left2"> 
-            <li><h6><span class="label label-warning">CHANGE</span> เปลี่ยนรูปแบบหน้า homepage</h6></li>
-            <li><h6><span class="label label-success">ADD</span> เพิ่ม คำอธิบายของแต่ละ Icon ต่างๆ</h6></li>
-            <li><h6><span class="label label-success">ADD</span> เพิ่ม ตารางเรียนในหน้า Copy และ Edit</h6></li>
+            <li><h6><span class="label label-warning">CHANGED</span> เปลี่ยนรูปแบบหน้า homepage</h6></li>
+            <li><h6><span class="label label-success">ADDED</span> เพิ่ม คำอธิบายของแต่ละ Icon ต่างๆ</h6></li>
+            <li><h6><span class="label label-success">ADDED</span> เพิ่ม ตารางเรียนในหน้า Copy และ Edit</h6></li>
             <li><h6><span class="label label-info">INFO</span> ต้องกรอกข้อมูลการลงวิชาเรียนให้ครบและ ถูกต้องเท่านั้นถึงจะสามารถกด Save ได้</h6></li>
             <li><h6><span class="label label-info">INFO</span> เมื่อกด Save จะมี รูป Load ขึ้นมา</h6></li>
         </ul>
@@ -113,15 +99,15 @@
     <h5 class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-right"></i> 23 Novmber 2015</h5>
     <div class="update-content">
         <ul class="text-left2"> 
-            <li><h6><span class="label label-success">ADD</span> เพิ่ม ตาราง Final Regular exam 2/2558</h6></li>
-            <li><h6><span class="label label-info">INFO</span> ลิ้ง ตารางสอบปกติ Midterm/Final จาก reg.cmu</h6></li>
+            <li><h6><span class="label label-success">ADDED</span> เพิ่ม ตาราง Final Regular exam 2/2558</h6></li>
+            <li><h6><span class="label label-info">INFO</span> ลิงค์ ตารางสอบปกติ Midterm/Final จาก reg.cmu</h6></li>
         </ul>
     </div>
 
     <h5 class="update-header mdl-shadow--3dp"> <i class="glyphicon glyphicon-triangle-right"></i> 21 Novmber 2015</h5>
     <div class="update-content">
         <ul class="text-left2"> 
-            <li><h6><span class="label label-warning">CHANGE</span> เปลี่ยนรูป ปุ่มแก้ไข จาก <i class="glyphicon glyphicon-cog"></i> เป็น <i class="glyphicon glyphicon-edit"></i></h6></li>
+            <li><h6><span class="label label-warning">CHANGED</span> เปลี่ยนรูป ปุ่มแก้ไข จาก <i class="glyphicon glyphicon-cog"></i> เป็น <i class="glyphicon glyphicon-edit"></i></h6></li>
             <li><h6><span class="label label-info">INFO</span> สามารถ Copy class ไปวันอื่นได้ โดยไม่ต้อง กรอกใหม่ 
             โดยคลิกที่ class นั้นแล้ว กด <i class="glyphicon glyphicon-duplicate" style="color: #fff"></i></h6></li>
         </ul>
