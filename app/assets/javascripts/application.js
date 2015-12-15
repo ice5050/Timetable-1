@@ -13,8 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 // require turbolinks
-// require social-share-button
-// require material
 //= require_tree .
 
 $(document).ready(function() {
