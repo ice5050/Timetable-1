@@ -38,7 +38,6 @@ class SearchController < ApplicationController
     end
 
     def create
-
         if params[:user_id] and params[:table_id]
             @user = User.find(params[:user_id])
             @table = @user.tables.find(params[:table_id])
@@ -48,12 +47,11 @@ class SearchController < ApplicationController
             session[:code] = params_code
             redirect_to search_index_path
         end
-
-        
     end
 
     private
         def params_code
             params.require(:search).permit(:code)
         end
+
 end

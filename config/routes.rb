@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   
   resources :homepages
-  resources :search
+  resources :search 
   resources :regularexams
 
   resources :settings do
