@@ -17,9 +17,50 @@
 // require material
 //= require_tree .
 
-$(document).ready(function() {
+jQuery.adblock = false;
+(function($){
 
+    if ($.adblock === undefined){
+        $.adblock = true;
+    }
+
+    $.fn.showOnAdBlock = function(){
+
+        if($.adblock){
+            this.show();
+        }
+
+        return this;
+    };
+
+})(jQuery);
+
+$(function(){
+
+    if($.adblock){
+        $.confirm({
+            'title'     : 'Adblocker active!',
+            'message'   : 'You are running an ..',
+            'buttons'   : {
+                'I will!'   : {
+                    'class' : 'blue',
+                    'action': function(){
+                        // Do nothing
+                        return;
+                    }
+                },
+                'Never!'    : {
+                    'class' : 'gray',
+                    'action': function(){
+                        // Redirect to some page
+                        window.location = 'http://tutorialzine.com/';
+                    }
+                }
+            }
+        });
+    }
 });
+
 
 $(document).ready(function() {
     $('#new').click(function() {
