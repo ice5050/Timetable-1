@@ -22,7 +22,7 @@ $(document).ready(function() {
     $('#new').click(function() {
         $('this').hide();
         $('edit').show();
-    })
+    });
 });
 
 $(document).ready(function() {
@@ -45,8 +45,8 @@ $(document).ready(function() {
     $('.saveClass').click(function() {
         // $("#newClass").hide(100);
         $("#load").show(100);
-    })
-})
+    });
+});
 
 $(document).ready(function() {
     $('.sycn').click(function() {
@@ -54,8 +54,8 @@ $(document).ready(function() {
         $('.sycn').removeClass('bg-blue');
         $('.sycn').addClass('bg-silver'); 
         $("#load").show(100);
-    })
-})
+    });
+});
 
 
 $(document).ready(function() {
@@ -85,8 +85,8 @@ $(document).ready(function() {
         updateOpenCloseStatus();
         $(this).next('.update-content').show(200)
         $(this).find('i').addClass('glyphicon glyphicon-triangle-bottom');
-    })
-})
+    });
+});
 
 function updateOpenCloseStatus() {
     $('.update-header i').removeClass();
@@ -108,7 +108,7 @@ $(document).ready(function() {
     $('#sample6').focusout(function() {
         $('#search-hint').css("display", "none");
     });
-})
+});
 
 $(document).ready(function() {
     // if ($('.fixme').hasClass()) {
