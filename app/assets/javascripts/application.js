@@ -137,10 +137,12 @@ $(document).ready(function() {
             });
         }
     });
-})
+});
 
 
 jQuery(window).load(function () {
     $('#searching').hide(500);
 });
+
+
 
