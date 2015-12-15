@@ -30,6 +30,11 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#button-add').click(function() {
+        $("#newClass").toggle(100);
+    });
+});
 
 $(document).ready(function() {
     $('.alert').fadeOut(4000);
