@@ -1,6 +1,6 @@
 class RegularexamsController < ApplicationController
-  http_basic_authenticate_with name: "pondpaun7z", password: "0PP-7z-;"
-
+  before_action :require_login
+  
   def index
     @regulars = Regularexam.order("yearexam DESC, semesterexam DESC, ordered ASC")
   end
@@ -34,6 +34,12 @@ class RegularexamsController < ApplicationController
   private
     def params_regular
         params.require(:regular).permit(:dayexam, :timeexam, :dateexam, :yearexam, :semesterexam, :ordered)
+    end
+
+    def require_login
+      unless current_user.username == 'pondpaun7z'
+        redirect_to homepages_path
+      end
     end
 
 end

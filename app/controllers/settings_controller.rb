@@ -1,5 +1,6 @@
 class SettingsController < ApplicationController
-    http_basic_authenticate_with name: "pondpaun7z", password: "0PP-7z-;"
+    before_action :require_login
+
     def index
         @users = User.order("created_at ASC")
         @days = Day.order("id ASC")
@@ -33,5 +34,11 @@ class SettingsController < ApplicationController
 
         def params_time
             params.require(:time).permit(:time)
+        end
+
+        def require_login
+          unless current_user.username == 'pondpaun7z'
+            redirect_to homepages_path
+          end
         end
 end
