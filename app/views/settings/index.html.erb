@@ -3,11 +3,13 @@
     <tr>
         <td><strong>Username</strong></td>
         <td><strong>Number Table</strong></td>
+        <td><strong>created_at</strong></td>
     </tr>
     <% @users.each do |user| %>
         <tr>
             <td><%= link_to user.username, user_tables_path(user) %></td>
             <td><%= user.tables.count %></td>
+            <td><%= user.created_at %></td>
         </tr>
     <% end %>
 </table>
