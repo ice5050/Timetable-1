@@ -81,8 +81,6 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('#261115_show').show();
-
     $('.update-header').click(function() {
         updateOpenCloseStatus();
         $(this).next('.update-content').show(200)

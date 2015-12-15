@@ -42,7 +42,7 @@ class TablesController < ApplicationController
       @table = @user.tables.find(params[:id])
       @classes = @table.classtables.delete_all
 
-      redirect_to user_tables_path
+      redirect_to controller: 'classtables', action: 'index', table_id: @table.id
   end
 
   private

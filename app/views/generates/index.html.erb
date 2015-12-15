@@ -39,7 +39,9 @@
         </tr>
     </table>
 
-    <%= link_to "generate", create_table_generate_path(current_user) if user_signed_in? %>
+    <%= link_to "add this table to your table", create_table_generate_path(current_user), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? %>
+    <%= link_to "Login to add this table to your table", new_user_session_path, class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" unless user_signed_in? %><br>
+    <br>
 
     <div class="pure-g text-center">    
         <div class="pure-u-2-24 bg-midnight"></div>
@@ -222,6 +224,6 @@
         <% end %>
     </table>
 <% end %>
-<% session[:link] = (session[:data]["semester"] + session[:data]["year"]).to_i %>
-<% session[:stu_id] = (session[:data]["stu_id"]).to_i %>
+<% session[:link] = (session[:data]["semester"] + session[:data]["year"]).to_i if session[:data] %>
+<% session[:stu_id] = (session[:data]["stu_id"]).to_i if session[:data] %>
 <% session.delete(:data) %>
