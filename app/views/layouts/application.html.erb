@@ -5,6 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript"><!--
+  if(document.getElementsByTagName("iframe").item(0) == null)
+  {
+      document.write("TEXT TO DISPLAY IF ADBLOCK IS ACTIVE");
+  }
+  --></script>
   
   <!-- FONT -->
   <link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
@@ -119,50 +126,4 @@
 
 </script>
 
-<script type="text/javascript">
-  jQuery.adblock = false;
-(function($){
-
-    if ($.adblock === undefined){
-        $.adblock = true;
-    }
-
-    $.fn.showOnAdBlock = function(){
-
-        if($.adblock){
-            this.show();
-        }
-
-        return this;
-    };
-
-})(jQuery);
-
-$(function(){
-
-    if($.adblock){
-        $.confirm({
-            'title'     : 'Adblocker active!',
-            'message'   : 'You are running an ..',
-            'buttons'   : {
-                'I will!'   : {
-                    'class' : 'blue',
-                    'action': function(){
-                        // Do nothing
-                        return;
-                    }
-                },
-                'Never!'    : {
-                    'class' : 'gray',
-                    'action': function(){
-                        // Redirect to some page
-                        window.location = 'http://tutorialzine.com/';
-                    }
-                }
-            }
-        });
-    }
-});
-  
-</script>
 </html>
