@@ -49,7 +49,7 @@ $(document).ready(function() {
     $('.sycn').click(function() {
         // $(".sycn").prop('disabled', true);
         $('.sycn').removeClass('bg-blue');
-        $('.sycn').addClass('bg-silver'); 
+        $('.sycn').addClass('bg-silver');
         $("#load").show(100);
     });
 });
@@ -60,7 +60,7 @@ $(document).ready(function() {
     $('form').change(function() {
         if ($('#class_subject_code').val().length <= 0 ||
             $('#class_subject').val().length <= 0 ||
-            $('#class_room').val().length <= 0 || 
+            $('#class_room').val().length <= 0 ||
             $('#class_section').val().length <= 0) {
 
             $('.saveClass').prop('disabled', true);
@@ -68,7 +68,7 @@ $(document).ready(function() {
         } else if (parseInt($('#class_start').val()) >= parseInt($('#class_finish').val())) {
             $('#invalidTime').show(200);
             $('.saveClass').prop('disabled', true);
-            $('.saveClass').addClass('bg-silver'); 
+            $('.saveClass').addClass('bg-silver');
         } else {
             $('#invalidTime').hide(200);
             $('.saveClass').prop('disabled', false);
@@ -108,32 +108,31 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    // if ($('.fixme').hasClass()) {
-        var fixmeTop = $('.fixme').offset().top;     
-    // }
-    
+    if ($('.fixme').length > 0) {
+        var fixmeTop = $('.fixme').offset().top;
 
-    $(window).scroll(function() {                  // assign scroll event listener
-        
-        var currentScroll = $(window).scrollTop(); // get current position
+        $(window).scroll(function() {                  // assign scroll event listener
 
-        if (currentScroll >= fixmeTop) {           // apply position: fixed if you
-            $('.fixme').css({                      // scroll to that element or below it
-                position: 'fixed',
-                top: '0',
-                background: '#fff',
-                borderRadius: '0px 0px 10px 10px',
-                paddingRight: '10px',
-                paddingLeft: '10px',
-            });
-        } else {                                   // apply position: static
-            $('.fixme').css({                      // if you scroll above it
-                position: 'static',
-                background: '#fff',
-                padding: '0px',
-            });
-        }
-    });
+            var currentScroll = $(window).scrollTop(); // get current position
+
+            if (currentScroll >= fixmeTop) {           // apply position: fixed if you
+                $('.fixme').css({                      // scroll to that element or below it
+                    position: 'fixed',
+                    top: '0',
+                    background: '#fff',
+                    borderRadius: '0px 0px 10px 10px',
+                    paddingRight: '10px',
+                    paddingLeft: '10px',
+                });
+            } else {                                   // apply position: static
+                $('.fixme').css({                      // if you scroll above it
+                    position: 'static',
+                    background: '#fff',
+                    padding: '0px',
+                });
+            }
+        });
+    }
 });
 
 
