@@ -1,6 +1,6 @@
 
 <div class="sync-block"> 
-    <h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable <small class="beta">BETA</small></h3>
+    <h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable with Reg.CMU <small class="beta">BETA</small></h3>
     <%= form_for :generate, url: generates_path do |f| %>
         <label>Student ID</label>
         <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true %>
@@ -10,9 +10,8 @@
 
         <%= f.label :semester %>
         <%= f.select :semester, (options_for_select([['1', 1], ['2', 2], ['Summer', 3]])), required: true %>
-        <%= f.submit "Sync From Reg.cmu", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+        <%= f.submit "Sync", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
     <% end %>
-    <small><i class="glyphicon glyphicon-exclamation-sign"></i> Sync Timetable and Exam from Reg.cmu</small>
     <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
 </div>
 <br>
@@ -29,14 +28,14 @@
 <% if @error.size == 0 and @notfound.text.to_s.strip[0..-5].size == 0 %>
     <table class="table table-bordered">
         <tr>
-            <td colspan="2">Student Info</td>
+            <td colspan="2" class="info">Student Info</td>
         </tr>
         <tr>
-            <td>Student ID</td>
+            <td width="50%">Student ID</td>
             <td><%= @stu_data.text.strip[9..-1] %></td>
         </tr>
         <tr>
-            <td>Full name</td>
+            <td width="50%">Full name</td>
             <td><%= @stu_data.text.strip[0..9] %></td>
         </tr>
     </table><br>
@@ -123,6 +122,8 @@
         </table>
     <% end %>
 
+
+    <!-- MIDTERM -->
     <table class="table-finalexam table table-striped table-crop table-hover mdl-shadow--3dp"> 
         <caption>
             MIDTERM TABLE
@@ -131,10 +132,10 @@
             </span>
         </caption>
         <tr>
-            <td>DAY</td>
-            <td>08:00 - 11:00</td>
-            <td>12:00 - 15:00</td>
-            <td>15:30 - 18:30</td>
+            <td width="13%">DAY</td>
+            <td width="29%">08:00 - 11:00</td>
+            <td width="29%">12:00 - 15:00</td>
+            <td width="29%">15:30 - 18:30</td>
         </tr>
         <% @myexam_midterm.each_with_index do |a, index| %>
             <% if @count == 0 %> 
