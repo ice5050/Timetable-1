@@ -1,7 +1,7 @@
 // Place all the styles related to the homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+$font: 'Maven Pro', 'Kanit', sans-serif !important; 
 
 body > div.container-fluid > div:nth-child(13) > div:nth-child(4) {
     display: block;
@@ -34,20 +34,20 @@ body > div.container-fluid > div:nth-child(13) > div:nth-child(4) {
 }
 
 .ui-widget {
-    font-family: 'Maven Pro', sans-serif !important; 
+    font-family: $font; 
 }
 
 #accordion p ul li {
-    font-family: 'Maven Pro', sans-serif !important;    
+    font-family: $font;    
 }
 
 div.target p {
-    font-family: 'Maven Pro', sans-serif !important; 
+    font-family: $font; 
 }
 
 
 .update-header {
-    font-family: 'Maven Pro', sans-serif !important; 
+    font-family: $font; 
     background-color: #27ae60;
     color: #fff;
     border-radius: 10px;
@@ -71,7 +71,7 @@ div.target p {
 
 
 .feature-header {
-    font-family: 'Maven Pro', sans-serif !important; 
+    font-family: $font; 
     padding: 10px;
     border-radius: 10px;
     margin: auto;
@@ -85,7 +85,7 @@ div.target p {
 }
 
 .txtHeader {
-    font-family: 'Maven Pro', sans-serif !important; 
+    font-family: $font; 
     padding: 10px;
     border-radius: 10px;
     margin: auto;

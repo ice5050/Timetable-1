@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :generates
+  resources :generates do
+    member do 
+      get 'create_table'
+    end
+  end
+  
   resources :homepages
   resources :search
   resources :regularexams

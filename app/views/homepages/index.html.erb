@@ -1,7 +1,12 @@
 <h3 class="on-mobile"><i class="glyphicon glyphicon-phone"></i> MOBILE DEVICE <span class="beta">BETA</span></h3>
 
 <div class="sync-block"> 
-    <h3><i class="glyphicon glyphicon-refresh"></i> Sync Timetable with Reg.CMU <small class="beta">BETA</small></h3>
+    <h3>
+        <i class="glyphicon glyphicon-refresh"></i> Sync Timetable 
+        <span >with Reg.CMU</span>
+        <small class="beta">BETA</small>
+    </h3>
+
     <%= form_for :generate, url: generates_path do |f| %>
         <label>Student ID</label>
         <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true %>

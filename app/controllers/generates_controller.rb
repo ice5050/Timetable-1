@@ -1,4 +1,5 @@
 class GeneratesController < ApplicationController
+
     def index
         require 'rubygems'
         require 'nokogiri'
@@ -8,8 +9,8 @@ class GeneratesController < ApplicationController
         unless session[:data] == nil
             year = session[:data]["year"]
             semester = session[:data]["semester"]
-            link = (semester + year).to_i
-            stu_id = session[:data]["stu_id"].to_i
+            @link = (semester + year).to_i
+            @stu_id = session[:data]["stu_id"].to_i
         end
 
         @i = @count = 0
@@ -17,13 +18,13 @@ class GeneratesController < ApplicationController
         @times = Timer.all
         @error = ''
 
-        url = "https://www3.reg.cmu.ac.th/regist#{link}/public/result.php?id=#{stu_id}"
+        url = "https://www3.reg.cmu.ac.th/regist#{@link}/public/result.php?id=#{@stu_id}"
         begin
           file = open(url)
           doc = Nokogiri::HTML(file) do
             
         
-            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/public/result.php?id=#{stu_id}"))   
+            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{@link}/public/result.php?id=#{@stu_id}"))   
             
             @subject_code_selected = @page.css("td[width='57'][bgcolor='#E3F1FF']")
             @subject_selected = @page.css("td[width='157'][bgcolor='#E3F1FF']")
@@ -180,8 +181,8 @@ class GeneratesController < ApplicationController
                 index += 1
             end
             
-            @class = @class.sort {|a,b| a[4] <=> b[4]}            
-            
+            @class = @class.sort {|a,b| a[4] <=> b[4]}
+
             midterm_exam()
             final_exam()
 
@@ -201,6 +202,187 @@ class GeneratesController < ApplicationController
     def create
         session[:data] = params_info
         redirect_to generates_path
+    end
+
+    def create_table
+        require 'rubygems'
+        require 'nokogiri'
+        require 'open-uri'       
+        require 'net/http'
+
+        @i = @count = 0
+        @days = Day.order("id ASC")
+        @times = Timer.all
+        
+        @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{@link}/public/result.php?id=#{@stu_id}"))   
+        
+        @subject_code_selected = @page.css("td[width='57'][bgcolor='#E3F1FF']")
+        @subject_selected = @page.css("td[width='157'][bgcolor='#E3F1FF']")
+        @section_selected  = @page.css("td[width='35'][bgcolor='#FFFFFF']")
+        @days_selected  = @page.css("td[width='35'][bgcolor='#E3F1FF']")
+        @times_selected = @page.css("td[width='62'][bgcolor='#E3F1FF']")
+        @stu_data = @page.css("td[width='62%'][bgcolor='#FFEEFF']")
+        @notfound = @page.css("table[bordercolor='#FF0000']")
+
+        @subject_code_lab_selected = @page.css("td[width='57'][bgcolor='#FFF2E6']")
+        @subject_lab_selected = @page.css("td[width='157'][bgcolor='#FFF2E6']")
+        @section_lab_selected  = @page.css("td[width='35'][bgcolor='#FFFFFF']")
+        @days_lab_selected  = @page.css("td[width='35'][bgcolor='#FFF2E6']")
+        @times_lab_selected = @page.css("td[width='62'][bgcolor='#FFF2E6']")
+
+        index = 0
+        @class = []
+        @listColor = ["blue", "red", "green", "pink", "yellow", "mint", "pumpkin", "violet", "darkblue", "orange"]
+        @selected_color = []
+        
+        while index < @subject_code_selected.count do 
+            section = index * 2
+            if @days_selected[index].text.to_s.strip.length == 4
+                @start = Timer.find_by(time: (@times_selected[index].text[0..4].to_s.strip)).id
+                @finish = Timer.find_by(time: @times_selected[index].text[7..10].to_s.strip).id
+                @select_color = @listColor.select {|item| not @selected_color.include? item  }
+                @class.push([
+                        @subject_code_selected[index].text, 
+                        @subject_selected[index].text,
+                        @section_selected[section..section+1].text,
+                        @days_selected[index].text[0..1],
+                        @start,
+                        @finish,
+                        @select_color[0],
+                    ])
+
+                @start = Timer.find_by(time: (@times_selected[index].text[11..15].to_s.strip)).id
+                @finish = Timer.find_by(time: @times_selected[index].text[18..22].to_s.strip).id
+                @class.push([
+                        @subject_code_selected[index].text, 
+                        @subject_selected[index].text,
+                        @section_selected[section..section+1].text,
+                        @days_selected[index].text[2..3],
+                        @start,
+                        @finish,
+                        @select_color[0],
+                    ])
+                @selected_color.push(@select_color[0])
+                index += 1
+                next
+            elsif @days_selected[index].text.to_s.strip.length == 5
+                @start = Timer.find_by(time: (@times_selected[index].text[0..4].to_s.strip)).id
+                @finish = Timer.find_by(time: @times_selected[index].text[7..10].to_s.strip).id
+                @select_color = @listColor.select {|item| not @selected_color.include? item  }
+                @class.push([
+                        @subject_code_selected[index].text, 
+                        @subject_selected[index].text,
+                        @section_selected[section..section+1].text,
+                        @days_selected[index].text[0..2],
+                        @start,
+                        @finish,
+                        @select_color[0],
+                    ])
+
+                @start = Timer.find_by(time: (@times_selected[index].text[11..15].to_s.strip)).id
+                @finish = Timer.find_by(time: @times_selected[index].text[18..22].to_s.strip).id
+                @class.push([
+                        @subject_code_selected[index].text, 
+                        @subject_selected[index].text,
+                        @section_selected[section..section+1].text,
+                        @days_selected[index].text[3..5],
+                        @start,
+                        @finish,
+                        @select_color[0]
+                    ])
+                @selected_color.push(@select_color[0])
+                index += 1
+                next
+            end
+                
+
+            if Timer.find_by(time: (@times_selected[index].text[0..10][0..4].to_s.strip)) and 
+                Timer.find_by(time: @times_selected[index].text[0..10][7..10].to_s.strip)
+                @start = Timer.find_by(time: (@times_selected[index].text[0..10][0..4].to_s.strip)).id
+                @finish = Timer.find_by(time: @times_selected[index].text[0..10][7..10].to_s.strip).id
+                @select_color = @listColor.select {|item| not @selected_color.include? item  }
+                @class.push([
+                        @subject_code_selected[index].text, 
+                        @subject_selected[index].text,
+                        @section_selected[section..section+1].text,
+                        @days_selected[index].text,
+                        @start,
+                        @finish,
+                        @select_color[0]
+                    ])
+                @selected_color.push(@select_color[0])
+            end
+
+            index += 1
+        end
+
+        # LAB
+        index = 0
+        last = @subject_code_selected.count * 2
+        while index < @subject_code_lab_selected.count do 
+            if Timer.find_by(time: (@times_lab_selected[index].text[0..10][0..4].to_s.strip)) and 
+                Timer.find_by(time: @times_lab_selected[index].text[0..10][7..10].to_s.strip)
+                @start = Timer.find_by(time: (@times_lab_selected[index].text[0..10][0..4].to_s.strip)).id
+                @finish = Timer.find_by(time: @times_lab_selected[index].text[0..10][7..10].to_s.strip).id
+                section = last + (index * 2)
+
+                @class.each do |class_|
+                    if class_[0] == @subject_code_lab_selected[index].text.to_s.strip
+                        @select_color = class_[6..-1]
+                        break
+                    else
+                        @select_color = @listColor.select {|item| not @selected_color.include? item  }
+                    end
+                end
+
+                @class.push([
+                        @subject_code_lab_selected[index].text, 
+                        @subject_lab_selected[index].text,
+                        @section_lab_selected[section..section+1].text,
+                        @days_lab_selected[index].text,
+                        @start,
+                        @finish,
+                        @select_color[0]
+                    ])
+                @selected_color.push(@select_color[0])
+            end
+            index += 1
+        end
+        
+        @class = @class.sort {|a,b| a[4] <=> b[4]}
+
+        @user = User.find(current_user)
+        @table = @user.tables.create(name: "Sync with reg", semester: 1, year: 58)              
+        
+        @class.each do |class_|
+            class_[3] = class_[3].split /(?=[A-Z])/          
+
+            class_[3].each do |day|
+                if ['Mo', 'M'].include? day
+                    daily = 2
+                elsif ['Tu'].include? day 
+                    daily = 3
+                elsif ['We', 'W'].include? day
+                    daily = 4
+                elsif ['Th'].include? day
+                    daily = 5
+                elsif ['Fr', 'F'].include? day
+                    daily = 6
+                end    
+                
+                @table.classtables.create(subject_code: class_[0], 
+                                subject: class_[1], 
+                                section: class_[2], 
+                                room: '',
+                                daily: daily, 
+                                start: class_[4], 
+                                finish: class_[5],
+                                color: class_[6],
+                            )
+            end
+        end
+
+        redirect_to controller: 'classtables', action: 'index', user_id: @user.id, table_id: @table.id
     end
 
     private
@@ -286,5 +468,4 @@ class GeneratesController < ApplicationController
                 end
             end
         end    
-
 end
