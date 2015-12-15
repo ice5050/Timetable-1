@@ -9,8 +9,8 @@ class GeneratesController < ApplicationController
         unless session[:data] == nil
             year = session[:data]["year"]
             semester = session[:data]["semester"]
-            @link = (semester + year).to_i
-            @stu_id = session[:data]["stu_id"].to_i
+            link = (semester + year).to_i
+            stu_id = session[:data]["stu_id"].to_i
         end
 
         @i = @count = 0
@@ -18,13 +18,13 @@ class GeneratesController < ApplicationController
         @times = Timer.all
         @error = ''
 
-        url = "https://www3.reg.cmu.ac.th/regist#{@link}/public/result.php?id=#{@stu_id}"
+        url = "https://www3.reg.cmu.ac.th/regist#{link}/public/result.php?id=#{stu_id}"
         begin
           file = open(url)
           doc = Nokogiri::HTML(file) do
             
         
-            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{@link}/public/result.php?id=#{@stu_id}"))   
+            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/public/result.php?id=#{stu_id}"))   
             
             @subject_code_selected = @page.css("td[width='57'][bgcolor='#E3F1FF']")
             @subject_selected = @page.css("td[width='157'][bgcolor='#E3F1FF']")
@@ -213,8 +213,11 @@ class GeneratesController < ApplicationController
         @i = @count = 0
         @days = Day.order("id ASC")
         @times = Timer.all
+
+        link = session[:link]
+        stu_id = session[:stu_id]
         
-        @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{@link}/public/result.php?id=#{@stu_id}"))   
+        @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/public/result.php?id=#{stu_id}"))   
         
         @subject_code_selected = @page.css("td[width='57'][bgcolor='#E3F1FF']")
         @subject_selected = @page.css("td[width='157'][bgcolor='#E3F1FF']")
@@ -244,7 +247,7 @@ class GeneratesController < ApplicationController
                 @class.push([
                         @subject_code_selected[index].text, 
                         @subject_selected[index].text,
-                        @section_selected[section..section+1].text,
+                        @section_lab_selected[section].text + '-' + @section_lab_selected[section+1].text,
                         @days_selected[index].text[0..1],
                         @start,
                         @finish,
@@ -256,7 +259,7 @@ class GeneratesController < ApplicationController
                 @class.push([
                         @subject_code_selected[index].text, 
                         @subject_selected[index].text,
-                        @section_selected[section..section+1].text,
+                        @section_lab_selected[section].text + '-' + @section_lab_selected[section+1].text,
                         @days_selected[index].text[2..3],
                         @start,
                         @finish,
@@ -272,7 +275,7 @@ class GeneratesController < ApplicationController
                 @class.push([
                         @subject_code_selected[index].text, 
                         @subject_selected[index].text,
-                        @section_selected[section..section+1].text,
+                        @section_lab_selected[section].text + '-' + @section_lab_selected[section+1].text,
                         @days_selected[index].text[0..2],
                         @start,
                         @finish,
@@ -284,7 +287,7 @@ class GeneratesController < ApplicationController
                 @class.push([
                         @subject_code_selected[index].text, 
                         @subject_selected[index].text,
-                        @section_selected[section..section+1].text,
+                        @section_lab_selected[section].text + '-' + @section_lab_selected[section+1].text,
                         @days_selected[index].text[3..5],
                         @start,
                         @finish,
@@ -304,7 +307,7 @@ class GeneratesController < ApplicationController
                 @class.push([
                         @subject_code_selected[index].text, 
                         @subject_selected[index].text,
-                        @section_selected[section..section+1].text,
+                        @section_lab_selected[section].text + '-' + @section_lab_selected[section+1].text,
                         @days_selected[index].text,
                         @start,
                         @finish,
@@ -338,7 +341,7 @@ class GeneratesController < ApplicationController
                 @class.push([
                         @subject_code_lab_selected[index].text, 
                         @subject_lab_selected[index].text,
-                        @section_lab_selected[section..section+1].text,
+                        @section_lab_selected[section].text + '-' + @section_lab_selected[section+1].text,
                         @days_lab_selected[index].text,
                         @start,
                         @finish,
@@ -352,7 +355,7 @@ class GeneratesController < ApplicationController
         @class = @class.sort {|a,b| a[4] <=> b[4]}
 
         @user = User.find(current_user)
-        @table = @user.tables.create(name: "Sync with reg", semester: 1, year: 58)              
+        @table = @user.tables.create(name: "Sync id: #{stu_id}", semester: (link/100), year: link%100)              
         
         @class.each do |class_|
             class_[3] = class_[3].split /(?=[A-Z])/          
@@ -382,6 +385,8 @@ class GeneratesController < ApplicationController
             end
         end
 
+        session.delete(:link)
+        session.delete(:stu_id)
         redirect_to controller: 'classtables', action: 'index', user_id: @user.id, table_id: @table.id
     end
 

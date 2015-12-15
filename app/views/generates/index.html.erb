@@ -27,7 +27,7 @@
 <% if @error.size == 0 and @notfound.text.to_s.strip[0..-5].size == 0 %>
     <table class="table table-bordered">
         <tr>
-            <td colspan="2" class="info">Student Info</td>
+            <td colspan="2">Student Info</td>
         </tr>
         <tr>
             <td width="50%">Student ID</td>
@@ -222,4 +222,6 @@
         <% end %>
     </table>
 <% end %>
+<% session[:link] = (session[:data]["semester"] + session[:data]["year"]).to_i %>
+<% session[:stu_id] = (session[:data]["stu_id"]).to_i %>
 <% session.delete(:data) %>

@@ -103,11 +103,9 @@
                             <%= link_to raw("<i class='subject glyphicon glyphicon-edit'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
                             <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id if user_signed_in? and @user.id == current_user.id %>
                         </div>
-                        <p>
-                            <%= class_.subject %>
+                        <p class="responsive-text">
+                            <%= class_.subject %><br>
                         </p>
-
-                        
                     </div>                    
                     <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
                     <% break %>
@@ -138,7 +136,6 @@
 
 <% if !@classes.empty? %>
     <table class="table table-crop mdl-shadow--3dp"> 
-        <h2></h2>
         <tr class="bg-midnight">
             <td><strong>Subject code</strong></td>
             <td><strong>Subject</strong></td>
