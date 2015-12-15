@@ -17,6 +17,9 @@
 // require material
 //= require_tree .
 
+$(document).ready(function() {
+
+});
 
 $(document).ready(function() {
     $('#new').click(function() {
