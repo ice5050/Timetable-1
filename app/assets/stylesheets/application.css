@@ -17,6 +17,10 @@
  * require material
  */
 
+.responsive-text {
+    font-size: 100% !important;
+}
+
 .header-website {
     float: left;
     margin-top: 10px;
