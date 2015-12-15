@@ -5,6 +5,27 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+    $(function () {
+  if ($.adblock) {
+    $.confirm({
+      'title': 'You Are Using AdBlock or some other advert blocking software!',
+      'message': 'modification-blog.blogspot.com relies on advertising for revenue. Any small support from you would help us a lot to making this site lives longer and works better.<br/>\
+                  Please add modification-blog.blogspot.com to your ad blocking whitelist or disable ad blocking or use another browser without any adblocker when you visit modification-blog.blogspot.com<br/>\
+                  Thanks & Enjoy',
+      'buttons': {
+        'Yes, I Agree': {
+          'class': 'flat',
+          'action': function () {
+            window.location.reload(true);
+          }
+        }
+      }
+    });
+  }
+});
+  </script>
   
   <!-- FONT -->
   <link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
@@ -117,19 +138,6 @@
   ga('create', 'UA-71311903-1', 'auto');
   ga('send', 'pageview');
 
-</script>
-
-<script type="text/javascript">
-   window.onload = function() {
-        setTimeout(function() {
-          var ad = document.querySelector("ins.adsbygoogle");
-          if (ad && ad.innerHTML.replace(/\s/g, "").length == 0) {
-            ad.style.cssText = 'display:block !important';
-            ad.innerHTML = "You seem to blocking Google AdSense ads in your browser.";
-          }
-        }, 2000); 
-      }; 
-  
 </script>
 
 </html>
