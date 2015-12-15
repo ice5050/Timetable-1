@@ -18,7 +18,7 @@
  */
 
 .responsive-text {
-    font-size: 100% !important;
+    font-size: 90% !important;
 }
 
 .header-website {
@@ -298,4 +298,8 @@ table td {
     .table-name {
         font-size: 27px !important;   
     }
+
+    .responsive-text {
+    font-size: 60% !important;
+}
 }

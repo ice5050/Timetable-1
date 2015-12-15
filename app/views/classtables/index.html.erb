@@ -75,7 +75,9 @@
     <div class="pure-u-2-24 bg-midnight"></div>
     <% (8..18).each do |i| %>
         <div class="pure-u-2-24 bg-midnight">
-            <%= sprintf '%02d', i %>
+            <small class="responsive-text">
+                <%= sprintf '%02d', i %>
+            </small>
         </div>
     <% end %>
 </div>
@@ -83,8 +85,10 @@
     <div class="pure-u-2-24 bg-midnight"></div>
     <% (1..22).each do |i| %>
         <div class="pure-u-1-24 bg-midnight">
-            <%= 00 if i % 2 == 1 %>
-            <%= 30 if i % 2 == 0 %>
+            <small class="responsive-text">
+                <%= 00 if i % 2 == 1 %>
+                <%= 30 if i % 2 == 0 %>
+            </small>
         </div>
     <% end %>
 </div>
