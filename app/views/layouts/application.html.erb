@@ -6,7 +6,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% unless current_page?(controller: 'search') %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% end %>
   
   <!-- FONT -->
   <link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
@@ -62,11 +64,11 @@
           <li>
             <% if params[:table_id] %>
               <%= form_for :search, url: user_table_search_index_path do |f| %>
-                    <%= f.text_field :code, class: 'form-control', maxlength: 6, placeholder: "Search" %>
+                    <%= f.text_field :code, class: 'form-control', maxlength: 6, placeholder: "Ex: 204 or 204100" %>
               <% end %>
             <% else %>
               <%= form_for :search, url: search_index_path do |f| %>
-                <%= f.text_field :code, class: 'form-control', maxlength: 6, placeholder: "Search" %>
+                <%= f.text_field :code, class: 'form-control', maxlength: 6, placeholder: "Ex: 204 or 204100" %>
               <% end %>
             <% end %>
           </li>
