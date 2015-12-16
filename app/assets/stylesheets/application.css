@@ -307,16 +307,6 @@ table td {
         -webkit-padding-start:  0px;
         list-style: none;
     }
-
-    .nav-desktop {
-        display: none;
-    }
-
-    .nav-mobile {
-        display: block;
-    }
-
-
 }
 
 @media screen and (max-device-width: 740px) {
@@ -370,5 +360,15 @@ table td {
     .block, 
     .table-crop {
         width: 100% !important;
+    }
+}
+
+@media screen and (max-device-width: 320px) {
+    .nav-desktop {
+        display: block;
+    }
+
+    .nav-mobile {
+        display: none;
     }
 }
