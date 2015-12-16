@@ -50,7 +50,8 @@ $(document).ready(function() {
         // $(".sycn").prop('disabled', true);
         $('.sycn').removeClass('bg-blue');
         $('.sycn').addClass('bg-silver');
-        $("#load").show(100);
+        $('.glyphicon.glyphicon-refresh').addClass('rotating');
+        
     });
 });
 

@@ -5,8 +5,8 @@
 <div class="text-left">
     <h6 class="table-name">
         <i class="glyphicon glyphicon-triangle-right"></i>Timtable name: <%= @table.name %>
+        <%= @table.semester %>/25<%= @table.year %>
     </h6>
-    <h6 class="table-name"> <%= @table.semester %>/25<%= @table.year %></h6>
     <% if user_signed_in? %>
         <% if user_signed_in? and @user.id == current_user.id %>
             <button id="button-add" class="bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">ADD NEW CLASS</button>
@@ -139,6 +139,7 @@
 </ul>
 
 <% if !@classes.empty? %>
+    <div class="table-responsive">
     <table class="table table-crop mdl-shadow--3dp"> 
         <tr class="bg-midnight">
             <td><strong>Subject code</strong></td>
@@ -161,4 +162,5 @@
             </tr>
         <% end %>        
     </table>
+     </div>
 <% end %>

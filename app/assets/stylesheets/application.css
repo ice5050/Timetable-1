@@ -13,9 +13,13 @@
  *
  *= require_tree .
  *= require_self
- *= require social-share-button
- * require material
+ *= require animate
  */
+
+
+.rotating {
+    transform: rotate(1turn);
+}
 
 .responsive-text {
     font-size: 90% !important;
@@ -221,8 +225,12 @@ table td {
         display: block;
     }
 
+    h1, h2, h3, h4, h5, h6, h5 {
+        font-size: 100% !important;
+    }
+
     body {
-        font-size: 26px !important;
+        /*font-size: 26px !important;*/
         text-align: center !important;
     }
     .container-fluid {
@@ -236,16 +244,13 @@ table td {
     }
 
     .mdl-button {
-        width: 80%;
-        font-size: 28px !important;
+        display: block;
+        width: 100%;
+        /*font-size: 28px !important;*/
         border-radius: 10px !important;
         margin: 5px auto !important;
-        height: auto !important;
-        padding: 10px !important;
-    }
-
-    .table-crop {
-        width: 100% !important;
+        /*height: auto !important;*/
+        /*padding: 10px !important;*/
     }
 
     .new-update {
@@ -254,16 +259,13 @@ table td {
         font-size: 18px;
     }
 
-    .block {
-        width: 100%;
-    }
-
-    .txtHeader {
-        width: 100%
-    }
-
-    .update-header {
-        width: 100%;
+    .divHeader, 
+    .txtHeader,
+    .feature-content, 
+    .update-content, 
+    .block, 
+    .table-crop {
+        width: 100% !important;
     }
 
     .list-inline {
@@ -271,21 +273,21 @@ table td {
     }
 
     .list-inline > li {
+        display: block !important;
+        /*font-size: 20px !important;*/
+    }
+
+    /*.list-inline > li i {
         display: inline !important;
         font-size: 20px !important;
     }
-
-    .list-inline > li i {
-        display: inline !important;
-        font-size: 20px !important;
-    }
-
+*/
     
     .text-left {
         text-align: center !important;
     }
  
-    .pure-menu ul {
+    /*.pure-menu ul {
         font-size: 25px !important;
     }
     
@@ -295,9 +297,15 @@ table td {
 
     .table-name {
         font-size: 27px !important;   
-    }
+    }*/
 
     .responsive-text {
         font-size: 60% !important;
     }
+
+    .text-left2 {
+        -webkit-padding-start:  0px;
+        list-style: none;
+    }
+
 }

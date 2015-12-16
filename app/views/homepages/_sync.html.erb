@@ -1,0 +1,24 @@
+
+<div class="sync-block "> 
+    <h3>
+        <i class="glyphicon glyphicon-refresh"></i> Sync Timetable 
+        <span >with Reg.CMU</span>
+        <small class="beta">BETA</small>
+    </h3>
+
+    <%= form_for :generate, url: generates_path do |f| %>
+        <label>Student ID</label>
+        <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true %>
+
+        <%= f.label :year %>
+        <%= f.select :year, (options_for_select([['2558', 58]])), required: true %>
+
+        <%= f.label :semester %>
+        <%= f.select :semester, (options_for_select([['1', 1], ['2', 2], ['Summer', 3]])), required: true %>
+        <%= f.submit "Sync", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+    <% end %>
+    <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
+</div>
+
+
+
