@@ -363,12 +363,3 @@ table td {
     }
 }
 
-@media screen and (max-device-width: 320px) {
-    .nav-desktop {
-        display: block;
-    }
-
-    .nav-mobile {
-        display: none;
-    }
-}

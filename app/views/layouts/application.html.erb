@@ -9,6 +9,23 @@
   <% unless current_page?(controller: 'search') %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <% end %>
+
+
+  <% if current_page?(controller: 'search') %>
+    <style type="text/css" media="screen">
+      
+    
+      @media screen and (max-device-width: 320px) {
+      .nav-desktop {
+          display: block;
+      }
+
+      .nav-mobile {
+          display: none;
+      }
+    }
+    </style>
+  <% end %> 
   
   <!-- FONT -->
   <link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
