@@ -344,10 +344,6 @@ table td {
         font-size: 200% !important;
     }
 
-    #generate_year, #generate_semester {
-        width: 30% !important;
-    }
-
     .student_id {
         width: 70% !important
     }
