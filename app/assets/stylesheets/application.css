@@ -219,6 +219,9 @@ table td {
 .share-button {
     display: -webkit-inline-box;    
 }
+.pure-menu-list  {
+    width: 100%;
+}
 
 @media screen and (max-device-width: 996px) {
     .on-mobile {
@@ -246,11 +249,9 @@ table td {
     .mdl-button {
         display: block;
         width: 100%;
-        /*font-size: 28px !important;*/
+        font-size: 120% !important;
         border-radius: 10px !important;
         margin: 5px auto !important;
-        /*height: auto !important;*/
-        /*padding: 10px !important;*/
     }
 
     .new-update {
@@ -262,6 +263,7 @@ table td {
     .divHeader, 
     .txtHeader,
     .feature-content, 
+    .update-header,
     .update-content, 
     .block, 
     .table-crop {
@@ -274,7 +276,22 @@ table td {
 
     .list-inline > li {
         display: block !important;
-        /*font-size: 20px !important;*/
+    }
+
+    .pure-menu-horizontal {
+        white-space: normal !important;
+        text-align: center !important;
+    }
+
+    .pure-menu-item {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .header-website  {
+        float: none;
+        margin: 0px;
+        font-size: 200% !important;
     }
 
     /*.list-inline > li i {
