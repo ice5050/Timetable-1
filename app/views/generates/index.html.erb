@@ -117,102 +117,107 @@
 
 
     <!-- MIDTERM -->
-    <table class="table-finalexam table table-striped table-crop table-hover mdl-shadow--3dp"> 
-        <caption>
-            MIDTERM TABLE
-            <span class="pull-right"> 
-                <i class="text-final glyphicon glyphicon-stop"></i> MIDTERM TABLE
-            </span>
-        </caption>
-        <tr>
-            <td width="13%">DAY</td>
-            <td width="29%">08:00 - 11:00</td>
-            <td width="29%">12:00 - 15:00</td>
-            <td width="29%">15:30 - 18:30</td>
-        </tr>
-        <% @myexam_midterm.each_with_index do |a, index| %>
-            <% if @count == 0 %> 
-                <tr> 
-                <td> <%= a[0] %> </td>
-            <% end %>
-            <td>
-            <% @class.each do |class_| %>
-                <% if not @is_shown.include? class_[0] and 
-                      a[1].include? class_[0] %>
-                     <sapn class="text-final"><%= class_[1] %></sapn>
-                     <% @is_shown.add(class_[0]) %>
-                     <br>
+    <div class="table-responsive">
+        <span class="table-respon-hint"> <-- Use scroll bar--> </span>
+        <table class="table-finalexam table table-striped table-crop table-hover mdl-shadow--3dp"> 
+            <caption>
+                MIDTERM TABLE
+                <span class="pull-right"> 
+                    <i class="text-final glyphicon glyphicon-stop"></i> MIDTERM TABLE
+                </span>
+            </caption>
+            <tr>
+                <td width="13%">DAY</td>
+                <td width="29%">08:00 - 11:00</td>
+                <td width="29%">12:00 - 15:00</td>
+                <td width="29%">15:30 - 18:30</td>
+            </tr>
+            <% @myexam_midterm.each_with_index do |a, index| %>
+                <% if @count == 0 %> 
+                    <tr> 
+                    <td> <%= a[0] %> </td>
                 <% end %>
-            <% end %>
-            </td>
-            <% @count += 1 %>
-            <% @count = 0 if @count == 3 %>
-            <% if @count == 0 %> </tr> <% end %>
-        <% end %>
-    </table>
-
-
-
-    <% @count = 0 %>
-    <% @is_shown = Set.new %>
-    <table class="table-finalexam table table-striped table-crop table-hover mdl-shadow--3dp"> 
-        <caption>
-            FINAL TABLE
-            <span class="pull-right"> 
-                <i class="text-final glyphicon glyphicon-stop"></i> FINAL TABLE
-                <i class="text-regular glyphicon glyphicon-stop"></i> REGULAR EXAM
-            </span>
-        </caption>
-        <tr>
-            <td>DAY</td>
-            <td>08:00 - 11:00</td>
-            <td>12:00 - 15:00</td>
-            <td>15:30 - 18:30</td>
-        </tr>
-        <% @myexam_final.each_with_index do |a, index| %>
-            <% if @count == 0 %> 
-                <tr> 
-                <td class="finalexam-td"><%= a[0] %>
-            <% end %>
-            <td>
+                <td>
                 <% @class.each do |class_| %>
-                    <!-- final table -->
-                    <% if not @is_shown.include?(class_[0]) and  a[1].include?(class_[0]) %>
-                        <span class="text-final"><%= class_[1] %></span>
+                    <% if not @is_shown.include? class_[0] and 
+                          a[1].include? class_[0] %>
+                         <sapn class="text-final"><%= class_[1] %></sapn>
                          <% @is_shown.add(class_[0]) %>
                          <br>
                     <% end %>
-
-        
-                    <!-- regular exam -->
-                    <% @regular.each do |regular| %>
-                        <% if not @exam_selected.text.include? class_[0] and regular.dateexam.split(' ')[1..2].join('') == a[0].gsub(' ', '') %> <!-- check day -->
-                            <% if (regular.dateexam.split(' ')[3][0..1] == '08' and @count == 0) or
-                                  (regular.dateexam.split(' ')[3][0..1] == '12' and @count == 1) or
-                                  (regular.dateexam.split(' ')[3][0..1] == '15' and @count == 2) %>
-
-                                <% if not @is_shown.include? class_[0] and 
-                                        ((class_[3] == 'Mo' and regular.dayexam == 2) or
-                                         (class_[3] == 'Th' and regular.dayexam == 5) or
-                                         (class_[3] == 'Tu' and regular.dayexam == 3) or
-                                         (class_[3] == 'Fr' and regular.dayexam == 6) or
-                                         (class_[3] == 'We' and regular.dayexam == 4) or
-                                         (['MoTh', 'MTh', 'ThMo'].include?(class_[3]) and (regular.dayexam == 2 or regular.dayexam == 5)) or  
-                                         (['TuFr', 'TuF', 'FrTu'].include?(class_[3]) and (regular.dayexam == 3 or regular.dayexam == 6))) and
-                                        class_[4] == regular.timeexam %>
-                                    <span class="text-regular"><%= class_[1] %><br></span>
-                                    <% @is_shown.add(class_[0]) %>
-                                <% end %>           
-                            <% end %>   
-                        <% end %>   
-                    <% end %>
                 <% end %>
-            </td>
-            <% @count += 1 %>
-            <% @count = 0 if @count == 3 %>
-            <% if @count == 0 %> </tr> <% end %>
-        <% end %>
-    </table>
+                </td>
+                <% @count += 1 %>
+                <% @count = 0 if @count == 3 %>
+                <% if @count == 0 %> </tr> <% end %>
+            <% end %>
+        </table>
+    </div>
+
+    <% @count = 0 %>
+    <% @is_shown = Set.new %>
+
+    <div class="table-responsive">
+        <span class="table-respon-hint"> <-- Use scroll bar--> </span>
+        <table class="table-finalexam table table-striped table-crop table-hover mdl-shadow--3dp"> 
+            <caption>
+                FINAL TABLE
+                <span class="pull-right"> 
+                    <i class="text-final glyphicon glyphicon-stop"></i> FINAL TABLE
+                    <i class="text-regular glyphicon glyphicon-stop"></i> REGULAR EXAM
+                </span>
+            </caption>
+            <tr>
+                <td>DAY</td>
+                <td>08:00 - 11:00</td>
+                <td>12:00 - 15:00</td>
+                <td>15:30 - 18:30</td>
+            </tr>
+            <% @myexam_final.each_with_index do |a, index| %>
+                <% if @count == 0 %> 
+                    <tr> 
+                    <td class="finalexam-td"><%= a[0] %>
+                <% end %>
+                <td>
+                    <% @class.each do |class_| %>
+                        <!-- final table -->
+                        <% if not @is_shown.include?(class_[0]) and  a[1].include?(class_[0]) %>
+                            <span class="text-final"><%= class_[1] %></span>
+                             <% @is_shown.add(class_[0]) %>
+                             <br>
+                        <% end %>
+
+            
+                        <!-- regular exam -->
+                        <% @regular.each do |regular| %>
+                            <% if not @exam_selected.text.include? class_[0] and regular.dateexam.split(' ')[1..2].join('') == a[0].gsub(' ', '') %> <!-- check day -->
+                                <% if (regular.dateexam.split(' ')[3][0..1] == '08' and @count == 0) or
+                                      (regular.dateexam.split(' ')[3][0..1] == '12' and @count == 1) or
+                                      (regular.dateexam.split(' ')[3][0..1] == '15' and @count == 2) %>
+
+                                    <% if not @is_shown.include? class_[0] and 
+                                            ((class_[3] == 'Mo' and regular.dayexam == 2) or
+                                             (class_[3] == 'Th' and regular.dayexam == 5) or
+                                             (class_[3] == 'Tu' and regular.dayexam == 3) or
+                                             (class_[3] == 'Fr' and regular.dayexam == 6) or
+                                             (class_[3] == 'We' and regular.dayexam == 4) or
+                                             (['MoTh', 'MTh', 'ThMo'].include?(class_[3]) and (regular.dayexam == 2 or regular.dayexam == 5)) or  
+                                             (['TuFr', 'TuF', 'FrTu'].include?(class_[3]) and (regular.dayexam == 3 or regular.dayexam == 6))) and
+                                            class_[4] == regular.timeexam %>
+                                        <span class="text-regular"><%= class_[1] %><br></span>
+                                        <% @is_shown.add(class_[0]) %>
+                                    <% end %>           
+                                <% end %>   
+                            <% end %>   
+                        <% end %>
+                    <% end %>
+                </td>
+                <% @count += 1 %>
+                <% @count = 0 if @count == 3 %>
+                <% if @count == 0 %> </tr> <% end %>
+            <% end %>
+        </table>
+    </div>
 <% end %>
 <% session[:link] = (session[:data]["semester"] + session[:data]["year"]).to_i if session[:data] %>
 <% session[:stu_id] = (session[:data]["stu_id"]).to_i if session[:data] %>

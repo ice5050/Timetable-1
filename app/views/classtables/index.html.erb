@@ -139,28 +139,29 @@
 </ul>
 
 <% if !@classes.empty? %>
+    <span class="table-respon-hint"> <-- Use scroll bar--> </span>
     <div class="table-responsive">
-    <table class="table table-crop mdl-shadow--3dp"> 
-        <tr class="bg-midnight">
-            <td><strong>Subject code</strong></td>
-            <td><strong>Subject</strong></td>
-            <td><strong>Room</strong></td>
-            <td><strong>Section</strong></td>
-            <td><strong>Day</strong></td>
-            <td><strong>Start</strong></td>
-            <td><strong>Finish</strong></td>
-        </tr>
-        <% @classes.each do |class_| %>
-            <tr class="detail color-<%= class_.color %>">
-                <td><%= class_.subject_code %></td>
-                <td><%= class_.subject %></td>
-                <td><%= class_.room %></td>
-                <td><%= class_.section %></td>
-                <td><%= Day.find(class_.daily).day %></td>
-                <td><%= Timer.find(class_.start).time %></td>
-                <td><%= Timer.find(class_.finish).time %></td>
+        <table class="table table-crop mdl-shadow--3dp"> 
+            <tr class="bg-midnight">
+                <td><strong>Subject code</strong></td>
+                <td><strong>Subject</strong></td>
+                <td><strong>Room</strong></td>
+                <td><strong>Section</strong></td>
+                <td><strong>Day</strong></td>
+                <td><strong>Start</strong></td>
+                <td><strong>Finish</strong></td>
             </tr>
-        <% end %>        
-    </table>
+            <% @classes.each do |class_| %>
+                <tr class="detail color-<%= class_.color %>">
+                    <td><%= class_.subject_code %></td>
+                    <td><%= class_.subject %></td>
+                    <td><%= class_.room %></td>
+                    <td><%= class_.section %></td>
+                    <td><%= Day.find(class_.daily).day %></td>
+                    <td><%= Timer.find(class_.start).time %></td>
+                    <td><%= Timer.find(class_.finish).time %></td>
+                </tr>
+            <% end %>        
+        </table>
      </div>
 <% end %>

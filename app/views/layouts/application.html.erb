@@ -35,46 +35,47 @@
 
 </head>
 <body>
-  <div class="container-fluid">
-    <nav class="nav-mobile navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to raw('<h3 class="header-website">CMU Timetale</h3>'), homepages_path %>
-    </div>
+  <nav class="nav-mobile navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to raw('<h3 class="header-website">CMU Timetale</h3>'), homepages_path %>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <% if user_signed_in? %>
-          <li><%= current_user.username %></li>
-          <li><%= link_to raw("<i class='glyphicon glyphicon-cog'></i> Edit profile"), edit_user_registration_path %></li>
-          <li><%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><i class="glyphicon glyphicon-log-in"></i> <%= link_to "Login", new_user_session_path %></li>
-        <% end %>
-        <li>
-          <% if params[:table_id] %>
-            <%= form_for :search, url: user_table_search_index_path do |f| %>
-                  <%= f.text_field :code %>
-            <% end %>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><%= current_user.username %></li>
+            <li><%= link_to raw("<i class='glyphicon glyphicon-cog'></i> Edit profile"), edit_user_registration_path %></li>
+            <li><%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <%= form_for :search, url: search_index_path do |f| %>
-              <%= f.text_field :code %>
-            <% end %>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><i class="glyphicon glyphicon-log-in"></i> <%= link_to "Login", new_user_session_path %></li>
           <% end %>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+          <li>
+            <% if params[:table_id] %>
+              <%= form_for :search, url: user_table_search_index_path do |f| %>
+                    <%= f.text_field :code, class: 'form-control', maxlength: 6, placeholder: "Search" %>
+              <% end %>
+            <% else %>
+              <%= form_for :search, url: search_index_path do |f| %>
+                <%= f.text_field :code, class: 'form-control', maxlength: 6, placeholder: "Search" %>
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="container-fluid">
+    
     <div class="nav-desktop pure-menu pure-menu-horizontal text-right">
       <ul class="pure-menu-list">
           <li class="pure-menu-item pull-left"><%= link_to raw('<h3 class="header-website">CMU Timetale</h3>'), homepages_path %></li>

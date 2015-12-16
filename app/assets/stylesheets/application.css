@@ -18,11 +18,19 @@
 
 
 .nav-mobile {
-    display: none
+    display: none;
+}
+
+.navbar {
+    margin-bottom: 0px !important;
 }
 
 .responsive-text {
     font-size: 90% !important;
+}
+
+.table-respon-hint {
+    display: none;
 }
 
 .header-website {
@@ -208,14 +216,6 @@ table td {
     text-align: left !important;
 }
 
-.social-share-button-facebook {
-    display: inline-block;    
-    width: 100px !important;
-    height: 60px !important;
-    background-size:contain;
-    background: url('http://bitcoin-catcher.com/wp-content/uploads/2015/09/facebook-share-button.png') no-repeat !important;
-}
-
 .share-button {
     display: -webkit-inline-box;    
 }
@@ -228,6 +228,10 @@ table td {
         display: block;
     }
 
+    .table-respon-hint {
+       display: block;
+    }
+
     h1, h2, h3, h4, h5, h6, h5 {
         font-size: 100% !important;
     }
@@ -236,14 +240,11 @@ table td {
         /*font-size: 26px !important;*/
         text-align: center !important;
     }
+
     .container-fluid {
         width            : 100%;
         background-color : #fff;
         text-align       : center;
-    }
-
-    .sync-block {
-        width: 100%;
     }
 
     .mdl-button {
@@ -260,6 +261,15 @@ table td {
         font-size: 18px;
     }
 
+     #generate_year, #generate_semester {
+        width: 30% !important;
+    }
+
+    .student_id {
+        width: 70% !important
+    }    
+
+    .sync-block,
     .divHeader, 
     .txtHeader,
     .feature-content, 
@@ -278,25 +288,11 @@ table td {
         display: block !important;
     }
 
-/*    .pure-menu-horizontal {
-        white-space: normal !important;
-        text-align: center !important;
-    }
-
-    .pure-menu-item {
-        display: block !important;
-        width: 100% !important;
-    }
-*/
     .header-website  {
         margin-top: 6px;
         margin-bottom: 6px;
         margin-left: 12px;
         font-size: 150% !important;
-    }
-
-    .text-crop {
-        height: 50px !important;
     }
 
     .text-left {
@@ -311,6 +307,7 @@ table td {
         -webkit-padding-start:  0px;
         list-style: none;
     }
+
 }
 
 @media screen and (max-device-width: 740px) {
@@ -321,6 +318,10 @@ table td {
     .nav-mobile {
         display: block;
     }
+
+    .table-respon-hint {
+       display: block;
+    }
 }
 
 @media screen and (max-width: 740px) {
@@ -330,5 +331,39 @@ table td {
 
     .nav-mobile {
         display: block;
+    }
+
+    .container-fluid {
+        width: 100%
+    }
+
+    .header-website  {
+        margin-top: 6px;
+        margin-bottom: 6px;
+        margin-left: 15px;
+        font-size: 200% !important;
+    }
+
+    #generate_year, #generate_semester {
+        width: 30% !important;
+    }
+
+    .student_id {
+        width: 70% !important
+    }
+
+    .table-respon-hint {
+       display: block;
+    }
+
+    .sync-block,
+    .divHeader, 
+    .txtHeader,
+    .feature-content, 
+    .update-header,
+    .update-content, 
+    .block, 
+    .table-crop {
+        width: 100% !important;
     }
 }

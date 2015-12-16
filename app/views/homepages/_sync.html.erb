@@ -7,8 +7,8 @@
     </h3>
 
     <%= form_for :generate, url: generates_path do |f| %>
-        <label>Student ID</label>
-        <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true %>
+        <label class="label_stu_id">Student ID</label>
+        <%= f.text_field :stu_id, class: "student_id", maxlength: 9, autofocus: true, placeholder: "Student ID" %>
 
         <%= f.label :year %>
         <%= f.select :year, (options_for_select([['2558', 58]])), required: true %>
