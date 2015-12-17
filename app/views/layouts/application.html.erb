@@ -76,7 +76,7 @@
             <li><%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Sign up", new_user_registration_path %></li>
-            <li><i class="glyphicon glyphicon-log-in"></i> <%= link_to "Login", new_user_session_path %></li>
+            <li><%= link_to raw("<i class='glyphicon glyphicon-log-in'></i> Login"), new_user_session_path %></li>
           <% end %>
           <li>
             <% if params[:table_id] %>
