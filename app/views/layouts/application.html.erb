@@ -6,12 +6,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-  <% unless current_page?(controller: 'search') %>
+  <% unless current_page?(controller: '/search') %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <% end %>
 
 
-  <% if current_page?(controller: 'search') %>
+  <% if current_page?(controller: '/search') %>
     <style type="text/css" media="screen">
       
     
