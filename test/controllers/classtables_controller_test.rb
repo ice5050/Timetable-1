@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ClasstablesControllerTest < ActionController::TestCase
-
+  
   setup do
     @user = users(:guest)
     @table = tables(:table_1)

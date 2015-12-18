@@ -42,5 +42,5 @@
     </table>
 <% end %>
 <br>
-<%= link_to "NEW TABLE", new_user_table_path(current_user), id: "newclass", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %>
+<%= link_to "NEW TABLE", new_user_table_path(current_user), id: "newtable", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %>
 

@@ -7,6 +7,7 @@ table_1:
     year: 58
     semester: 1
 
-two:
-  name: MyString
-  user: 
+table_new:
+    name: "cmutimetable"
+    year: 58
+    semester: 1
