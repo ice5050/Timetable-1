@@ -13,13 +13,13 @@ class ClasstablesController < ApplicationController
     end
 
     def new
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.new
     end
 
     def create
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.new(params_class)
         @addComplete = false
@@ -35,7 +35,7 @@ class ClasstablesController < ApplicationController
     end
 
     def edit
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
 
@@ -43,7 +43,6 @@ class ClasstablesController < ApplicationController
         @classes = @table.classtables.order("daily ASC, start ASC")
 
         @i = 1
-        
     end
 
     def update

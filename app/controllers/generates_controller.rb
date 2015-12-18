@@ -376,7 +376,7 @@ class GeneratesController < ApplicationController
                 @table.classtables.create(subject_code: class_[0], 
                                 subject: class_[1], 
                                 section: class_[2], 
-                                room: '',
+                                room: '-',
                                 daily: daily, 
                                 start: class_[4], 
                                 finish: class_[5],

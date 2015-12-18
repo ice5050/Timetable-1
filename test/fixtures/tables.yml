@@ -1,8 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  user: 
+table_1:
+    id: 1
+    user_id: 2
+    name: "cmutimetable"
+    year: 58
+    semester: 1
 
 two:
   name: MyString

@@ -1,8 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  subject: MyString
-  table: 
+classtable_1:
+    id: 1
+    user_id: 2
+    table_id: 1
+    subject_code: "204217"
+    subject: "rubyonrail"  
+    daily: 1
+    start: 1
+    finish: 2
 
 two:
   subject: MyString

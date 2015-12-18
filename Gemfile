@@ -46,6 +46,7 @@ gem "animate-rails"
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'debugger'
+  gem 'capybara'
 end
 
 group :development do

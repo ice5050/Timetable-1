@@ -1,4 +1,5 @@
 class TablesController < ApplicationController
+  
   def index
     @user = User.find(params[:user_id])
     @tables = @user.tables.order("created_at DESC")
