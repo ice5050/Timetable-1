@@ -1,4 +1,4 @@
-<h4>FINAL EXAM</h4>
+<h3><i class="glyphicon glyphicon-book"></i> FINAL EXAM</h3>
 
 <%= link_to "Add Manually", edit_user_table_finaltable_path(@user, @table, @table), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %><br>
 <%= raw('<small><i class="glyphicon glyphicon-exclamation-sign"></i> MANUALLY IS THE MOST IMPORTANT </small>') if user_signed_in? and @user.id == current_user.id %>

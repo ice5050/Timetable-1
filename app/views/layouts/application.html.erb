@@ -76,11 +76,11 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li><%= current_user.username %></li>
+            <li><%= link_to current_user.username, user_tables_path(current_user) %></li>
             <li><%= link_to raw("<i class='glyphicon glyphicon-cog'></i> Edit profile"), edit_user_registration_path %></li>
             <li><%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to raw("<i class='glyphicon glyphicon-user'></i> Sign up"), new_user_registration_path %></li>
             <li><%= link_to raw("<i class='glyphicon glyphicon-log-in'></i> Login"), new_user_session_path %></li>
           <% end %>
           <li>
@@ -103,7 +103,7 @@
     <div class="nav-desktop pure-menu pure-menu-horizontal text-right">
       <ul class="pure-menu-list">
           <li class="pure-menu-item pull-left"><%= link_to raw('<h3 class="header-website">CMU Timetale</h3>'), homepages_path %></li>
-            <li class="pure-menu-item">
+            <li class="pure-menu-item pull-left">
               <% if params[:table_id] %>
                 <%= form_for :search, url: user_table_search_index_path do |f| %>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
@@ -133,14 +133,14 @@
               <% end %>
             </li>
         <% if user_signed_in? %>
-          <li class="pure-menu-item">Logged in as <strong><%= current_user.username %></strong>.</li>
-          <li class="pure-menu-item">
-            <i class="glyphicon glyphicon-cog"></i> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | 
-            <i class="glyphicon glyphicon-log-out"></i> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+          <li class="pure-menu-item header-status"><%= link_to current_user.username, user_tables_path(current_user) %></li>
+          <li class="pure-menu-item header-status">
+            <%= link_to raw("<i class='glyphicon glyphicon-cog'></i> Edit profile"), edit_user_registration_path, :class => 'navbar-link' %> | 
+            <%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
           </li>
         <% else %>
-          <li class="pure-menu-item"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>
-          <li class="pure-menu-item"><i class="glyphicon glyphicon-log-in"></i> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+          <li class="pure-menu-item header-status"><%= link_to raw("<i class='glyphicon glyphicon-user'></i> Sign up"), new_user_registration_path, :class => 'navbar-link'  %> |</li>
+          <li class="pure-menu-item header-status"><%= link_to raw("<i class='glyphicon glyphicon-log-in'></i> Login"), new_user_session_path, :class => 'navbar-link'  %></li>
         <% end %>
       </ul>
     </div>

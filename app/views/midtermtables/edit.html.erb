@@ -1,31 +1,30 @@
-<h4>ADD MIDTERM EXAM MANUALLY</h4>
+<h4><i class="glyphicon glyphicon-plus-sign"></i> ADD MIDTERM EXAM MANUALLY</h4>
 
-<table class="table">
 <% @classes.each do |class_| %>
     <% unless @is_shown.include? class_.subject_code %>
         <%= form_for :exam, url: update_exam_midterm_user_table_classtable_path(@user, @table, class_) do |f| %>
-            <tr>
-                <td><%= class_.subject_code %></td>
-                <td><%= class_.subject %></td>
-                <td><%= f.label :Day_exam %>: </td>
-                <td>
-                    <%= f.text_field :dayMidterm, placeholder: "Ex. MAY02", class: "form-control", :required => true unless class_.dayMidterm %>
+            <div class="row">
+                <div class="col-lg-1"><%= class_.subject_code %></div>
+                <div class="col-lg-3"><%= class_.subject %></div>
+                <div class="col-lg-3">
+                    <%= f.text_field :dayMidterm, placeholder: "DAY EXAM: Ex. MAY02", class: "form-control", :required => true unless class_.dayMidterm %>
                     <%= f.text_field :dayMidterm, value: class_.dayMidterm, class: "form-control", :required => true if class_.dayMidterm %>
-                </td>
-                <td><%= f.label :Time_exam %></td>
-                <td>
-                    <%= f.text_field :timeMidterm, placeholder: "Ex. 08:00-11:00", class: "form-control", :required => true unless class_.timeMidterm %>
+                </div>
+                <div class="col-lg-3">
+                    <%= f.text_field :timeMidterm, placeholder: "TIME EXAM Ex. 08:00-11:00", class: "form-control", :required => true unless class_.timeMidterm %>
                     <%= f.text_field :timeMidterm, value: class_.timeMidterm, class: "form-control", :required => true if class_.timeMidterm %>
-                </td>
-                <td><%= f.submit "SAVE", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
-                <td><%= link_to "DELETE MANUAL", clear_manual_midterm_user_table_classtable_path(@user, @table, class_), class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
-            </tr>
+                </div>
+                <div class="col-lg-2">
+                    <%= f.submit "SAVE", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>                
+                    <%= link_to "CLEAR", clear_manual_midterm_user_table_classtable_path(@user, @table, class_), class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+                </div>
+            </div>
         <% end %>
         <% @is_shown.add(class_.subject_code) %>
     <% end %>
 <% end %>
-</table>
 
+<hr>
 <%= link_to "BACK", :back, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 
 

@@ -1,6 +1,4 @@
-<h3>
-    <i class="glyphicon glyphicon-blackboard"></i> TABLE    
-</h3>
+<h3><i class="glyphicon glyphicon-blackboard"></i> TABLE</h3>
 
 <% if @tables.count > 0 %>
     <table class="table table-crop table-hover mdl-shadow--3dp">
@@ -43,4 +41,5 @@
 <% end %>
 <br>
 <%= link_to "NEW TABLE", new_user_table_path(current_user), id: "newtable", class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %>
+<%= link_to "BACK", homepages_path, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 

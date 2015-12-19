@@ -2,17 +2,21 @@
 
 <%= render 'sync' %>
 
-<h3><i class="glyphicon glyphicon-calendar"></i> Planning Timetable</h3>
-<%= link_to "GO TO PLANNIG TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
-<%= link_to "LOGIN TO USE PANNING TABLE", new_user_session_path, class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
-<br><br>
-
 <div class="share-button">
     <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://cmutimetable.herokuapp.com" data-text="วางแผนตารางเรียนก่อนลงทะเบียนจริง พร้อมลิงค์ตารางสอบ" data-via="Pondpaun7z" data-size="small" data-related="pondpaun7z" data-hashtags="CMUTIMETABLE">Tweet</a>&nbsp;
     <div class="fb-like" data-href="http://cmutimetable.herokuapp.com" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-</div>
+</div><br><br>
 
-<br><br>
+<div class="block mdl-shadow--3dp">   
+    <div class="divHeader mdl-shadow--3dp">
+        <h4 class="txtHeader">
+            <i class="glyphicon glyphicon-calendar"></i> Planning Timetable
+        </h4>
+    </div>
+    <br>
+    <%= link_to "GO TO PLANNIG TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
+    <%= link_to "LOGIN TO USE PANNING TABLE", new_user_session_path, class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
+</div><br>
 
 <div class="block mdl-shadow--3dp">   
     <div class="divHeader mdl-shadow--3dp">

@@ -1,10 +1,10 @@
 
-<div class="sync-block "> 
-    <h3>
+<div class="sync-block mdl-shadow--3dp"> 
+    <h4>
         <i class="glyphicon glyphicon-refresh"></i> Sync Timetable 
         <span >with Reg.CMU</span>
         <small class="beta">BETA</small>
-    </h3>
+    </h4>
 
     <%= form_for :generate, url: generates_path do |f| %>
         <label class="label_stu_id">Student ID</label>
@@ -18,7 +18,7 @@
         <%= f.submit "Sync", class: "sycn bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
     <% end %>
     <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
-</div>
+</div><br>
 
 
 
