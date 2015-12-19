@@ -34,6 +34,31 @@
     font-size: 90% !important;
 }
 
+.pure2table {
+    display: table !important;
+    width: 70%;
+    margin: auto;
+}
+
+.pure2table-row {
+    display: table-row-group !important;
+}
+
+.pure2table-cell {
+    height: 50px !important;
+    display: table-cell !important;
+    vertical-align: middle !important;
+    border: 1px solid #dddddd
+}
+
+.pure-g {
+    letter-spacing: normal !important; 
+}
+
+.bg-gray {
+    background-color: #F9F9F9;
+}
+
 .table-respon-hint {
     display: none;
 }
