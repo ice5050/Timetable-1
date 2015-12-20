@@ -61,7 +61,7 @@
     <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
 <% end %>
 
-<div class="pure2table-classtable">
+<div class="responsive-text pure2table-classtable">
     <div class="pure2table-caption">
         <small><i class="glyphicon glyphicon-exclamation-sign"></i> Click class for edit</small>
         <small><i class='glyphicon glyphicon-duplicate'></i> Copy class to other</small>
@@ -93,7 +93,7 @@
 </div>
 
 <% @days.each do |day| %>
-    <div class="pure-g text-center mdl-shadow--3dp">    
+    <div class="responsive-text pure-g text-center mdl-shadow--3dp">    
         <div class="text-crop pure-u-2-24 bg-midnight">
             <p class="text-center"><%= day.day %></p>
         </div>
@@ -138,7 +138,7 @@
 </ul>
 
 <% if !@classes.empty? %>
-    <div class="pure2table mdl-shadow--3dp">
+    <div class="responsive-text pure2table mdl-shadow--3dp">
         <div class="pure2table-row pure-g bg-midnight">
             <div class="pure2table-cell pure-u-3-24"><strong>Subject code</strong></div>
             <div class="classtable-detail pure2table-cell pure-u-6-24"><strong>Subject</strong></div>
