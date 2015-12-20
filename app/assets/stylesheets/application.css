@@ -402,7 +402,6 @@ table td {
 }
 
 .btn > span {
-  padding:14px 18px 16px;
   white-space:nowrap;
   color:#FFF;
   background:#b8b8b8
@@ -421,7 +420,6 @@ table td {
   position:relative;
   width:36px;
   text-align:center;
-  font-size:1.50em;
   color:#fff;
   background:#212121
 }
