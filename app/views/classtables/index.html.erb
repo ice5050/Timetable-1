@@ -93,7 +93,7 @@
 </div>
 
 <% @days.each do |day| %>
-    <div class="responsive-text pure-g text-center mdl-shadow--3dp">    
+    <div class="pure-g text-center mdl-shadow--3dp">    
         <div class="text-crop pure-u-2-24 bg-midnight">
             <p class="text-center"><%= day.day %></p>
         </div>
@@ -140,23 +140,23 @@
 <% if !@classes.empty? %>
     <div class="responsive-text pure2table mdl-shadow--3dp">
         <div class="pure2table-row pure-g bg-midnight">
-            <div class="pure2table-cell pure-u-3-24"><strong>Subject code</strong></div>
-            <div class="classtable-detail pure2table-cell pure-u-6-24"><strong>Subject</strong></div>
-            <div class="pure2table-cell pure-u-3-24"><strong>Room</strong></div>
-            <div class="pure2table-cell pure-u-3-24"><strong>Section</strong></div>
-            <div class="pure2table-cell pure-u-3-24"><strong>Day</strong></div>
-            <div class="pure2table-cell pure-u-3-24"><strong>Start</strong></div>
-            <div class="pure2table-cell pure-u-3-24"><strong>Finish</strong></div>
+            <div class="pure2table-cell-classtable pure-u-3-24"><strong>Subject code</strong></div>
+            <div class="classtable-detail pure2table-cell-classtable pure-u-6-24"><strong>Subject</strong></div>
+            <div class="pure2table-cell-classtable pure-u-3-24"><strong>Room</strong></div>
+            <div class="pure2table-cell-classtable pure-u-3-24"><strong>Section</strong></div>
+            <div class="pure2table-cell-classtable pure-u-3-24"><strong>Day</strong></div>
+            <div class="pure2table-cell-classtable pure-u-3-24"><strong>Start</strong></div>
+            <div class="pure2table-cell-classtable pure-u-3-24"><strong>Finish</strong></div>
         </div>
         <% @classes.each do |class_| %>
             <div class="pure2table-row pure-g color-<%= class_.color %>">
-                <div class="pure2table-cell pure-u-3-24"><%= class_.subject_code %></div>
-                <div class="classtable-detail pure2table-cell pure-u-6-24"><%= class_.subject %></div>
-                <div class="pure2table-cell pure-u-3-24"><%= class_.room %></div>
-                <div class="pure2table-cell pure-u-3-24"><%= class_.section %></div>
-                <div class="pure2table-cell pure-u-3-24"><%= Day.find(class_.daily).day[0..2] %></div>
-                <div class="pure2table-cell pure-u-3-24"><%= Timer.find(class_.start).time %></div>
-                <div class="pure2table-cell pure-u-3-24"><%= Timer.find(class_.finish).time %></div>
+                <div class="pure2table-cell-classtable pure-u-3-24"><%= class_.subject_code %></div>
+                <div class="classtable-detail pure2table-cell-classtable pure-u-6-24"><%= class_.subject %></div>
+                <div class="pure2table-cell-classtable pure-u-3-24"><%= class_.room %></div>
+                <div class="pure2table-cell-classtable pure-u-3-24"><%= class_.section %></div>
+                <div class="pure2table-cell-classtable pure-u-3-24"><%= Day.find(class_.daily).day[0..2] %></div>
+                <div class="pure2table-cell-classtable pure-u-3-24"><%= Timer.find(class_.start).time %></div>
+                <div class="pure2table-cell-classtable pure-u-3-24"><%= Timer.find(class_.finish).time %></div>
             </div>
         <% end %>        
     </div>

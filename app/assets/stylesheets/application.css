@@ -35,6 +35,10 @@
     line-height: 15px;
 }
 
+.responsive-text i{
+    font-size: 90% !important;
+}
+
 .pure2table {
     display: table !important;
     width: 70%;
