@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class RegularexamsControllerTest < ActionController::TestCase
-  test "should get index" do
+    
+    test "should get index" do
         @user = users(:admin)
         sign_in :user, @user 
 
