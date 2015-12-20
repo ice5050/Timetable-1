@@ -302,9 +302,10 @@ table td {
     }
 
     .student_id {
-        width: 70% !important
+        width: 80% !important
     }    
 
+    .pure2table,
     .alert,
     .sync-block,
     .divHeader, 
@@ -343,10 +344,6 @@ table td {
     .text-left2 {
         -webkit-padding-start:  0px;
         list-style: none;
-    }
-    
-    .pure2table {
-        width: 100%;
     }
 }
 
