@@ -256,6 +256,10 @@ table td {
         display: none !important;
     }
 
+    .pure2table-caption {
+        font-size: 80%;
+    }
+
     .on-mobile {
         display: block;
     }

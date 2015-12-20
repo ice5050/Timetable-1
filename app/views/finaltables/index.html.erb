@@ -3,7 +3,7 @@
 <%= link_to "Add Manually", edit_user_table_finaltable_path(@user, @table, @table), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %><br>
 <%= raw('<small><i class="glyphicon glyphicon-exclamation-sign"></i> MANUALLY IS THE MOST IMPORTANT </small>') if user_signed_in? and @user.id == current_user.id %>
 
-<div class="pure2table mdl-shadow--3dp">
+<div class="responsive-text pure2table mdl-shadow--3dp">
     <div class="pure2table-caption">
         <i class="text-manual glyphicon glyphicon-stop"></i> MANUALLY
         <i class="text-final glyphicon glyphicon-stop"></i> FINAL TABLE
@@ -68,7 +68,7 @@
 
 <% unless @is_shown_manual.empty? %>
     <span>FINAL EXAM (day and time besides a top table)</span>
-    <div class="pure2table">
+    <div class="responsive-text pure2table">
         <div class="pure2table-row pure-g bg-midnight">
             <div class="pure2table-cell pure-u-3-12">Subject code</div>
             <div class="pure2table-cell pure-u-3-12">Subject</div>
@@ -78,7 +78,7 @@
             
         <% @classes.each do |class_| %>
             <% if not @is_shown.include? class_.subject_code and @is_shown_manual.include? class_.subject_code and class_.dayFinal and class_.timeFinal%>
-                <div class="pure2table-row pure-g">
+                <div class="responsive-text pure2table-row pure-g">
                     <div class="pure2table-cell pure-u-3-12"><%= class_.subject_code%></div>
                     <div class="pure2table-cell pure-u-3-12"><%= class_.subject %></div>
                     <div class="pure2table-cell pure-u-3-12"><%= class_.dayFinal %></div>
