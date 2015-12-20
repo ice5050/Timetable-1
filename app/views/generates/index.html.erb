@@ -21,11 +21,11 @@
         </tr>
         <tr>
             <td width="50%">Student ID</td>
-            <td><%= @stu_data.text.strip[9..-1] %></td>
+            <td><%= @stu_data.text.strip[0..9] %></td>
         </tr>
         <tr>
             <td width="50%">Full name</td>
-            <td><%= @stu_data.text.strip[0..9] %></td>
+            <td><%= @stu_data.text.strip[9..-1] %></td>
         </tr>
     </table>
 
@@ -69,7 +69,7 @@
                                      (['MoTh', 'MTh', 'ThMo'].include?(class_[3]) and (day.id == 2 or day.id == 5)) or  
                                      (['TuFr', 'TuF', 'FrTu'].include?(class_[3]) and (day.id == 3 or day.id == 6))) do %>
                    <% if class_[4] == @i %>
-                        <div class="target color-<%= class_[6] %> pure-u-<%= class_[5] - class_[4] %>-24 text-crop">
+                        <div class="color-<%= class_[6] %> pure-u-<%= class_[5] - class_[4] %>-24 text-crop">
                             <small class="responsive-text">
                                 <%= class_[1] %><br>
                                 <%= class_[0] %><br>

@@ -1,0 +1,63 @@
+<div class="pure-g text-center">    
+    <div class="pure-u-2-24 bg-midnight"></div>
+    <% (8..18).each do |i| %>
+        <div class="pure-u-2-24 bg-midnight">
+            <small class="responsive-text">
+                <%= sprintf '%02d', i %>
+            </small>
+        </div>
+    <% end %>
+</div>
+
+<div class="pure-g text-center">    
+    <div class="pure-u-2-24 bg-midnight"></div>
+    <% (1..22).each do |i| %>
+        <div class="pure-u-1-24 bg-midnight">
+            <small class="responsive-text">
+                <%= 00 if i % 2 == 1 %>
+                <%= 30 if i % 2 == 0 %>
+            </small>
+        </div>
+    <% end %>
+</div>
+
+<% @days.each do |day| %>
+    <div class="pure-g text-center">    
+        <div class="text-crop pure-u-2-24 bg-midnight">
+            <p class="text-center"><%= day.day %></p>
+        </div>
+        <% @classes.each do |class_| %> 
+            <% while @i <= 22 and class_.daily == day.id do %>
+                <% if class_.start == @i %>
+                    <div class="<%= p 'target' if current_page?(controller: 'classtables', action: 'index') %> text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
+                        <% if current_page?(controller: 'classtables', action: 'index') %>
+                            <div class="tool-class">
+                                <%= link_to raw("<i class='subject glyphicon glyphicon-trash'></i>"), user_table_classtable_path(current_user, @table, class_), method: :delete, data: { confirm: "OK?" } if user_signed_in? and @user.id == current_user.id %>
+                                <%= link_to raw("<i class='subject glyphicon glyphicon-edit'></i>"), edit_user_table_classtable_path(current_user, @table, class_) if user_signed_in? and @user.id == current_user.id %>
+                                <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id if user_signed_in? and @user.id == current_user.id %>
+                            </div>
+                        <% end %>
+                        <p class="responsive-text">
+                            <%= class_.subject %>
+                        </p>
+                    </div>                    
+                    <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
+                    <% break %>
+                <% else %>
+                    <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
+                                            <%= 'bg-silver' if day.id % 2 == 1 %>">                    
+                        <% @i += 1 %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+
+        <% while @i <= 22 do %>
+            <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
+                                    <%= 'bg-silver' if day.id % 2 == 1 %>">                    
+                <% @i += 1 %>
+            </div>
+        <% end %>
+    </div>
+    <% @i = 1 %>
+<% end %><br>

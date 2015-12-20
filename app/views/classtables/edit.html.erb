@@ -39,37 +39,4 @@
     <%= f.submit "EDIT", class: "saveClass bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 <% end %>
 
-<% @days.each do |day| %>
-    <div class="pure-g text-center mdl-shadow--3dp">    
-        <div class="text-crop pure-u-2-24 bg-midnight">
-            <p class="text-center"><%= day.day %></p>
-        </div>
-        <% @classes.each do |class_| %> 
-            <% while @i <= 22 and class_.daily == day.id do %>
-                <% if class_.start == @i %>
-                    <div class="target text-crop color-<%= class_.color %> pure-u-<%= Timer.find(class_.finish).id - Timer.find(class_.start).id %>-24">
-                        <p>
-                            <%= class_.subject %><br>
-                        </p>
-
-                    </div>                    
-                    <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
-                    <% break %>
-                <% else %>
-                    <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
-                                            <%= 'bg-silver' if day.id % 2 == 1 %>">                    
-                        <% @i += 1 %>
-                    </div>
-                <% end %>
-            <% end %>
-        <% end %>
-
-        <% while @i <= 22 do %>
-            <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
-                                    <%= 'bg-silver' if day.id % 2 == 1 %>">                    
-                <% @i += 1 %>
-            </div>
-        <% end %>
-    </div>
-    <% @i = 1 %>
-<% end %><br>
+<%= render 'classtable' %>
