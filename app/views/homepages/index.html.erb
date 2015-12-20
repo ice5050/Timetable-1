@@ -2,10 +2,14 @@
 
 <%= render 'sync' %>
 
-<div class="share-button">
-    <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://cmutimetable.herokuapp.com" data-text="วางแผนตารางเรียนก่อนลงทะเบียนจริง พร้อมลิงค์ตารางสอบ" data-via="Pondpaun7z" data-size="small" data-related="pondpaun7z" data-hashtags="CMUTIMETABLE">Tweet</a>&nbsp;
-    <div class="fb-like" data-href="http://cmutimetable.herokuapp.com" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-</div><br><br>
+<div id="social-platforms">
+    <a class="btn btn-icon btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://cmutimetable.herokuapp.com"
+    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+    target="_blank" title="CMU Timetable"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+     <a class="btn btn-icon btn-twitter" href="https://twitter.com/share?url=http://cmutimetable.herokuapp.com&via=I'PondPaunSevenZ&text=หาตารางเรียนไม่เจอ?   ตารางสอบดูยาก? ลองเว็บนี้ดูสิ"
+    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+    target="_blank" title="CMU Timetable"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+</div><br>
 
 <div class="block mdl-shadow--3dp">   
     <div class="divHeader mdl-shadow--3dp">
