@@ -3,14 +3,12 @@
 <%= link_to "Add Manually", edit_user_table_finaltable_path(@user, @table, @table), class: "bg-blue mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? and @user.id == current_user.id %><br>
 <%= raw('<small><i class="glyphicon glyphicon-exclamation-sign"></i> MANUALLY IS THE MOST IMPORTANT </small>') if user_signed_in? and @user.id == current_user.id %>
 
-<br><br>
-<span> 
-    <i class="text-manual glyphicon glyphicon-stop"></i> MANUALLY
-    <i class="text-final glyphicon glyphicon-stop"></i> FINAL TABLE
-    <i class="text-regular glyphicon glyphicon-stop"></i> REGULAR EXAM
-</span>
-
 <div class="pure2table mdl-shadow--3dp">
+    <div class="pure2table-caption">
+        <i class="text-manual glyphicon glyphicon-stop"></i> MANUALLY
+        <i class="text-final glyphicon glyphicon-stop"></i> FINAL TABLE
+        <i class="text-regular glyphicon glyphicon-stop"></i> REGULAR EXAM
+    </div>
     <div class="pure2table-row pure-g bg-midnight">
         <div class="pure2table-cell pure-u-3-24"><strong>DAY</strong></div>
         <div class="pure2table-cell pure-u-7-24"><strong>08:00 - 11:00</strong></div>

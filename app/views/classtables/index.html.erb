@@ -61,14 +61,14 @@
     <div id="load" class="mdl-spinner mdl-js-spinner is-active"></div>
 <% end %>
 
-
-<ul class="list-inline text-right">
-    <li><i class="glyphicon glyphicon-exclamation-sign"></i> Click class for edit</li>
-    <li><i class='glyphicon glyphicon-duplicate'></i> Copy class to other</li>
-    <li><i class='glyphicon glyphicon-edit'></i> Edit class</li>
-    <li><i class='glyphicon glyphicon-trash'></i> Delete class</li>
-</ul>
-
+<div class="pure2table-classtable">
+    <div class="pure2table-caption">
+        <small><i class="glyphicon glyphicon-exclamation-sign"></i> Click class for edit</small>
+        <small><i class='glyphicon glyphicon-duplicate'></i> Copy class to other</small>
+        <small><i class='glyphicon glyphicon-edit'></i> Edit class</small>
+        <small><i class='glyphicon glyphicon-trash'></i> Delete class</small>
+    </div>
+</div>
 <div class="pure-g text-center">    
     <div class="pure-u-2-24 bg-midnight"></div>
     <% (8..18).each do |i| %>
@@ -79,6 +79,7 @@
         </div>
     <% end %>
 </div>
+
 <div class="pure-g text-center">    
     <div class="pure-u-2-24 bg-midnight"></div>
     <% (1..22).each do |i| %>
@@ -106,7 +107,7 @@
                             <%= link_to raw("<i class='subject glyphicon glyphicon-duplicate'></i>"), :action => :copy, :id => class_.id if user_signed_in? and @user.id == current_user.id %>
                         </div>
                         <p class="responsive-text">
-                            <%= class_.subject %><br>
+                            <%= class_.subject %>
                         </p>
                     </div>                    
                     <% @i += Timer.find(class_.finish).id - Timer.find(class_.start).id %>
@@ -140,7 +141,7 @@
     <div class="pure2table mdl-shadow--3dp">
         <div class="pure2table-row pure-g bg-midnight">
             <div class="pure2table-cell pure-u-3-24"><strong>Subject code</strong></div>
-            <div class="pure2table-cell pure-u-6-24"><strong>Subject</strong></div>
+            <div class="classtable-detail pure2table-cell pure-u-6-24"><strong>Subject</strong></div>
             <div class="pure2table-cell pure-u-3-24"><strong>Room</strong></div>
             <div class="pure2table-cell pure-u-3-24"><strong>Section</strong></div>
             <div class="pure2table-cell pure-u-3-24"><strong>Day</strong></div>
@@ -150,7 +151,7 @@
         <% @classes.each do |class_| %>
             <div class="pure2table-row pure-g color-<%= class_.color %>">
                 <div class="pure2table-cell pure-u-3-24"><%= class_.subject_code %></div>
-                <div class="pure2table-cell pure-u-6-24"><%= class_.subject %></div>
+                <div class="classtable-detail pure2table-cell pure-u-6-24"><%= class_.subject %></div>
                 <div class="pure2table-cell pure-u-3-24"><%= class_.room %></div>
                 <div class="pure2table-cell pure-u-3-24"><%= class_.section %></div>
                 <div class="pure2table-cell pure-u-3-24"><%= Day.find(class_.daily).day %></div>

@@ -136,3 +136,16 @@ tr.detail:hover {
 // .clicktable {
 //     cursor: pointer;
 // }
+
+.target {
+    cursor: pointer;
+}
+
+.pure2table-classtable {
+    display: table !important;
+    width: 100%;
+    margin: auto;
+    i {
+        font-size: 12px !important;
+    }
+}
