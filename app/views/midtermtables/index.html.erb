@@ -7,7 +7,7 @@
 <i class="text-manual glyphicon glyphicon-stop"></i> MANUALLY
 <i class="text-final glyphicon glyphicon-stop"></i> MIDTERM TABLE
     
-<div class="pure2table">
+<div class="pure2table mdl-shadow--3dp">
     <div class="pure2table-row pure-g bg-midnight">
         <div class="pure2table-cell pure-u-3-24"><strong>DAY</strong></div>
         <div class="pure2table-cell pure-u-7-24"><strong>08:00 - 11:00</strong></div>
@@ -57,17 +57,17 @@
         </div>
             
         <% @classes.each do |class_| %>
-            <% if not @is_shown.include? class_.subject_code and @is_shown_manual.include? class_.subject_code %>
-                <div class="pure2table-row pure-g <%= p 'bg-gray' if index % 2 == 1 %>">
-                    <div class="pure2table-cell pure-u-3-12"><%= class_.subject_code%></div>
-                    <div class="pure2table-cell pure-u-3-12"><%= class_.subject%></div>
-                    <div class="pure2table-cell pure-u-3-12"><%= class_.dayMidterm%></div>
-                    <div class="pure2table-cell pure-u-3-12"><%= class_.timeMidterm%></div>
+            <% if not @is_shown.include? class_.subject_code and @is_shown_manual.include? class_.subject_code and class_.dayMidterm and class_.timeMidterm %>
+                <div class="pure2table-row pure-g">
+                    <div class="pure2table-cell pure-u-3-12"><%= class_.subject_code %></div>
+                    <div class="pure2table-cell pure-u-3-12"><%= class_.subject %></div>
+                    <div class="pure2table-cell pure-u-3-12"><%= class_.dayMidterm %></div>
+                    <div class="pure2table-cell pure-u-3-12"><%= class_.timeMidterm %></div>
                 </div>
                 <% @is_shown.add(class_.subject_code) %>
             <% end %>
         <% end %>
-    </div>
+    </div><br>
 <% end %>
 
 <%= link_to "BACK", user_table_classtables_path, id: @table, class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>

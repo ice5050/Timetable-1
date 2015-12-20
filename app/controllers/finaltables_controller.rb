@@ -55,7 +55,7 @@ class FinaltablesController < ApplicationController
         @is_shown_manual = Set.new
 
         @classes.each do |class_|
-            if class_.dayMidterm and class_.timeMidterm
+            if class_.dayFinal.to_s.size != 0 and class_.timeFinal.to_s.size != 0
                 @is_shown_manual.add(class_.subject_code)
             end
         end

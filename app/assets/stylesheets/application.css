@@ -336,6 +336,10 @@ table td {
         -webkit-padding-start:  0px;
         list-style: none;
     }
+    
+    .pure2table {
+        width: 100%;
+    }
 }
 
 @media screen and (max-device-width: 740px) {
@@ -353,6 +357,10 @@ table td {
 }
 
 @media screen and (max-width: 740px) {
+    .pure2table {
+        width: 100%;
+    }
+
     .nav-desktop {
         display: none;
     }

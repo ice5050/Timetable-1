@@ -46,7 +46,7 @@ class ClasstablesController < ApplicationController
     end
 
     def update
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.new(params_class)
         @class_old = @table.classtables.find(params[:id])
@@ -82,7 +82,7 @@ class ClasstablesController < ApplicationController
     end
 
     def destroy
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
         @class.destroy
@@ -92,7 +92,7 @@ class ClasstablesController < ApplicationController
 
 
     def copy
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
 
@@ -103,7 +103,7 @@ class ClasstablesController < ApplicationController
     end
 
     def update_exam_final
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
         @class.update(params_manual_final)
@@ -120,7 +120,7 @@ class ClasstablesController < ApplicationController
     end
 
     def clear_manual_final
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
                
@@ -131,7 +131,7 @@ class ClasstablesController < ApplicationController
     end
 
     def update_exam_midterm
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
         @class.update(params_manual_midterm)
@@ -148,7 +148,7 @@ class ClasstablesController < ApplicationController
     end
 
     def clear_manual_midterm
-        @user = User.find(current_user)
+        @user = User.find(params[:user_id])
         @table = @user.tables.find(params[:table_id])
         @class = @table.classtables.find(params[:id])
                
