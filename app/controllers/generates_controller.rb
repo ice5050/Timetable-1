@@ -1,12 +1,9 @@
 class GeneratesController < ApplicationController
     def index
-
-        unless session[:data] == nil
-            @year = session[:data]["year"]
-            @semester = session[:data]["semester"]
-            @link = (@semester + @year).to_i
-            @stu_id = session[:data]["stu_id"].to_i
-        end
+        @semester = params[:semester]
+        @year = params[:year]
+        @link = @semester + @year
+        @stu_id = params[:stu_id]
 
         @i = 0
         @error = ''
@@ -28,7 +25,7 @@ class GeneratesController < ApplicationController
           end
         rescue OpenURI::HTTPError => e
             if e.message == '404 Not Found'
-                @error = "no data in #{semester}/25#{year}"
+                @error = "no data in #{@semester}/25#{@year}"
             else
                 raise e
             end
@@ -36,20 +33,19 @@ class GeneratesController < ApplicationController
     end
 
     def create
-        session[:data] = params_info
-        redirect_to generates_path
+        semester = params.require(:generate).permit(:semester)["semester"]
+        year = params.require(:generate).permit(:year)["year"]
+        stu_id = params.require(:generate).permit(:stu_id)["stu_id"]
+        redirect_to generates_path(semester: semester, year: year, stu_id: stu_id)
     end
 
-    def create_table
+    def create_table        
 
-        @link = session[:link]
-        @stu_id = session[:stu_id]
-        
         read_tag()
         add_class()
 
         @user = User.find(current_user)
-        @table = @user.tables.create(name: "Sync id: #{@stu_id}", semester: (@link/100), year: @link%100)              
+        @table = @user.tables.create(name: "Sync id: #{@stu_id}", semester: @semester, year: @year)
         
         @class.each do |class_|
 
@@ -81,8 +77,6 @@ class GeneratesController < ApplicationController
             
         end
 
-        session.delete(:link)
-        session.delete(:stu_id)
         redirect_to controller: 'classtables', action: 'index', user_id: @user.id, table_id: @table.id
     end
 
@@ -288,18 +282,9 @@ class GeneratesController < ApplicationController
             @class = @class.sort {|x, y| x[4] <=> y[4] }
         end
 
-        def params_info
-            params.require(:generate).permit(:stu_id, :year, :semester)
-        end        
-
         def midterm_exam
-            unless session[:data] == nil
-                year = session[:data]["year"]
-                semester = session[:data]["semester"]
-                link = (semester + year).to_i
-            end
 
-            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/exam/index.php?type=MIDTERM&term=#{link}"))   
+            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{@link}/exam/index.php?type=MIDTERM&term=#{@link}"))   
 
             @day_selected = @page.css("td[width='19%']")
             @time_selected = @page.css("div[align='center']")
@@ -332,13 +317,8 @@ class GeneratesController < ApplicationController
         end    
 
         def final_exam
-            unless session[:data] == nil
-                year = session[:data]["year"]
-                semester = session[:data]["semester"]
-                link = (semester + year).to_i
-            end
-            @regular = Regularexam.where("yearexam" => year, "semesterexam" => semester)
-            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{link}/exam/index.php?type=FINAL&term=#{link}"))   
+            @regular = Regularexam.where("yearexam" => @year, "semesterexam" => @semester)
+            @page = Nokogiri::HTML(open("https://www3.reg.cmu.ac.th/regist#{@link}/exam/index.php?type=FINAL&term=#{@link}"))   
 
             @day_selected = @page.css("td[width='19%']")
             @time_selected = @page.css("div[align='center']")

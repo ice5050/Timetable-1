@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :tables do 
       member do
         get 'reset'
+        get 'add_class'
       end
       resources :classtables do
         member do

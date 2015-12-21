@@ -6,6 +6,7 @@ class SearchController < ApplicationController
         require 'nokogiri'
 
         @REQUEST_URL = ""
+        
         if params[:user_id] and params[:table_id]
             @user = User.find(params[:user_id])
             @table = @user.tables.find(params[:table_id])
@@ -16,13 +17,14 @@ class SearchController < ApplicationController
         end
 
         @td = 1
-        if session[:code].present?
-            if session[:code].present? and session[:code]["code"].length == 3
+        if params[:code]
+            @code = params[:code].to_s
+            if @code.length == 3
                 op = "precourse"
-                page = RestClient.post(@REQUEST_URL, {'precourse'=> session[:code]["code"], 'op'=> 'precourse' })
-            elsif session[:code].present? and session[:code]["code"].length == 6
+                page = RestClient.post(@REQUEST_URL, {'precourse'=> @code, 'op'=> 'precourse' })
+            elsif @code.length == 6
                 op = "bycourse"
-                page = RestClient.post(@REQUEST_URL, {'s_course1'=> session[:code]["code"], 'op'=> 'bycourse' })
+                page = RestClient.post(@REQUEST_URL, {'s_course1'=> @code, 'op'=> 'bycourse' })
             end
 
             # if page = RestClient.post(@REQUEST_URL, {'precourse'=> session[:code]["code"], 'op'=> op })
@@ -39,19 +41,14 @@ class SearchController < ApplicationController
 
     def create
         if params[:user_id] and params[:table_id]
-            @user = User.find(params[:user_id])
-            @table = @user.tables.find(params[:table_id])
-            session[:code] = params_code
-            redirect_to user_table_search_index_path
+            user = User.find(params[:user_id])
+            table = @user.tables.find(params[:table_id])
+            code = params.require(:search).permit(:code)["code"]
+            redirect_to user_table_search_index_path(user, table, code: code)
         else
-            session[:code] = params_code
-            redirect_to search_index_path
+            code = params.require(:search).permit(:code)["code"]
+            redirect_to search_index_path(code: code)
         end
     end
-
-    private
-        def params_code
-            params.require(:search).permit(:code)
-        end
-
+    
 end

@@ -50,11 +50,11 @@
 <br><br>
 
 
-<% if session[:code].present? %>    
+<% if @code %>    
     <table class="table table-hover text-left mdl-shadow--3dp">
         <caption>
             <div id="searching" class="mdl-spinner mdl-js-spinner is-active"></div>
-            searching... <%= session[:code]["code"] %>
+            searching... <%= @code %>
         </caption>
         <% @subjects.zip(@details).each do |subject, detail| %>
         <thead class="subject-header">
@@ -74,7 +74,7 @@
 
                     <td rowspan="2">ROOM</td>
                     <td rowspan="2">LECTURER</td>
-                    <td colspan="3">TOTAL</td>
+                    <td colspan="4">TOTAL</td>
                 </tr>
                 <tr>
                     <td>LEC</td>
@@ -86,9 +86,9 @@
                     <td>Seat</td>
                     <td>Enroll</td>
                     <td>Add</td>
+                    <td></td>
                 </tr>
             <% detail.css('tr[coursedata]').each do |tr| %>
-                
                 <tr>
                     <% tr.css('td').each do |td| %>
                         <% if @td > 2 and @td != 12 and @td != 13 and @td < 17 %>
@@ -98,9 +98,11 @@
                                 <% else %>
                                     <%= td.to_s.html_safe %> 
                                 <% end %>        
+                                
                         <% end %>
                         <% @td += 1 %>
                     <% end %>
+                    <td><%= link_to "ADD", add_class_user_table_path(@user, @table) if @table and @user %></td>
                 </tr>
                 <% @td = 1 %>
             <% end %>   
