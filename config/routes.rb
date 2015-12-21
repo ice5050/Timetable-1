@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     member do
       get 'edit_day'
       patch 'update_day'
+      delete 'delete_day'
       get 'edit_time'
       patch 'update_time'
+      delete 'delete_time'
     end
   end
   

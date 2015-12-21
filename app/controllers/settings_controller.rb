@@ -27,6 +27,18 @@ class SettingsController < ApplicationController
         redirect_to settings_path
     end
 
+    def delete_day
+        @day = Day.find(params[:id])
+        @day.destroy
+        redirect_to settings_path
+    end
+
+    def delete_time
+        @time = Timer.find(params[:id])
+        @time.destroy
+        redirect_to settings_path
+    end
+
     private
         def params_day
             params.require(:day).permit(:day)

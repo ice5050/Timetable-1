@@ -121,12 +121,12 @@ class GeneratesController < ApplicationController
 
                 # [Day] Black text 
                 section = index * 2                  
+                @select_color = @listColor.select {|item| not @selected_color.include? item  }
 
                 if Timer.find_by(time: (@times_selected[index].child.text[0..4].to_s.strip)) and 
                     Timer.find_by(time: @times_selected[index].child.text[7..10].to_s.strip)
                     @start = Timer.find_by(time: (@times_selected[index].child.text[0..4].to_s.strip)).id
                     @finish = Timer.find_by(time: @times_selected[index].child.text[7..10].to_s.strip).id
-                    @select_color = @listColor.select {|item| not @selected_color.include? item  }
 
                     if @days_selected[index].child.text.strip.include? "-" 
                         day = @days_selected[index].child.text.strip.split("-")
@@ -174,6 +174,7 @@ class GeneratesController < ApplicationController
                         index += 1
                         next
                     end
+
                     black_day = @days_selected[index].child.text.split /(?=[A-Z])/
                     black_day.each do |day|
                         @class.push([
@@ -238,6 +239,7 @@ class GeneratesController < ApplicationController
             index = 0
             last = @subject_code_selected.count * 2
             while index < @subject_code_lab_selected.count do 
+                
                 if Timer.find_by(time: (@times_lab_selected[index].text[0..4].to_s.strip)) and 
                     Timer.find_by(time: @times_lab_selected[index].text[7..10].to_s.strip)
                     @start = Timer.find_by(time: (@times_lab_selected[index].text[0..4].to_s.strip)).id
