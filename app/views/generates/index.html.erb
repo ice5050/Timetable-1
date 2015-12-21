@@ -34,18 +34,26 @@
     <br>
 
     <div class="pure-g text-center">    
-        <div class="pure-u-2-24 bg-midnight"></div>
-        <% (8..18).each do |i| %>
-            <div class="pure-u-2-24 bg-midnight">
-                <small class="responsive-text">
-                    <%= sprintf '%02d', i %>
-                </small>
-            </div>
+        <div class="pure-u-1-24 bg-midnight"></div>
+        <% (8..19).each do |i| %>
+            <% if i == 19 %>
+                <div class="pure-u-1-24 bg-midnight">
+                    <small class="responsive-text">
+                        <%= sprintf '%02d', i %>
+                    </small>
+                </div>
+            <% else %>
+                <div class="pure-u-2-24 bg-midnight">
+                    <small class="responsive-text">
+                        <%= sprintf '%02d', i %>
+                    </small>
+                </div>
+            <% end %>    
         <% end %>
     </div>
     <div class="pure-g text-center">    
-        <div class="pure-u-2-24 bg-midnight"></div>
-        <% (1..22).each do |i| %>
+        <div class="pure-u-1-24 bg-midnight"></div>
+        <% (1..23).each do |i| %>
             <div class="pure-u-1-24 bg-midnight">
                 <small class="responsive-text">
                     <%= 00 if i % 2 == 1 %>
@@ -57,23 +65,23 @@
 
     <% @days.each do |day| %>
         <div class="pure-g text-center mdl-shadow--3dp">    
-            <div class="text-crop pure-u-2-24 bg-midnight">
-                <p class="text-center"><%= day.day %></p>
+            <div class="text-crop pure-u-1-24 bg-midnight">
+                <p class="text-center"><%= day.day[0..2] %></p>
             </div>
             <% @class.each do |class_| %> 
-                <% while @i < 22 and ((class_[3] == 'Mo' and day.id == 2) or
-                                     (class_[3] == 'Th' and day.id == 5) or
-                                     (class_[3] == 'Tu' and day.id == 3) or
-                                     (class_[3] == 'Fr' and day.id == 6) or
-                                     (class_[3] == 'We' and day.id == 4) or
-                                     (['MoTh', 'MTh', 'ThMo'].include?(class_[3]) and (day.id == 2 or day.id == 5)) or  
-                                     (['TuFr', 'TuF', 'FrTu'].include?(class_[3]) and (day.id == 3 or day.id == 6))) do %>
+                <% while @i < 22 and ((['Su'].include? class_[3] and day.id == 1) or
+                                      (['M', 'Mo'].include? class_[3] and day.id == 2) or
+                                      (['Tu'].include? class_[3] and day.id == 3) or
+                                      (['W', 'We'].include? class_[3] and day.id == 4) or
+                                      (['Th'].include? class_[3] and day.id == 5) or
+                                      (['F', 'Fr'].include? class_[3] and day.id == 6) or
+                                      (['Sa'].include? class_[3] and day.id == 7)) do %>
                    <% if class_[4] == @i %>
                         <div class="color-<%= class_[6] %> pure-u-<%= class_[5] - class_[4] %>-24 text-crop">
                             <small class="responsive-text">
                                 <%= class_[1] %><br>
                                 <%= class_[0] %><br>
-                                <%= class_[2][0..2] + '-' + class_[2][3..6] %><br>
+                                <%= class_[2][0..2] + '-' + class_[2][4..6] %><br>
                             </small>
                         </div>                    
                         <% @i += class_[5] - class_[4] %>
@@ -87,7 +95,7 @@
                 <% end %>
             <% end %>
 
-            <% while @i <= 22 do %>
+            <% while @i <= 23 do %>
                 <div class="pure-u-1-24 <%= 'bg-white' if day.id % 2 == 0 %>
                                         <%= 'bg-silver' if day.id % 2 == 1 %>">                    
                     <% @i += 1 %>
@@ -98,25 +106,25 @@
     <% end %><br>
 
     <% if not @cant_port.count == 0 %>
-        <table class="table">
-            <caption>Can't Port timetable</caption>
-            <tr>
-                <td>Subject ID</td>
-                <td>Subject</td>
-                <td>Section</td>
-                <td>Day</td>
-                <td>Time</td>
-            </tr>
-            <% @cant_port.each do |class_| %>
-                <tr>
-                    <td><%= class_[0] %></td>
-                    <td><%= class_[1] %></td>
-                    <td><%= class_[2][0..2] + '-' + class_[2][3..6] %></td>
-                    <td><%= class_[3] %></td>
-                    <td><%= class_[4] + " - " + class_[5]%></td>
-                </tr>
+        <div class="responsive-text pure2table mdl-shadow--3dp">
+            <div class="pure2table-caption">Can't Port timetable</div>
+            <div class="pure2table-row pure-g bg-midnight">
+                <div class="pure2table-cell pure-u-3-24"><strong>Subject ID</strong></div>
+                <div class="pure2table-cell pure-u-3-24"><strong>Subject</strong></div>
+                <div class="pure2table-cell pure-u-3-24"><strong>Section</strong></div>
+                <div class="pure2table-cell pure-u-3-24"><strong>Day</strong></div>
+                <div class="pure2table-cell pure-u-3-24"><strong>Time</strong></div>
+            </div>
+            <% @cant_port.each_with_index.each do |class_, index| %>
+                <div class="pure2table-row pure-g <%= p 'bg-gray' if index % 2 == 1 %>">
+                    <div class="pure2table-cell pure-u-3-24"><%= class_[0] %></div>
+                    <div class="pure2table-cell pure-u-3-24"><%= class_[1] %></div>
+                    <div class="pure2table-cell pure-u-3-24"><%= class_[2][0..2] + '-' + class_[2][3..6] %></div>
+                    <div class="pure2table-cell pure-u-3-24"><%= class_[3] %></div>
+                    <div class="pure2table-cell pure-u-3-24"><%= class_[4] + " - " + class_[5]%></div>
+                </div>
             <% end %>
-        </table>
+        </div>
     <% end %>
 
 
