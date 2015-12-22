@@ -46,6 +46,9 @@ class SearchController < ApplicationController
             code = params.require(:search).permit(:code)["code"]
             redirect_to user_table_search_index_path(user, table, code: code)
         else
+            if params[:code]
+                code = params[:code]
+            end
             code = params.require(:search).permit(:code)["code"]
             redirect_to search_index_path(code: code)
         end

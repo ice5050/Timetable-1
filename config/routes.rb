@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :students
+
   resources :generates, path: 'sync' do
     member do 
       get 'create_table'
