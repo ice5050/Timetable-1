@@ -240,6 +240,7 @@ table td {
     display: none;
     color: #e74c3c;
     font-weight: bolder;
+    font-size: 100%;
 }
 
 .beta {
@@ -272,10 +273,6 @@ table td {
 
     .table-respon-hint {
        display: block;
-    }
-
-    h1, h2, h3, h4, h5, h6, h5 {
-        font-size: 100% !important;
     }
 
     body {

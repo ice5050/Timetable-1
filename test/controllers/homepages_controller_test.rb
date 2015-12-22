@@ -14,6 +14,6 @@ class HomepagesControllerTest < ActionController::TestCase
     test "should get index with login" do       
         get :index, id: @user
         assert_response :success
-    end
+    end    
 
 end
