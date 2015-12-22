@@ -1,11 +1,11 @@
 <%= render '/homepages/sync' %>
 
-<% if @notfound %>
+<% if @notfound.to_s.size != 0 %>
     <%= @notfound.text.to_s.strip[0..-5] %>
     <br><br>
 <% end %>
 
-<% if @error.size == 0 %>
+<% if @error.size != 0 %>
     <%= @error %>
     <br><br>
 <% end %>
