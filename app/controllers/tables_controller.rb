@@ -46,12 +46,6 @@ class TablesController < ApplicationController
       redirect_to controller: 'classtables', action: 'index', table_id: @table.id
   end
 
-  def add_class
-    @user = User.find(params[:user_id])
-    @table = Table.find(params[:id])
-    @tr = params[:tr]
-  end
-
   private
     def params_table
         params.require(:table).permit(:name, :year, :semester)

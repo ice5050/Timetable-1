@@ -236,13 +236,6 @@ table td {
     vertical-align: middle !important;
 }
 
-.on-mobile {
-    display: none;
-    color: #e74c3c;
-    font-weight: bolder;
-    font-size: 100%;
-}
-
 .beta {
     color: #7f8c8d;
 }
