@@ -66,6 +66,7 @@
         </thead>
         <tbody class="subject-detail">
                 <tr>
+                    <td rowspan="2">CONDITION</td>
                     <td rowspan="2">TITLE</td>
 
                     <td colspan="2">SECTION</td>
@@ -91,7 +92,7 @@
             <% detail.css('tr[coursedata]').each do |tr| %>
                 <tr>
                     <% tr.css('td').each do |td| %>
-                        <% if @td > 2 and @td != 12 and @td != 13 and @td < 17 %>
+                        <% if @td > 1 and @td != 12 and @td != 13 and @td < 17 %>
                                 <% if  td.to_s.include? "stdtotal.php" %>
                                     <% link_to_cmu = "https://www3.reg.cmu.ac.th/regist258/public/stdtotal.php" %>
                                     <%= td.to_s.gsub('stdtotal.php', link_to_cmu).html_safe %>
