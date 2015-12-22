@@ -36,7 +36,8 @@ class GeneratesController < ApplicationController
         semester = params.require(:generate).permit(:semester)["semester"]
         year = params.require(:generate).permit(:year)["year"]
         stu_id = params.require(:generate).permit(:stu_id)["stu_id"]
-        redirect_to generates_path(semester: semester, year: year, stu_id: stu_id)
+
+        redirect_to generates_path(semester: semester, year: year, stu_id: stu_id) 
     end
 
     def create_table        

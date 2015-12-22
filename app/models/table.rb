@@ -3,4 +3,8 @@ class Table < ActiveRecord::Base
     belongs_to :user
 
     validates :name, :year, :semester, presence: true 
+
+    
+    extend FriendlyId
+    friendly_id :name, use: [:finders]
 end

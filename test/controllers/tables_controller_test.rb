@@ -4,7 +4,7 @@ class TablesControllerTest < ActionController::TestCase
 
   setup do
     @user = users(:guest)
-    @table = tables(:table_1)
+    @table = tables(:table_1)    
   end
 
   test "should get index" do
@@ -18,12 +18,12 @@ class TablesControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, :user_id => @user, :id => @table
+    get :edit, user_id: @user, id: @table
     assert_response :success
   end
 
   test "should get reset" do
-    get :reset, :user_id => @user, :id => @table
+    get :reset, user_id: @user, id: @table
     assert_redirected_to controller: 'classtables', action: 'index', table_id: @table.id
   end
 

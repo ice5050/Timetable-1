@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :generates do
+  resources :generates, path: 'sync' do
     member do 
       get 'create_table'
     end
   end
-  
-  resources :homepages
+
+  resources :homepages, path: 'cmutimetable'
   resources :search 
   resources :regularexams
 
