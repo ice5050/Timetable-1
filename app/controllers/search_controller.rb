@@ -42,7 +42,7 @@ class SearchController < ApplicationController
     def create
         if params[:user_id] and params[:table_id]
             user = User.find(params[:user_id])
-            table = @user.tables.find(params[:table_id])
+            table = user.tables.find(params[:table_id])
             code = params.require(:search).permit(:code)["code"]
             redirect_to user_table_search_index_path(user, table, code: code)
         else
