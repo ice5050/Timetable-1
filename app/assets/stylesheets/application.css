@@ -23,6 +23,11 @@
     display: none;
 }
 
+.isLink {
+  font-weight: bolder !important;
+  text-decoration: underline;
+}
+
 .nav-mobile .form-control {
     width: 50%;
     margin: auto;

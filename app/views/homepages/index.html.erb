@@ -1,54 +1,9 @@
 <%= render 'sync' %>
 
-<div id="social-platforms">
-    <a class="btn btn-icon btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://cmutimetable.herokuapp.com"
-    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-    target="_blank" title="CMU Timetable"><i class="fa fa-facebook"></i><span>Facebook</span></a>
-     <a class="btn btn-icon btn-twitter" href="https://twitter.com/share?url=http://cmutimetable.herokuapp.com&via=I'PondPaunSevenZ&text=หาตารางเรียนไม่เจอ?   ตารางสอบดูยาก? ลองเว็บนี้ดูสิ"
-    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-    target="_blank" title="CMU Timetable"><i class="fa fa-twitter"></i><span>Twitter</span></a>
-</div><br>
+<%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
 
-<div class="block mdl-shadow--3dp">   
-    <div class="divHeader mdl-shadow--3dp">
-        <h4 class="txtHeader">
-            <i class="glyphicon glyphicon-calendar"></i> Planning Timetable
-        </h4>
-    </div>
-    <br>
-    <%= link_to "GO TO PLANNIG TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
-    <%= link_to "LOGIN TO USE PANNING TABLE", new_user_session_path, class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if !user_signed_in?  %>
-</div><br>
 
-<div class="block mdl-shadow--3dp">   
-    <div class="divHeader mdl-shadow--3dp">
-        <h4 class="txtHeader"> <i class="glyphicon glyphicon-star"></i> Feature</h4>
-    </div>
-    <div class="feature-content">
-        <ul class="text-left2 "> 
-            <li><h6><span class="label label-info">COOL!</span> สามารถดูตารางเรียนและตารางสอบ ได้โดยใส่ รหัสนักศึกษา ปี และ ภาคเรียนได้</h6></li>
-            <li><h6><span class="label label-info">COOL!</span> มีการลิงค์ ตารางสอบกลางภาคและ ปลายภาค จาก สำนักทะเบียน</h6></li>
-            <li><h6><span class="label label-info">COOL!</span> สามารถค้นหารายวิชาที่เปิดสอนได้โดยกดรูป <i class="glyphicon glyphicon-search"></i> ที่มุมบนขวา</h6>
-                <ul>
-                    <li>โดยถ้า search จาก หน้า Homepage จะเป็นวิชาที่เปิดสอนในเทอมปัจจุบัน</li>
-                    <li>แต่ถ้า search จากหน้า Table จะเป็นวิชาที่เปิดสอนนตามปีและเทอมของตารางนั้น</li>
-                </ul>
-            </li>
-            <li><h6>
-                <span class="label label-info">COOL!</span> สามารถ Copy class ไปวันอื่นได้ โดยไม่ต้อง กรอกใหม่
-                โดยคลิกที่ class นั้นแล้ว กด <i class="glyphicon glyphicon-duplicate" style="color: #fff"></i>
-            </h6></li>
-        </ul>
-    </div>
-</div>
-<br>
-<div class="block mdl-shadow--3dp">   
 
-    <div class="divHeader mdl-shadow--3dp">
-        <h4 class="txtHeader"> <i class="glyphicon glyphicon-time"></i> Update! </h4>
-    </div><br>
-    <%= render 'updated' %>
-</div>
 
 
 

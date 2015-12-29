@@ -78,7 +78,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li><%= link_to current_user.username, user_tables_path(current_user) %></li>
+            <li><%= link_to current_user.username, user_tables_path(current_user), class: "isLink" %></li>
             <li><%= link_to raw("<i class='glyphicon glyphicon-cog'></i> Edit profile"), edit_user_registration_path %></li>
             <li><%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete %></li>
           <% else %>
@@ -117,7 +117,7 @@
                       <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                     </div>  
                   </div>
-                  <p id="search-hint"> <i class="glyphicon glyphicon-exclamation-sign"></i> สามารถค้นหาได้ทั้ง รหัส 3 ตัวหน้า และ รหัสเต็ม </p>
+                  <p id="search-hint"> <i class="glyphicon glyphicon-exclamation-sign"></i> Ex: 204 or 204100 </p>
                 <% end %>
               <% else %>
                 <%= form_for :search, url: search_index_path do |f| %>
@@ -130,12 +130,12 @@
                       <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                     </div>  
                   </div>
-                  <p id="search-hint"> <i class="glyphicon glyphicon-exclamation-sign"></i> สามารถค้นหาได้ทั้ง รหัส 3 ตัวหน้า และ รหัสเต็ม </p>
+                  <p id="search-hint"> <i class="glyphicon glyphicon-exclamation-sign"></i> Ex: 204 or 204100 </p>
                 <% end %>
               <% end %>
             </li>
         <% if user_signed_in? %>
-          <li class="pure-menu-item header-status"><%= link_to current_user.username, user_tables_path(current_user) %></li>
+          <li class="pure-menu-item header-status"><%= link_to current_user.username, user_tables_path(current_user), class: "isLink" %></li>
           <li class="pure-menu-item header-status">
             <%= link_to raw("<i class='glyphicon glyphicon-cog'></i> Edit profile"), edit_user_registration_path, :class => 'navbar-link' %> | 
             <%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link' %>

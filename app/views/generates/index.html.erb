@@ -28,8 +28,9 @@
         </tr>
     </table>
 
-    <%= link_to "add this table to your table", create_table_generate_path(current_user), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? %>
-    <%= link_to "Login to add this table to your table", new_user_session_path, class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" unless user_signed_in? %><br>
+    <%= link_to "save", create_table_generate_path(current_user), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? %>
+    <%= link_to "login", new_user_session_path, class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" unless user_signed_in? %><br>
+    <p><i class="glyphicon glyphicon-exclamation-sign"></i> save this table to my table</p>
     <br>
 
     <div class="pure-g text-center">    
