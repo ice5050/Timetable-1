@@ -1,5 +1,9 @@
 <%= render 'sync' %>
 
+<% unless user_signed_in? %>
+    <p> <i class="glyphicon glyphicon-comment"></i> You can <%= link_to "login", new_user_session_path, class: "isLink" %> to plan timetable.</p>
+<% end %>
+
 <%= link_to "GO TO MY TABLE", user_tables_path(current_user), class: "gototable mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " if user_signed_in?  %>
 
 

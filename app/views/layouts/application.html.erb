@@ -80,7 +80,7 @@
           <% if user_signed_in? %>
             <li><%= link_to current_user.username, user_tables_path(current_user), class: "isLink" %></li>
             <li><%= link_to raw("<i class='glyphicon glyphicon-cog'></i> Edit profile"), edit_user_registration_path %></li>
-            <li><%= link_to raw("<i class='glyphicon glyphicon-log-out'></i> Logout"), destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to raw("<i class='glyphicon glyphicon-off'></i> Logout"), destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to raw("<i class='glyphicon glyphicon-user'></i> Sign up"), new_user_registration_path %></li>
             <li><%= link_to raw("<i class='glyphicon glyphicon-log-in'></i> Login"), new_user_session_path %></li>
