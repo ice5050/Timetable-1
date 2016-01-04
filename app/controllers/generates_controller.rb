@@ -78,7 +78,7 @@ class GeneratesController < ApplicationController
             
         end
 
-        redirect_to controller: 'classtables', action: 'index', user_id: @user.id, table_id: @table.id
+        redirect_to user_tables_path(@user)
     end
 
     private
