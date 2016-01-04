@@ -41,6 +41,10 @@ class GeneratesController < ApplicationController
     end
 
     def create_table        
+        @semester = params[:semester]
+        @year = params[:year]
+        @link = @semester + @year
+        @stu_id = params[:stu_id]
 
         read_tag()
         add_class()
@@ -78,7 +82,7 @@ class GeneratesController < ApplicationController
             
         end
 
-        redirect_to user_tables_path(@user)
+        redirect_to controller: 'classtables', action: 'index', user_id: @user, table_id: @table
     end
 
     private

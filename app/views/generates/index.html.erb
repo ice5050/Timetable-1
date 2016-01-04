@@ -28,7 +28,7 @@
         </tr>
     </table>
 
-    <%= link_to "save", create_table_generate_path(current_user), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? %>
+    <%= link_to "save", create_table_generate_path(current_user, stu_id: @stu_id, year: @year, semester: @semester), class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" if user_signed_in? %>
     <%= link_to "login", new_user_session_path, class: "bg-green mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" unless user_signed_in? %><br>
     <p><i class="glyphicon glyphicon-exclamation-sign"></i> save this table to my table</p>
     <br>
