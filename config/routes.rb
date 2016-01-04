@@ -23,9 +23,9 @@ Rails.application.routes.draw do
     end
   end
   
-  devise_for :users 
+  devise_for :users
 
-  resources :users, path: '' do 
+  resources :users do 
     resources :tables, path: '/' do 
       member do
         get 'reset'
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'homepages#index'
+  root "homepages#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

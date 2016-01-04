@@ -1,6 +1,6 @@
 class HomepagesController < ApplicationController
+
     def index
-        @users = User.all
     end
     
     def resource_name
