@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
-  resources :students
+  resources :students, only: :index
 
-  resources :generates, path: 'sync' do
+  resources :generates, path: 'sync', only: [:index, :create] do
     member do 
       get 'create_table'
     end
   end
 
   resources :homepages, path: 'cmutimetable'
-  resources :search 
-  resources :regularexams
+  resources :search, only: [:index, :create]
+  resources :regularexams 
 
   resources :settings do
     member do
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   
   devise_for :users 
 
-  resources :users do 
-    resources :tables do 
+  resources :users, path: '' do 
+    resources :tables, path: '/' do 
       member do
         get 'reset'
         get 'add_class'
@@ -40,9 +40,9 @@ Rails.application.routes.draw do
           get 'clear_manual_final'
         end   
       end
-      resources :search
-      resources :midtermtables
-      resources :finaltables 
+      resources :search, only: [:index, :create]
+      resources :midtermtables, only: [:index, :edit]
+      resources :finaltables, only: [:index, :edit] 
     end
   end
 

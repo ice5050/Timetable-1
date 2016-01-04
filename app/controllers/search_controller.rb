@@ -44,6 +44,7 @@ class SearchController < ApplicationController
             user = User.find(params[:user_id])
             table = user.tables.find(params[:table_id])
             code = params.require(:search).permit(:code)["code"]
+            # redirect_to controller: 'search', action: 'index', user: user.username, table: table.name, code: code
             redirect_to user_table_search_index_path(user, table, code: code)
         else
             if params[:code]

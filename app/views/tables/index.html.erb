@@ -16,8 +16,8 @@
                 <td> 25<%= table.year %> </td>
                 <td> <%= table.semester %></td>
                 <%= raw("<td>") if user_signed_in? and @user.id == current_user.id %>
-                    <%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), controller: 'tables', action: 'edit', user_id: current_user, id: table if user_signed_in? and @user.id == current_user.id %>
-                    <%= link_to raw("<i class='glyphicon glyphicon-trash'></i>"), user_table_path(current_user, table), method: :delete, data: { confirm: "OK" } if user_signed_in? and @user.id == current_user.id %>
+                    <%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), controller: 'tables', action: 'edit', user_id: current_user, id: table.id if user_signed_in? and @user.id == current_user.id %>
+                    <%= link_to raw("<i class='glyphicon glyphicon-trash'></i>"), user_table_path(current_user, table.id), method: :delete, data: { confirm: "OK" } if user_signed_in? and @user.id == current_user.id %>
                 <%= raw("</td>") if user_signed_in? and @user.id == current_user.id %>
             </tr>
         <% end %>
