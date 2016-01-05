@@ -19,6 +19,12 @@
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
+.logo {
+  margin-top: 14px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
 .nav-mobile {
     display: none;
 }
@@ -257,6 +263,11 @@ table td {
 }
 
 @media screen and (max-device-width: 996px), (max-width: 740px) {
+    .logo {
+        margin-top: 8px;
+        margin-right: -5px;
+    }
+
     .classtable-detail {
         display: none !important;
     }

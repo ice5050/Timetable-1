@@ -41,4 +41,14 @@ class StudentsController < ApplicationController
     code = params[:code]
     redirect_to students_path(url: url, code: code)
   end
+
+  def stu_info
+    @stu_id = params[:id]
+    url = "https://www3.reg.cmu.ac.th/stdsearch/index.php?file=stdnow"
+
+    @response = RestClient.post(url, {'key1' => @stu_id, 'button_search' => 0 })
+    page = Nokogiri::HTML(@response.to_s)
+    @page = page.css("table")
+   
+  end
 end

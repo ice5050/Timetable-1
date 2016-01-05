@@ -33,6 +33,7 @@ gem 'social-share-button', '~> 0.1.6'
 gem "animate-rails"
 gem 'friendly_id', '~> 5.0.0'
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

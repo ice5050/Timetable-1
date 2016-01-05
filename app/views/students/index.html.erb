@@ -1,4 +1,4 @@
 <%= link_to "BACK", search_index_path(code: @code), class: "bg-red mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  %><br><br>
-<% @url_img.zip(@stu_id).each do |url, id| %>
-    <img src="http://cmu.azurewebsites.net/photo/get?sid=<%= url %>" width="100px">
+<% @url_img.zip(@stu_id).each do |url, stu_id| %>
+    <img src='http://cmu.azurewebsites.net/photo/get?sid=<%= url %>' width='100px'>
 <% end %>

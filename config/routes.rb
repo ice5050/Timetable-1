@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :students, only: :index
+  resources :students, only: :index do
+    member do
+      get 'stu_info'
+    end
+  end
 
   resources :generates, path: 'sync', only: [:index, :create] do
     member do 
