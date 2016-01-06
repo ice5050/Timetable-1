@@ -1,4 +1,4 @@
-class StudentsController < ApplicationController
+﻿class StudentsController < ApplicationController
   def index
     @url = params[:url].to_s
     @code = params[:code]
@@ -43,12 +43,20 @@ class StudentsController < ApplicationController
   end
 
   def stu_info
-    @stu_id = params[:id]
+    stu_id = params[:id]
     url = "https://www3.reg.cmu.ac.th/stdsearch/index.php?file=stdnow"
-
-    @response = RestClient.post(url, {'key1' => @stu_id, 'button_search' => 0 })
-    page = Nokogiri::HTML(@response.to_s)
+    response = RestClient.post(url, {'key1' => stu_id, 'button_search.x' => 0, 'button_search.y' => 0 })
+    
+    page = Nokogiri::HTML(response.to_s)
     @page = page.css("table")
+
+    stu_id = stu_id.to_f
+    if stu_id % 2 == 0
+        stu_id = ((stu_id + 573190) / 2).to_i.to_s
+    else
+        stu_id = ((stu_id + 573190) / 2).to_i.to_s + "a"
+    end
+    @img_url = stu_id
    
   end
 end

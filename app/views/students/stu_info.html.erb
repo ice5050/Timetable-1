@@ -1,3 +1,5 @@
-<%= @formData %>
-<%= @response.to_s %>
-<%= @page %>
+<center>
+    <%= image_tag("http://cmu.azurewebsites.net/photo/get?sid=#{@img_url}", width: '100px') %>
+    <br>
+    <%= @page.to_s.force_encoding("CP874").encode("UTF-8").html_safe %>
+</center>
