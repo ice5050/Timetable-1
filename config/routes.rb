@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, path: '/', constraints: { subdomain: 'api' }, only: :index do 
+  namespace :api, only: :index do 
     resources :generates
     resources :midtermexam
     resources :finalexam

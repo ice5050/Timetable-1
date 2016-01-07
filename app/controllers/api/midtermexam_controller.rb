@@ -1,4 +1,3 @@
-
 class API::MidtermexamController < ApplicationController
     def index
         semester = params[:semester]
