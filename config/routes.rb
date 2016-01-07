@@ -50,12 +50,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :generates, :module => "api", only: :index
-  resources :midtermexam, :module => "api", only: :index
-  resources :finalexam, :module => "api", only: :index
-  namespace :api, path: '/', constraints: { subdomain: 'api' } do 
+  namespace :api, path: '/', constraints: { subdomain: 'api' }, only: :index do 
+    resources :generates
+    resources :midtermexam
+    resources :finalexam
   end
-  
+
   root "homepages#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
