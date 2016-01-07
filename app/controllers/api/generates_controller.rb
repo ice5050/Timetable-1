@@ -18,6 +18,7 @@ class API::GeneratesController < ApplicationController
             add_class()
             
             all_class = []
+            added = []
             @class.each do |class_|
                 data = Hash.new{|hash, key| hash[key] = Hash.new{|hash, key| hash[key] = Array.new}}
                 data[:subject_code] = class_[0]
@@ -43,6 +44,7 @@ class API::GeneratesController < ApplicationController
                     data[:date] << dateDate
                 end
                 all_class << data
+                added << data[:subject_code]
             end
             render json: all_class, status: :ok
           end
@@ -89,38 +91,38 @@ class API::GeneratesController < ApplicationController
                 # [Day] Black text 
                 section = index * 2                  
 
-                    @start = @times_selected[index].child.text[0..4].to_s.strip.insert(2, ':')  
-                    @finish = @times_selected[index].child.text[7..10].to_s.strip.insert(2, ':')  
+                @start = @times_selected[index].child.text[0..4].to_s.strip.insert(2, ':')  
+                @finish = @times_selected[index].child.text[7..10].to_s.strip.insert(2, ':')  
 
-                    if @days_selected[index].child.text.strip.include? "-" 
-                        day = @days_selected[index].child.text.strip.split("-")
+                # Example: M-Sa
+                if @days_selected[index].child.text.strip.include? "-" 
+                    day = @days_selected[index].child.text.strip.split("-")
 
-                        days = ["M", "Tu", "We", "Th", "F", "Sa", "Su"]
-                        start = days.index(day[0])
-                        finish = days.index(day[1])
-                        day = days[start..finish].join('')
-                        @class.push([
-                            @subject_code_selected[index].text, 
-                            @subject_selected[index].text,
-                            @section_selected[section].text + '-' + @section_selected[section+1].text,
-                            day,
-                            @start,
-                            @finish,
-                        ])
-                        index += 1
-                        next
-                    end
-
-                    # black_day = @days_selected[index].child.text.split /(?=[A-Z])/
-                    black_day = @days_selected[index].child.text
+                    days = ["M", "Tu", "We", "Th", "F", "Sa", "Su"]
+                    start = days.index(day[0])
+                    finish = days.index(day[1])
+                    day = days[start..finish].join('')
                     @class.push([
                         @subject_code_selected[index].text, 
                         @subject_selected[index].text,
                         @section_selected[section].text + '-' + @section_selected[section+1].text,
-                        black_day,
+                        day,
                         @start,
                         @finish,
                     ])
+                    index += 1
+                    next
+                end
+
+                black_day = @days_selected[index].child.text
+                @class.push([
+                    @subject_code_selected[index].text, 
+                    @subject_selected[index].text,
+                    @section_selected[section].text + '-' + @section_selected[section+1].text,
+                    black_day,
+                    @start,
+                    @finish,
+                ])
                 
 
                 # [Day] Red text 
@@ -130,30 +132,16 @@ class API::GeneratesController < ApplicationController
                     red_time = @times_selected[index].css("font[color='#CC0000']").text
                     start = red_time[0..4]
                     finish = red_time[7..10]
-                    if Timer.find_by(time: start.to_s.strip) and Timer.find_by(time: finish.to_s.strip)
-                        @start = Timer.find_by(time: start.to_s.strip).id
-                        @finish = Timer.find_by(time: finish.to_s.strip).id
-                        # red_day.each do |day| 
-                            @class.push([
-                                @subject_code_selected[index].text, 
-                                @subject_selected[index].text,
-                                @section_selected[section].text + '-' + @section_selected[section+1].text,
-                                red_day,
-                                @start,
-                                @finish,
-                            ])
-                        # end
                     
-                    else
-                        @cant_port.push([
-                            @subject_code_selected[index].text, 
-                            @subject_selected[index].text,
-                            @section_selected[section..section+1].text,
-                            @days_selected[index].child.text,
-                            @times_selected[index].text[0..10][0..4].to_s.strip,
-                            @times_selected[index].text[0..10][7..10].to_s.strip
-                        ])
-                    end 
+                        
+                    @class.push([
+                        @subject_code_selected[index].text, 
+                        @subject_selected[index].text,
+                        @section_selected[section].text + '-' + @section_selected[section+1].text,
+                        red_day,
+                        start,
+                        finish,
+                    ])
                 end
 
                 index += 1
@@ -164,46 +152,21 @@ class API::GeneratesController < ApplicationController
             last = @subject_code_selected.count * 2
             while index < @subject_code_lab_selected.count do 
                 
-                if Timer.find_by(time: (@times_lab_selected[index].text[0..4].to_s.strip)) and 
-                    Timer.find_by(time: @times_lab_selected[index].text[7..10].to_s.strip)
-                    @start = Timer.find_by(time: (@times_lab_selected[index].text[0..4].to_s.strip)).id
-                    @finish = Timer.find_by(time: @times_lab_selected[index].text[7..10].to_s.strip).id
+                @start = @times_lab_selected[index].text[0..4].to_s.strip
+                @finish = @times_lab_selected[index].text[7..10].to_s.strip
 
-                    @class.each do |class_|
-                        if class_[0] == @subject_code_lab_selected[index].text.to_s.strip
-                            @select_color = class_[6..-1]
-                            break
-                        else
-                            @select_color = @listColor.select {|item| not @selected_color.include? item  }
-                        end
-                    end
-
-                    section = last + (index * 2)
-                    black_day = @days_lab_selected[index].text.split /(?=[A-Z])/
-                    black_day.each do |day|
-                        @class.push([
-                                @subject_code_lab_selected[index].text, 
-                                @subject_lab_selected[index].text,
-                                @section_lab_selected[section..section+1].text,
-                                @days_lab_selected[index].text,
-                                @start,
-                                @finish,
-                        ])
-                    end
-                else
-                    black_day.each do |day|
-                        @cant_port.push([
-                                @subject_lab_code_selected[index].text, 
-                                @subject_lab_selected[index].text,
-                                @section_lab_selected[section..section+1].text,
-                                day,
-                                @times_lab_selected[index].text[0..4].to_s.strip,
-                                @times_lab_selected[index].text[7..10].to_s.strip
-                        ])
-                    end
-                    index += 1
-                    next
-                end
+                section = last + (index * 2)
+                black_day = @days_lab_selected[index].text
+                
+                @class.push([
+                        @subject_code_lab_selected[index].text, 
+                        @subject_lab_selected[index].text,
+                        @section_lab_selected[section..section+1].text,
+                        black_day,
+                        @start,
+                        @finish,
+                ])
+                
                 index += 1
             end
             
