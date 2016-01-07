@@ -129,7 +129,7 @@ class API::GeneratesController < ApplicationController
                 unless @days_selected[index].css("font[color='#CC0000']").empty?
                     # red_day = @days_selected[index].css("font[color='#CC0000']").text.split /(?=[A-Z])/
                     red_day = @days_selected[index].css("font[color='#CC0000']").text
-                    red_time = @times_selected[index].css("font[color='#CC0000']").text
+                    red_time = @times_selected[index].css("font[color='#CC0000']").text.insert(2, ':')
                     start = red_time[0..4]
                     finish = red_time[7..10]
                     
@@ -152,8 +152,8 @@ class API::GeneratesController < ApplicationController
             last = @subject_code_selected.count * 2
             while index < @subject_code_lab_selected.count do 
                 
-                @start = @times_lab_selected[index].text[0..4].to_s.strip
-                @finish = @times_lab_selected[index].text[7..10].to_s.strip
+                @start = @times_lab_selected[index].text[0..4].to_s.strip.insert(2, ':')
+                @finish = @times_lab_selected[index].text[7..10].to_s.strip.insert(2, ':')
 
                 section = last + (index * 2)
                 black_day = @days_lab_selected[index].text
