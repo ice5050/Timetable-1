@@ -15,4 +15,11 @@ class GeneratesControllerTest < ActionController::TestCase
         assert_response :success
     end
 
+
+    # setup { host! 'api_generates_path'}
+    # test 'return list all student' do
+    #     get '/generates'
+    #     assert_equal 200, response.status
+    # end
+
 end

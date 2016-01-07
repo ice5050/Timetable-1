@@ -1,8 +1,9 @@
-class GeneratesController < ApplicationController
+
+class API::GeneratesController < ApplicationController
     def index
         @semester = params[:semester]
         @year = params[:year]
-        @link = @semester + @year
+        @link = @semester.to_s + @year.to_s
         @stu_id = params[:stu_id]
 
         @i = 0
@@ -19,8 +20,20 @@ class GeneratesController < ApplicationController
             midterm_exam()
             final_exam()
 
-            @is_shown = Set.new
-            @is_shown_regular = Set.new
+            
+            all_class = []
+            @class.each do |class_|
+                data = Hash.new
+                data[:subject_code] = class_[0]
+                data[:subject] = class_[1]
+                data[:seclec] = class_[2][0..2]
+                data[:seclab] = class_[2][4..6]
+                data[:day] = class_[3]
+                data[:start] = [Timer.find(class_[4]).time[0..1], ':', Timer.find(class_[4]).time[2..4]].join('')
+                data[:finish] = [Timer.find(class_[5]).time[0..1], ':', Timer.find(class_[5]).time[2..4]].join('')
+                all_class << data
+            end
+            render json: all_class, status: :ok
           end
         rescue OpenURI::HTTPError => e
             if e.message == '404 Not Found'
@@ -29,59 +42,6 @@ class GeneratesController < ApplicationController
                 raise e
             end
         end
-    end
-
-    def create
-        semester = params.require(:generate).permit(:semester)["semester"]
-        year = params.require(:generate).permit(:year)["year"]
-        stu_id = params.require(:generate).permit(:stu_id)["stu_id"]
-
-        redirect_to generates_path(semester: semester, year: year, stu_id: stu_id) 
-    end
-
-    def create_table        
-        @semester = params[:semester]
-        @year = params[:year]
-        @link = @semester + @year
-        @stu_id = params[:stu_id]
-
-        read_tag()
-        add_class()
-
-        @user = User.find(current_user)
-        @table = @user.tables.create(name: "Sync id: #{@stu_id}", semester: @semester, year: @year)
-        
-        @class.each do |class_|
-
-            if ['Su'].include? class_[3]
-                daily = 1
-            elsif ['Mo', 'M'].include? class_[3]
-                daily = 2
-            elsif ['Tu'].include? class_[3] 
-                daily = 3
-            elsif ['We', 'W'].include? class_[3]
-                daily = 4
-            elsif ['Th'].include? class_[3]
-                daily = 5
-            elsif ['Fr', 'F'].include? class_[3]
-                daily = 6
-            elsif ['Sa'].include? class_[3]
-                daily = 7
-            end    
-            
-            @table.classtables.create(subject_code: class_[0], 
-                                subject: class_[1], 
-                                section: class_[2], 
-                                room: '-',
-                                daily: daily, 
-                                start: class_[4], 
-                                finish: class_[5],
-                                color: class_[6],
-            )
-            
-        end
-
-        redirect_to controller: 'classtables', action: 'index', user_id: @user, table_id: @table
     end
 
     private
