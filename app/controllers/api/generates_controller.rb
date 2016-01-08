@@ -20,28 +20,39 @@ class API::GeneratesController < ApplicationController
             all_class = []
             added = []
             @class.each do |class_|
-                data = Hash.new{|hash, key| hash[key] = Hash.new{|hash, key| hash[key] = Array.new}}
+                data = Hash.new
                 data[:subject_code] = class_[0]
                 data[:subject] = class_[1].strip
                 data[:seclec] = class_[2][0..2]
                 data[:seclab] = class_[2][4..6]
                 
                 data[:date] = []
-                if class_[3] != 'TBA'
+                if added.include? class_[0]
+                    index = added.index(class_[0])
                     black_day = class_[3].split /(?=[A-Z])/ 
                     black_day.each do |day|
-                        dateDate = Hash.new
-                        dateDate[:day] = day
-                        dateDate[:start] = class_[4]
-                        dateDate[:finish] = class_[5]
-                        data[:date] << dateDate
+                        dateData = Hash.new
+                        dateData[:day] = day
+                        dateData[:start] = class_[4]
+                        dateData[:finish] = class_[5]
+                        all_class[index][:date] << dateData
+                    end
+                    next
+                elsif class_[3] != 'TBA'
+                    black_day = class_[3].split /(?=[A-Z])/ 
+                    black_day.each do |day|
+                        dateData = Hash.new
+                        dateData[:day] = day
+                        dateData[:start] = class_[4]
+                        dateData[:finish] = class_[5]
+                        data[:date] << dateData
                     end
                 else
-                    dateDate = Hash.new
-                    dateDate[:day] = class_[3]
-                    dateDate[:start] = class_[4]
-                    dateDate[:finish] = class_[5]
-                    data[:date] << dateDate
+                    dateData = Hash.new
+                    dateData[:day] = class_[3]
+                    dateData[:start] = class_[4]
+                    dateData[:finish] = class_[5]
+                    data[:date] << dateData
                 end
                 all_class << data
                 added << data[:subject_code]
@@ -129,9 +140,9 @@ class API::GeneratesController < ApplicationController
                 unless @days_selected[index].css("font[color='#CC0000']").empty?
                     # red_day = @days_selected[index].css("font[color='#CC0000']").text.split /(?=[A-Z])/
                     red_day = @days_selected[index].css("font[color='#CC0000']").text
-                    red_time = @times_selected[index].css("font[color='#CC0000']").text.insert(2, ':')
-                    start = red_time[0..4]
-                    finish = red_time[7..10]
+                    red_time = @times_selected[index].css("font[color='#CC0000']").text
+                    start = red_time[0..4].insert(2, ':')
+                    finish = red_time[7..11].insert(2, ':')
                     
                         
                     @class.push([
