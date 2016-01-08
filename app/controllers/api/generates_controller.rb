@@ -6,9 +6,6 @@ class API::GeneratesController < ApplicationController
         @link = @semester.to_s + @year.to_s
         @stu_id = params[:stu_id]
 
-        @i = 0
-        @error = ''
-
         url = "https://www3.reg.cmu.ac.th/regist#{@link}/public/result.php?id=#{@stu_id}"
         begin
           file = open(url)
