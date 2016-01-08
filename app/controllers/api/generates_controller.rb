@@ -24,7 +24,8 @@ class API::GeneratesController < ApplicationController
                 data[:seclab] = class_[2][4..6]
                 
                 data[:date] = []
-                if added.include? class_[0]
+                if added.include? class_[0] and all_class[added.index(class_[0])][:seclec] == data[:seclec] and
+                    all_class[added.index(class_[0])][:seclab] == data[:seclab]
                     index = added.index(class_[0])
                     black_day = class_[3].split /(?=[A-Z])/ 
                     black_day.each do |day|

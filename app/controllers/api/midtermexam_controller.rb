@@ -32,8 +32,9 @@ class API::MidtermexamController < ApplicationController
                 date = ['25', '59'].join('').to_i - 543
                 data = Hash.new
                 data[:subjectCode] = subjectCode
-                data[:start] = times[indexTime][0..3].insert(2, ':')
-                data[:finish] = times[indexTime][5..8].insert(2, ':')
+                # data[:start] = times[indexTime][0..3].insert(2, ':')
+                # data[:finish] = times[indexTime][5..8].insert(2, ':')
+                data[:duration] = indexTime + 1
                 data[:date] = DateTime.new(date, 2, days[indexDay][1].to_i, times[indexTime][0..1].to_i, times[indexTime][2..3].to_i, 0, '+7')
                 exams << data
 
@@ -49,8 +50,9 @@ class API::MidtermexamController < ApplicationController
                     examData[:subject_code] = class_[:subject_code]
                     examData[:subject] = class_[:subject]
                     examData[:date_exam] = exam[:date]
-                    examData[:start] = exam[:start]
-                    examData[:finish] = exam[:finish]
+                    # examData[:start] = exam[:start]
+                    # examData[:finish] = exam[:finish]
+                    examData[:duration] = exam[:duration]
                     examStudent << examData
                     exam.clear
                     subject_code_added << class_[:subject_code]
