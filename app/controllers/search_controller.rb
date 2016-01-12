@@ -1,12 +1,8 @@
 class SearchController < ApplicationController
     def index
-        require 'rest-client'
-        require 'open-uri'
-        require 'rubygems'
-        require 'nokogiri'
 
         @REQUEST_URL = ""
-        
+
         if params[:user_id] and params[:table_id]
             @user = User.find(params[:user_id])
             @table = @user.tables.find(params[:table_id])
@@ -28,13 +24,13 @@ class SearchController < ApplicationController
             end
 
             # if page = RestClient.post(@REQUEST_URL, {'precourse'=> session[:code]["code"], 'op'=> op })
-                # puts "Success finding search term: 204"
-                @npage = Nokogiri::HTML(page)
+            # puts "Success finding search term: 204"
+            @npage = Nokogiri::HTML(page)
 
-                @subjects = @npage.css('details summary')
-                @details = @npage.css('table[sectionlist]')
+            @subjects = @npage.css('details summary')
+            @details = @npage.css('table[sectionlist]')
             # end
-        else 
+        else
             redirect_to homepages_path
         end
     end
@@ -54,5 +50,5 @@ class SearchController < ApplicationController
             redirect_to search_index_path(code: code)
         end
     end
-    
+
 end

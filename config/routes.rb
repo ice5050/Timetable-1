@@ -1,22 +1,18 @@
 Rails.application.routes.draw do
 
   resources :students, only: :index do
-    member do
-      get 'stu_info'
-    end
+    get 'stu_info', on: :member
   end
 
   resources :generates, path: 'sync', only: [:index, :create] do
-    member do 
-      get 'create_table'
-    end
+    get 'create_table', on: :member
   end
 
-  resources :homepages, path: 'cmutimetable'
+  resources :homepages, only: [:index]
   resources :search, only: [:index, :create]
-  resources :regularexams 
+  resources :regularexams
 
-  resources :settings do
+  resources :settings, only: [:index] do
     member do
       get 'edit_day'
       patch 'update_day'
@@ -26,11 +22,11 @@ Rails.application.routes.draw do
       delete 'delete_time'
     end
   end
-  
+
   devise_for :users
 
-  resources :users do 
-    resources :tables, path: '/' do 
+  resources :users, only: [] do
+    resources :tables, path: '/' do
       member do
         get 'reset'
         get 'add_class'
@@ -42,73 +38,19 @@ Rails.application.routes.draw do
           get 'clear_manual_midterm'
           post 'update_exam_final'
           get 'clear_manual_final'
-        end   
+        end
       end
       resources :search, only: [:index, :create]
       resources :midtermtables, only: [:index, :edit]
-      resources :finaltables, only: [:index, :edit] 
+      resources :finaltables, only: [:index, :edit]
     end
   end
 
-  namespace :api, only: :index do 
-    resources :generates
-    resources :midtermexam
-    resources :finalexam
+  namespace :api do
+    resources :generates, only: :index
+    resources :midtermexam, only: :index
+    resources :finalexam, only: :index
   end
 
   root "homepages#index"
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
