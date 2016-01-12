@@ -25,7 +25,7 @@ development:
   <<: *default
   database: timetable_development
 
-  host: localhost
+  host: <%= ENV['DB_ENV_DB_HOST'] || 'localhost' %>
   username: pondpaun7z
   password: 7898
 
@@ -87,5 +87,3 @@ production:
   database: timetable_production
   username: timetable
   password: <%= ENV['TIMETABLE_DATABASE_PASSWORD'] %>
-
-  
