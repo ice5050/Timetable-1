@@ -11,9 +11,11 @@ app:
 db:
   image: postgres:latest
   volumes:
-    - ./db/dumps:/app-db-dumps # We're mounting this folder so we can backup/restore database dumps from our app folder.
     - ./db/postgres-setup.sql:/docker-entrypoint-initdb.d/setup.sql
   ports:
     - "5432:5432"
   environment:
     DB_HOST: db
+    POSTGRES_USER: pondpaun7z
+    POSTGRES_PASSWORD: 7898
+    POSTGRES_DB: timetable_development
