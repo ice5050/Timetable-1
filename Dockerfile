@@ -1,9 +1,10 @@
-FROM ruby:1.9.3
+FROM ruby:1.9.3-slim
 
 # Install apt based dependencies required to run Rails as well as RubyGems.
 RUN apt-get update && apt-get install -y \
-build-essential \
-nodejs
+    build-essential \
+    nodejs \
+    libpq-dev
 
 RUN mkdir -p /app
 WORKDIR /app
